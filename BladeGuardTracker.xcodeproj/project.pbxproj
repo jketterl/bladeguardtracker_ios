@@ -15,8 +15,8 @@
 		2899E5220DE3E06400AC0155 /* BladeGuardTrackerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* BladeGuardTrackerViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* BladeGuardTrackerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* BladeGuardTrackerViewController.m */; };
+		361531C815A64FFC00B6FA79 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 361531C715A64FFC00B6FA79 /* icon.png */; };
 		364E501D15A4E463006D687E /* libUnittWebSocketClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 364E501C15A4E463006D687E /* libUnittWebSocketClient.a */; };
-		364E503715A4EC58006D687E /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 364E503615A4EC58006D687E /* icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,8 +32,8 @@
 		28D7ACF70DDB3853001CB0EB /* BladeGuardTrackerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BladeGuardTrackerViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* BladeGuardTracker_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BladeGuardTracker_Prefix.pch; sourceTree = "<group>"; };
+		361531C715A64FFC00B6FA79 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		364E501C15A4E463006D687E /* libUnittWebSocketClient.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libUnittWebSocketClient.a; path = "../../Downloads/UnittWebSocketClient/bin/Release-iphoneos/libUnittWebSocketClient.a"; sourceTree = SOURCE_ROOT; };
-		364E503615A4EC58006D687E /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* BladeGuardTracker-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "BladeGuardTracker-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,7 +96,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				364E503615A4EC58006D687E /* icon.png */,
+				361531C715A64FFC00B6FA79 /* icon.png */,
 				2899E5210DE3E06400AC0155 /* BladeGuardTrackerViewController.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* BladeGuardTracker-Info.plist */,
@@ -168,7 +168,7 @@
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				2899E5220DE3E06400AC0155 /* BladeGuardTrackerViewController.xib in Resources */,
-				364E503715A4EC58006D687E /* icon.png in Resources */,
+				361531C815A64FFC00B6FA79 /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +230,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /Users/jakob/Downloads/UnittWebSocketClient/include;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = "/Users/jakob/Downloads/UnittWebSocketClient/bin/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				SDKROOT = iphoneos;
 			};
@@ -243,6 +244,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 			};
