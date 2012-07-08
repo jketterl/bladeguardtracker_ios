@@ -63,4 +63,11 @@
     [super dealloc];
 }
 
+- (IBAction)onStart:(id)sender {
+    WebSocketDelegate* delegate = [[WebSocketDelegate alloc] init];
+    NSURL* url = [NSURL URLWithString:@"wss://bgt.justjakob.de/bgt/socket"];
+    SRWebSocket* socket = [[SRWebSocket alloc] initWithURL:url];
+    [socket setDelegate:delegate];
+    [socket open];
+}
 @end

@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WebSocketDelegate.h"
 
 @interface BladeGuardTrackerViewController : UIViewController {
 
 }
+- (IBAction)onStart:(id)sender;
 
 @end
 
