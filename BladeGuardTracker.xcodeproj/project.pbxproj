@@ -21,6 +21,8 @@
 		36AB05B415A9FE8B00560928 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AB05B315A9FE8B00560928 /* libicucore.dylib */; };
 		36AB05B715A9FEFF00560928 /* WebSocketDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AB05B615A9FEFF00560928 /* WebSocketDelegate.m */; };
 		36AB05B915AA161500560928 /* libSocketRocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AB05B815AA161500560928 /* libSocketRocket.a */; };
+		36AB05BB15AA1BAE00560928 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AB05BA15AA1BAE00560928 /* CoreLocation.framework */; };
+		36AB05BF15AA1FCB00560928 /* GPSDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AB05BE15AA1FCB00560928 /* GPSDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,10 @@
 		36AB05B515A9FEFF00560928 /* WebSocketDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSocketDelegate.h; sourceTree = "<group>"; };
 		36AB05B615A9FEFF00560928 /* WebSocketDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSocketDelegate.m; sourceTree = "<group>"; };
 		36AB05B815AA161500560928 /* libSocketRocket.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSocketRocket.a; path = "../../Library/Developer/Xcode/DerivedData/SocketRocket-bbdqfahhynxopienecpqsueqzoht/Build/Products/Debug-iphonesimulator/libSocketRocket.a"; sourceTree = "<group>"; };
+		36AB05BA15AA1BAE00560928 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		36AB05BD15AA1FCB00560928 /* GPSDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPSDelegate.h; path = ../GPSDelegate.h; sourceTree = "<group>"; };
+		36AB05BE15AA1FCB00560928 /* GPSDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPSDelegate.m; path = ../GPSDelegate.m; sourceTree = "<group>"; };
+		36AB05C115AA255E00560928 /* Sample Track.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Sample Track.gpx"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* BladeGuardTracker-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "BladeGuardTracker-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36AB05BB15AA1BAE00560928 /* CoreLocation.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				36AB05B415A9FE8B00560928 /* libicucore.dylib in Frameworks */,
 				36AB05B215A9FE7E00560928 /* Security.framework in Frameworks */,
@@ -67,6 +74,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				36AB05BD15AA1FCB00560928 /* GPSDelegate.h */,
+				36AB05BE15AA1FCB00560928 /* GPSDelegate.m */,
 				1D3623240D0F684500981E51 /* BladeGuardTrackerAppDelegate.h */,
 				1D3623250D0F684500981E51 /* BladeGuardTrackerAppDelegate.m */,
 				28D7ACF60DDB3853001CB0EB /* BladeGuardTrackerViewController.h */,
@@ -88,7 +97,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				36AB05B815AA161500560928 /* libSocketRocket.a */,
+				36AB05C115AA255E00560928 /* Sample Track.gpx */,
+				36AB05BC15AA1BC200560928 /* Libraries */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -121,6 +131,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				36AB05BA15AA1BAE00560928 /* CoreLocation.framework */,
 				36AB05B315A9FE8B00560928 /* libicucore.dylib */,
 				36AB05B115A9FE7E00560928 /* Security.framework */,
 				361531CF15A7605200B6FA79 /* CFNetwork.framework */,
@@ -129,6 +140,14 @@
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		36AB05BC15AA1BC200560928 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				36AB05B815AA161500560928 /* libSocketRocket.a */,
+			);
+			name = Libraries;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +219,7 @@
 				1D3623260D0F684500981E51 /* BladeGuardTrackerAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* BladeGuardTrackerViewController.m in Sources */,
 				36AB05B715A9FEFF00560928 /* WebSocketDelegate.m in Sources */,
+				36AB05BF15AA1FCB00560928 /* GPSDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

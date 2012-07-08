@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "WebSocketDelegate.h"
+#import "GPSDelegate.h"
 
 @interface BladeGuardTrackerViewController : UIViewController {
 

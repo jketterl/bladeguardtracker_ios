@@ -15,7 +15,7 @@
 }
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket {
     NSLog(@"Websocket is now open!");
-    [webSocket send:@"{\"command\":\"blablabla\"}"];
+    [webSocket send:@"{\"command\":\"auth\"}"];
 }
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error {
     
