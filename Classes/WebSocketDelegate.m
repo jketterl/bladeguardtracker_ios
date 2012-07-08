@@ -15,7 +15,10 @@
 }
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket {
     NSLog(@"Websocket is now open!");
-    [webSocket send:@"{\"command\":\"auth\"}"];
+    //[webSocket send:@"{\"command\":\"auth\"}"];
+    GPSDelegate* gps = [[GPSDelegate alloc] init];
+    [gps setSocket:webSocket];
+    [gps startUpdates];
 }
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error {
     

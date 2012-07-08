@@ -23,6 +23,7 @@
 		36AB05B915AA161500560928 /* libSocketRocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AB05B815AA161500560928 /* libSocketRocket.a */; };
 		36AB05BB15AA1BAE00560928 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AB05BA15AA1BAE00560928 /* CoreLocation.framework */; };
 		36AB05BF15AA1FCB00560928 /* GPSDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AB05BE15AA1FCB00560928 /* GPSDelegate.m */; };
+		36AB05D415AA31BA00560928 /* libsbjson-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AB05D315AA31BA00560928 /* libsbjson-ios.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		36AB05BD15AA1FCB00560928 /* GPSDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPSDelegate.h; path = ../GPSDelegate.h; sourceTree = "<group>"; };
 		36AB05BE15AA1FCB00560928 /* GPSDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPSDelegate.m; path = ../GPSDelegate.m; sourceTree = "<group>"; };
 		36AB05C115AA255E00560928 /* Sample Track.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Sample Track.gpx"; sourceTree = "<group>"; };
+		36AB05D315AA31BA00560928 /* libsbjson-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libsbjson-ios.a"; path = "../../Library/Developer/Xcode/DerivedData/SBJson-bkrqcbzfsyfflecrivoximytggxj/Build/Products/Debug-iphonesimulator/libsbjson-ios.a"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* BladeGuardTracker-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "BladeGuardTracker-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,6 +67,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				36AB05B915AA161500560928 /* libSocketRocket.a in Frameworks */,
+				36AB05D415AA31BA00560928 /* libsbjson-ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				36AB05B815AA161500560928 /* libSocketRocket.a */,
+				36AB05D315AA31BA00560928 /* libsbjson-ios.a */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -240,6 +244,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/SocketRocket-bbdqfahhynxopienecpqsueqzoht/Build/Products/Debug-iphonesimulator\"",
+					"\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/SBJson-bkrqcbzfsyfflecrivoximytggxj/Build/Products/Debug-iphonesimulator\"",
 				);
 				PRODUCT_NAME = BladeGuardTracker;
 			};
@@ -258,6 +263,7 @@
 					"\"$(SRCROOT)/../../Downloads/UnittWebSocketClient/bin/Release-iphoneos\"",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/SocketRocket-bbdqfahhynxopienecpqsueqzoht/Build/Products/Debug-iphonesimulator\"",
+					"\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/SBJson-bkrqcbzfsyfflecrivoximytggxj/Build/Products/Debug-iphonesimulator\"",
 				);
 				PRODUCT_NAME = BladeGuardTracker;
 				VALIDATE_PRODUCT = YES;
@@ -272,7 +278,10 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = /Users/jakob/Documents/SocketRocket;
+				HEADER_SEARCH_PATHS = (
+					/Users/jakob/Documents/SocketRocket,
+					"/Users/jakob/Documents/json-framework",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
@@ -287,7 +296,10 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = /Users/jakob/Documents/SocketRocket;
+				HEADER_SEARCH_PATHS = (
+					/Users/jakob/Documents/SocketRocket,
+					"/Users/jakob/Documents/json-framework",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";

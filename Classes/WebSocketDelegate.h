@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <SocketRocket/SRWebSocket.h>
+#import "GPSDelegate.h"
 
 @interface WebSocketDelegate : NSObject <SRWebSocketDelegate>
 

@@ -69,8 +69,5 @@
     SRWebSocket* socket = [[SRWebSocket alloc] initWithURL:url];
     [socket setDelegate:delegate];
     [socket open];
-    
-    GPSDelegate* gps = [[GPSDelegate alloc] init];
-    [gps startUpdates];
 }
 @end
