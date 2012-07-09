@@ -13,7 +13,7 @@
 @synthesize locationManager, socket;
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    NSLog(@"location update: %@", newLocation);
+    //NSLog(@"location update: %@", newLocation);
     NSMutableDictionary* json = [NSMutableDictionary dictionaryWithCapacity:2];
     [json setValue:@"log" forKey:@"command"];
     NSMutableDictionary* data = [NSMutableDictionary dictionaryWithCapacity:2];
