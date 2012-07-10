@@ -12,6 +12,15 @@
 
 @synthesize webSocket;
 
++ (WebSocketDelegate *) getSharedInstance {
+    static dispatch_once_t pred;
+    static WebSocketDelegate* shared = nil;
+    dispatch_once(&pred, ^{
+        shared = [[WebSocketDelegate alloc] init];
+    });
+    return shared;
+}
+
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message {
     //NSLog(@"Received message: %@", message);
 }
@@ -20,17 +29,11 @@
     webSocket = newWebSocket;
     
     [self authenticate];
-    //[settings synchronize];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(defaultsChanged:)
                                                  name:NSUserDefaultsDidChangeNotification
                                                object:nil];
     
-    NSLog(@"notification registered");
-    
-    GPSDelegate* gps = [[GPSDelegate alloc] init];
-    [gps setSocket:webSocket];
-    [gps startUpdates];
 }
 - (void)authenticate {
     if (!webSocket) return;
@@ -40,7 +43,7 @@
         [data setValue:[settings stringForKey:@"user"] forKey:@"user"];
         [data setValue:[settings stringForKey:@"pass"] forKey:@"pass"];
         BGTSocketCommand* command = [[BGTSocketCommand alloc] initwithCommand:@"auth" andData:data];
-        [command send:webSocket];
+        [self sendCommand:command];
     }
 }
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error {
@@ -50,15 +53,19 @@
     
 }
 - (void)defaultsChanged:(NSNotification *) notification{
-    NSLog(@"defaultsChanged");
     [self authenticate];
 }
-- (void) dealloc {
-    NSUserDefaults* settings = [NSUserDefaults standardUserDefaults];
-    [settings removeObserver:self forKeyPath:@"user"];
-    [super dealloc];
+- (BGTSocketCommand *)sendCommand:(BGTSocketCommand*) command{
+    if (!webSocket || webSocket.readyState != SR_OPEN) return command;
+    [webSocket send:[command getJson]];
+    return command;
 }
-- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    NSLog(@"KVO: %@ changed property %@ to value %@", object, keyPath, change);
+- (void) connect {
+    if (!webSocket) {
+        NSURL* url = [NSURL URLWithString:@"wss://bgt.justjakob.de/bgt/socket"];
+        webSocket = [[SRWebSocket alloc] initWithURL:url];
+        [webSocket setDelegate:self];
+    }
+    [webSocket open];
 }
 @end

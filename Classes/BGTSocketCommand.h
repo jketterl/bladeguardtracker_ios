@@ -7,13 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <SocketRocket/SRWebSocket.h>
 
 @interface BGTSocketCommand : NSObject
 @property (nonatomic, retain) NSString* command;
 @property (nonatomic, retain) NSDictionary* data;
 - (id) initwithCommand:(NSString*) command;
 - (id) initwithCommand:(NSString *)command andData:(NSDictionary *) data;
-- (void) send:(SRWebSocket*) socket;
 - (NSString *) getJson;
 @end

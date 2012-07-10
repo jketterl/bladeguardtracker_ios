@@ -6,15 +6,15 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "WebSocketDelegate.h"
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-#import <SocketRocket/SRWebSocket.h>
 
 @interface GPSDelegate : NSObject <CLLocationManagerDelegate>
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) WebSocketDelegate* socket;
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation;
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error;
 - (void)startUpdates;
-- (void)setSocket:(SRWebSocket *) newSocket;
-@property (strong, nonatomic) CLLocationManager *locationManager;
-@property (strong, nonatomic) SRWebSocket* socket;
+- (void)setSocket:(WebSocketDelegate *) newSocket;
 @end

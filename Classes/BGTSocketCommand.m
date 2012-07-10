@@ -22,9 +22,6 @@
     if (self) self.data = newData;
     return self;
 }
-- (void) send:(SRWebSocket*) socket {
-    [socket send:[self getJson]];
-}
 - (NSString*) getJson {
     NSMutableDictionary* json = [NSMutableDictionary dictionaryWithCapacity:2];
     [json setValue:command forKey:@"command"];
