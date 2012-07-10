@@ -250,6 +250,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = BladeGuardTracker_Prefix.pch;
 				INFOPLIST_FILE = "BladeGuardTracker-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -257,6 +258,7 @@
 					"\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/SBJson-bkrqcbzfsyfflecrivoximytggxj/Build/Products/Debug-iphonesimulator\"",
 				);
 				PRODUCT_NAME = BladeGuardTracker;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -268,6 +270,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = BladeGuardTracker_Prefix.pch;
 				INFOPLIST_FILE = "BladeGuardTracker-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Downloads/UnittWebSocketClient/bin/Release-iphoneos\"",
@@ -276,6 +279,7 @@
 					"\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/SBJson-bkrqcbzfsyfflecrivoximytggxj/Build/Products/Debug-iphonesimulator\"",
 				);
 				PRODUCT_NAME = BladeGuardTracker;
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -293,6 +297,10 @@
 					"/Users/jakob/Documents/json-framework",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"/Users/jakob/Library/Developer/Xcode/DerivedData/SocketRocket-bbdqfahhynxopienecpqsueqzoht/Build/Products/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)",
+					"/Users/jakob/Library/Developer/Xcode/DerivedData/SBJson-bkrqcbzfsyfflecrivoximytggxj/Build/Products/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 			};
@@ -311,6 +319,10 @@
 					"/Users/jakob/Documents/json-framework",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"/Users/jakob/Library/Developer/Xcode/DerivedData/SocketRocket-bbdqfahhynxopienecpqsueqzoht/Build/Products/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)",
+					"/Users/jakob/Library/Developer/Xcode/DerivedData/SBJson-bkrqcbzfsyfflecrivoximytggxj/Build/Products/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)",
+				);
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
