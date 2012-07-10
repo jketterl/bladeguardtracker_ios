@@ -11,10 +11,11 @@
 #import <CoreLocation/CoreLocation.h>
 
 @interface GPSDelegate : NSObject <CLLocationManagerDelegate>
-@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (nonatomic, retain) CLLocationManager *locationManager;
 @property (strong, nonatomic) WebSocketDelegate* socket;
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation;
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error;
 - (void)startUpdates;
+- (void)endUpdates;
 - (void)setSocket:(WebSocketDelegate *) newSocket;
 @end

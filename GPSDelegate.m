@@ -27,6 +27,12 @@
     locationManager.delegate = self;
     [locationManager startUpdatingLocation];
 }
+- (void) endUpdates {
+    [locationManager stopMonitoringSignificantLocationChanges];
+    [locationManager stopUpdatingLocation];
+    locationManager.delegate = nil;
+    [locationManager release];
+}
 - (void)setSocket:(WebSocketDelegate *)newSocket {
     socket = newSocket;
 }

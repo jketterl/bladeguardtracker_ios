@@ -10,9 +10,12 @@
 #import "GPSDelegate.h"
 
 @interface BladeGuardTrackerViewController : UIViewController {
-
+    IBOutlet UISwitch* trackerSwitch;
 }
-- (IBAction)onStart:(id)sender;
+@property (nonatomic, retain) UISwitch* trackerSwitch;
+@property (nonatomic, retain) WebSocketDelegate* socket;
+@property (nonatomic, retain) GPSDelegate* gps;
+- (IBAction)trackerSwitchChanged:(id)sender;
 
 @end
 

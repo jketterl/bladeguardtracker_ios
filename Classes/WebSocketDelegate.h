@@ -19,4 +19,5 @@
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean;
 - (BGTSocketCommand *)sendCommand:(BGTSocketCommand*) command;
 - (void)connect;
+- (void)close;
 @end

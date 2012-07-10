@@ -61,11 +61,15 @@
     return command;
 }
 - (void) connect {
-    if (!webSocket) {
+    //if (!webSocket) {
         NSURL* url = [NSURL URLWithString:@"wss://bgt.justjakob.de/bgt/socket"];
         webSocket = [[SRWebSocket alloc] initWithURL:url];
         [webSocket setDelegate:self];
-    }
+    //}
     [webSocket open];
+}
+- (void) close {
+    [webSocket close];
+    [webSocket release];
 }
 @end

@@ -10,7 +10,7 @@
 
 @implementation BladeGuardTrackerViewController
 
-
+@synthesize trackerSwitch, socket, gps;
 
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
@@ -60,13 +60,29 @@
 
 - (void)dealloc {
     [super dealloc];
+    [trackerSwitch release];
+    [socket release];
 }
 
-- (IBAction)onStart:(id)sender {
-    WebSocketDelegate* socket = [WebSocketDelegate getSharedInstance];
-    [socket connect];
-    GPSDelegate* gps = [[GPSDelegate alloc] init];
-    [gps setSocket:socket];
-    [gps startUpdates];
+- (WebSocketDelegate*) getSocket {
+    if (!socket) {
+        socket = [WebSocketDelegate getSharedInstance];
+    }
+    return socket;
+}
+- (GPSDelegate*) getGps {
+    if (!gps) {
+        gps = [[GPSDelegate alloc] init];
+    }
+    return gps;
+}
+- (IBAction)trackerSwitchChanged:(id)sender {
+    if (trackerSwitch.on) {
+        [[self getSocket] connect];
+        [[self getGps] setSocket:socket];
+        [[self getGps] startUpdates];
+    } else {
+        [[self getGps] endUpdates];
+    }
 }
 @end
