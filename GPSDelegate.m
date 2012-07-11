@@ -23,17 +23,17 @@
     NSLog(@"failure: %@", error);
 }
 - (void)startUpdates {
+    socket = [WebSocketDelegate getSharedInstance];
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     [locationManager startUpdatingLocation];
 }
 - (void) endUpdates {
-    [locationManager stopMonitoringSignificantLocationChanges];
+    BGTSocketCommand* quit = [[BGTSocketCommand alloc] initwithCommand:@"quit"];
+    [socket sendCommand:quit];
     [locationManager stopUpdatingLocation];
     locationManager.delegate = nil;
     [locationManager release];
-}
-- (void)setSocket:(WebSocketDelegate *)newSocket {
-    socket = newSocket;
+    socket = nil;
 }
 @end

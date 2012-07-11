@@ -10,7 +10,7 @@
 
 @implementation WebSocketDelegate
 
-@synthesize webSocket;
+@synthesize webSocket, shouldBeOnline, reconnectTimer;
 
 + (WebSocketDelegate *) getSharedInstance {
     static dispatch_once_t pred;
@@ -46,11 +46,27 @@
         [self sendCommand:command];
     }
 }
-- (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error {
-    
+- (void)webSocket:(SRWebSocket *)closingWebSocket didFailWithError:(NSError *)error {
+    if (closingWebSocket != webSocket) return;
+    NSLog(@"socket did close with error: %@", error);
+    [self onDisconnect];
 }
-- (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean{
-    
+- (void)webSocket:(SRWebSocket *)closingWebSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean{
+    if (closingWebSocket != webSocket) return;
+    NSLog(@"socket did close");
+    [self onDisconnect];
+}
+- (void) onDisconnect {
+    [webSocket setDelegate:nil];
+    [webSocket release];
+    webSocket = nil;
+    [self reConnect];
+}
+- (void) reConnect {
+    if (!shouldBeOnline) return;
+    [self close];
+    //[self connect];
+    reconnectTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(connect) userInfo:nil repeats:NO];
 }
 - (void)defaultsChanged:(NSNotification *) notification{
     [self authenticate];
@@ -61,15 +77,15 @@
     return command;
 }
 - (void) connect {
-    //if (!webSocket) {
-        NSURL* url = [NSURL URLWithString:@"wss://bgt.justjakob.de/bgt/socket"];
-        webSocket = [[SRWebSocket alloc] initWithURL:url];
-        [webSocket setDelegate:self];
-    //}
+    [reconnectTimer invalidate];
+    shouldBeOnline = YES;
+    NSURL* url = [NSURL URLWithString:@"wss://bgt.justjakob.de/bgt/socket"];
+    webSocket = [[SRWebSocket alloc] initWithURL:url];
+    [webSocket setDelegate:self];
     [webSocket open];
 }
 - (void) close {
+    shouldBeOnline = NO;
     [webSocket close];
-    [webSocket release];
 }
 @end

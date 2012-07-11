@@ -9,6 +9,7 @@
 #import "WebSocketDelegate.h"
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import "BGTSocketCommand.h"
 
 @interface GPSDelegate : NSObject <CLLocationManagerDelegate>
 @property (nonatomic, retain) CLLocationManager *locationManager;

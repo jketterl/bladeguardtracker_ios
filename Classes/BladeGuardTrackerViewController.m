@@ -79,10 +79,10 @@
 - (IBAction)trackerSwitchChanged:(id)sender {
     if (trackerSwitch.on) {
         [[self getSocket] connect];
-        [[self getGps] setSocket:socket];
         [[self getGps] startUpdates];
     } else {
         [[self getGps] endUpdates];
+        [[self getSocket] close];
     }
 }
 @end
