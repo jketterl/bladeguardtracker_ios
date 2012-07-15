@@ -21,7 +21,7 @@
 		36AA640815B314AD00128DA0 /* BGTMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AA640715B314AD00128DA0 /* BGTMapViewController.m */; };
 		36AB05B215A9FE7E00560928 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AB05B115A9FE7E00560928 /* Security.framework */; };
 		36AB05B415A9FE8B00560928 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AB05B315A9FE8B00560928 /* libicucore.dylib */; };
-		36AB05B715A9FEFF00560928 /* WebSocketDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AB05B615A9FEFF00560928 /* WebSocketDelegate.m */; };
+		36AB05B715A9FEFF00560928 /* BGTSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AB05B615A9FEFF00560928 /* BGTSocket.m */; };
 		36AB05B915AA161500560928 /* libSocketRocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AB05B815AA161500560928 /* libSocketRocket.a */; };
 		36AB05BB15AA1BAE00560928 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AB05BA15AA1BAE00560928 /* CoreLocation.framework */; };
 		36AB05BF15AA1FCB00560928 /* GPSDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AB05BE15AA1FCB00560928 /* GPSDelegate.m */; };
@@ -56,8 +56,8 @@
 		36AA640715B314AD00128DA0 /* BGTMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTMapViewController.m; sourceTree = "<group>"; };
 		36AB05B115A9FE7E00560928 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		36AB05B315A9FE8B00560928 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
-		36AB05B515A9FEFF00560928 /* WebSocketDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSocketDelegate.h; sourceTree = "<group>"; };
-		36AB05B615A9FEFF00560928 /* WebSocketDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebSocketDelegate.m; sourceTree = "<group>"; };
+		36AB05B515A9FEFF00560928 /* BGTSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTSocket.h; sourceTree = "<group>"; };
+		36AB05B615A9FEFF00560928 /* BGTSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTSocket.m; sourceTree = "<group>"; };
 		36AB05B815AA161500560928 /* libSocketRocket.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSocketRocket.a; path = "../../Library/Developer/Xcode/DerivedData/SocketRocket-bbdqfahhynxopienecpqsueqzoht/Build/Products/Debug-iphonesimulator/libSocketRocket.a"; sourceTree = "<group>"; };
 		36AB05BA15AA1BAE00560928 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		36AB05BD15AA1FCB00560928 /* GPSDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPSDelegate.h; path = ../GPSDelegate.h; sourceTree = "<group>"; };
@@ -104,8 +104,8 @@
 				1D3623250D0F684500981E51 /* BladeGuardTrackerAppDelegate.m */,
 				28D7ACF60DDB3853001CB0EB /* BladeGuardTrackerViewController.h */,
 				28D7ACF70DDB3853001CB0EB /* BladeGuardTrackerViewController.m */,
-				36AB05B515A9FEFF00560928 /* WebSocketDelegate.h */,
-				36AB05B615A9FEFF00560928 /* WebSocketDelegate.m */,
+				36AB05B515A9FEFF00560928 /* BGTSocket.h */,
+				36AB05B615A9FEFF00560928 /* BGTSocket.m */,
 				36AB05D715AB69C000560928 /* BGTSocketCommand.h */,
 				36AB05D815AB69C000560928 /* BGTSocketCommand.m */,
 				36AA63FC15B2FEDC00128DA0 /* BGTApp.h */,
@@ -266,7 +266,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* BladeGuardTrackerAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* BladeGuardTrackerViewController.m in Sources */,
-				36AB05B715A9FEFF00560928 /* WebSocketDelegate.m in Sources */,
+				36AB05B715A9FEFF00560928 /* BGTSocket.m in Sources */,
 				36AB05BF15AA1FCB00560928 /* GPSDelegate.m in Sources */,
 				36AB05D915AB69C100560928 /* BGTSocketCommand.m in Sources */,
 				36AA63FE15B2FEDC00128DA0 /* BGTApp.m in Sources */,

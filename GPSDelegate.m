@@ -23,7 +23,7 @@
     NSLog(@"failure: %@", error);
 }
 - (void)startUpdates {
-    socket = [WebSocketDelegate getSharedInstanceWithStake:self];
+    socket = [BGTSocket getSharedInstanceWithStake:self];
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     [locationManager startUpdatingLocation];

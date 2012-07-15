@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MKMapView.h>
-#import "WebSocketDelegate.h"
+#import "BGTSocket.h"
 
 @interface BGTMapViewController : UIViewController
 @property (nonatomic, retain) IBOutlet MKMapView* mapView;
-@property (nonatomic, retain) WebSocketDelegate* socket;
+@property (nonatomic, retain) BGTSocket* socket;
 @end

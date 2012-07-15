@@ -29,7 +29,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    socket = [WebSocketDelegate getSharedInstanceWithStake:self];
+    socket = [BGTSocket getSharedInstanceWithStake:self];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
