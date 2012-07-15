@@ -30,9 +30,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     socket = [BGTSocket getSharedInstanceWithStake:self];
+    [socket subscribeCategoryArray:[NSArray arrayWithObjects:@"map", @"movements", @"quit", nil]];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
+    [socket unsubscribeCategoryArray:[NSArray arrayWithObjects:@"map", @"movements", @"quit", nil]];
     [super viewDidDisappear:animated];
     [socket removeStake:self];
     socket = nil;

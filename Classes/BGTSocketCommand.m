@@ -9,23 +9,21 @@
 #import "BGTSocketCommand.h"
 
 @implementation BGTSocketCommand
-@synthesize command;
-@synthesize data;
 
 - (id) initwithCommand:(NSString*) newCommand {
-    self = [super init];
-    if (self) self.command = newCommand;
+    self = [self init];
+    if (self) command = newCommand;
     return self;
 }
-- (id) initwithCommand:(NSString *)newCommand andData:(NSDictionary *) newData {
+- (id) initwithCommand:(NSString *)newCommand andData:(NSObject *) newData {
     self = [self initwithCommand:newCommand];
-    if (self) self.data = newData;
+    if (self) data = newData;
     return self;
 }
 - (NSString*) getJson {
     NSMutableDictionary* json = [NSMutableDictionary dictionaryWithCapacity:2];
     [json setValue:command forKey:@"command"];
-    if (self.data) [json setValue:data forKey:@"data"];
+    if (data != nil) [json setValue:data forKey:@"data"];
     return [json JSONRepresentation];
 }
 @end

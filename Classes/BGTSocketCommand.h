@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <Classes/NSObject+SBJson.h>
 
-@interface BGTSocketCommand : NSObject
-@property (nonatomic, retain) NSString* command;
-@property (nonatomic, retain) NSDictionary* data;
+@interface BGTSocketCommand : NSObject {
+    @private NSString* command;
+    @private NSObject* data;
+}
 - (id) initwithCommand:(NSString*) command;
-- (id) initwithCommand:(NSString *)command andData:(NSDictionary *) data;
+- (id) initwithCommand:(NSString *)command andData:(NSObject *) data;
 - (NSString *) getJson;
 @end

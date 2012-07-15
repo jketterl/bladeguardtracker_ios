@@ -28,13 +28,15 @@
 - (id) init {
     self = [super init];
     if (self) {
-        stakes = [[NSMutableArray alloc] init];
+        stakes = [[NSMutableArray arrayWithCapacity:10] retain];
+        subscriptions = [[NSMutableArray arrayWithCapacity:10] retain];
     }
     return self;
 }
 
 - (void) dealloc {
     [stakes release];
+    [subscriptions release];
     [super dealloc];
 }
 
@@ -52,6 +54,17 @@
                                                  name:NSUserDefaultsDidChangeNotification
                                                object:nil];
     
+    // re-subscribe to any events that have been previously subscribed, if any
+    [self subscribeCategoryArray:subscriptions];
+    
+    if (backlog != nil) {
+        int count = [backlog count];
+        for (int i = 0; i < count; i++) {
+            [self sendCommand:[backlog objectAtIndex:i]];
+        }
+        [backlog release];
+        backlog = nil;
+    }
 }
 - (void)authenticate {
     if (!webSocket) return;
@@ -90,7 +103,13 @@
     [self authenticate];
 }
 - (BGTSocketCommand *)sendCommand:(BGTSocketCommand*) command{
-    if (!webSocket || webSocket.readyState != SR_OPEN) return command;
+    return [self sendCommand:command doQueue:YES];
+}
+- (BGTSocketCommand*) sendCommand:(BGTSocketCommand*) command doQueue:(bool) queue {
+    if (!webSocket || webSocket.readyState != SR_OPEN) {
+        if (shouldBeOnline && queue) [backlog addObject:command];
+        return command;
+    }
     [webSocket send:[command getJson]];
     return command;
 }
@@ -101,6 +120,7 @@
     }
     [reconnectTimer invalidate];
     shouldBeOnline = YES;
+    backlog = [[NSMutableArray arrayWithCapacity:10] retain];
     NSURL* url = [NSURL URLWithString:@"wss://bgt.justjakob.de/bgt/socket"];
     webSocket = [[SRWebSocket alloc] initWithURL:url];
     [webSocket setDelegate:self];
@@ -108,6 +128,10 @@
 }
 - (void) close {
     shouldBeOnline = NO;
+    if (backlog) {
+        [backlog release];
+        backlog = nil;
+    }
     if (webSocket) [webSocket close];
 }
 
@@ -133,6 +157,30 @@
     NSMutableDictionary* message = [NSMutableDictionary dictionaryWithCapacity:1];
     [message setValue:handshake forKey:@"handshake"];
     [webSocket send:[message JSONRepresentation]];
+}
+
+- (void) subscribeCategory: (NSString*) category {
+    NSArray* categories = [NSArray arrayWithObjects:category, nil];
+    [self subscribeCategoryArray:categories];
+}
+
+- (void) subscribeCategoryArray: (NSArray*) categories {
+    NSDictionary* data = [NSDictionary dictionaryWithObject:categories forKey:@"category"];
+    BGTSocketCommand* command = [[BGTSocketCommand alloc] initwithCommand:@"subscribeUpdates" andData:data];
+    [self sendCommand:command doQueue:NO];
+    [subscriptions addObjectsFromArray:categories];
+}
+
+- (void) unsubscribeCategory: (NSString*) category {
+    NSArray* categories = [NSArray arrayWithObjects:category, nil];
+    [self unsubscribeCategoryArray:categories];
+}
+
+- (void) unsubscribeCategoryArray: (NSArray *) categories {
+    NSDictionary* data = [NSDictionary dictionaryWithObject:categories forKey:@"category"];
+    BGTSocketCommand* command = [[BGTSocketCommand alloc] initwithCommand:@"unSubscribeUpdates" andData:data];
+    [self sendCommand:command doQueue:NO];
+    [subscriptions removeObjectsInArray:categories];
 }
 
 @end

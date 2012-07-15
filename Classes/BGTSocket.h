@@ -18,6 +18,8 @@
     @private bool shouldBeOnline;
     @private NSTimer* reconnectTimer;
     @private NSTimer* disconnectTimer;
+    @private NSMutableArray* subscriptions;
+    @private NSMutableArray* backlog;
 }
 + (BGTSocket *) getSharedInstance;
 + (BGTSocket *) getSharedInstanceWithStake: (id) stake;
@@ -28,4 +30,8 @@
 - (BGTSocketCommand *)sendCommand:(BGTSocketCommand*) command;
 - (void) addStake: (id) stake;
 - (void) removeStake: (id) stake;
+- (void) subscribeCategory: (NSString*) category;
+- (void) subscribeCategoryArray: (NSArray *)categories;
+- (void) unsubscribeCategory: (NSString*) category;
+- (void) unsubscribeCategoryArray: (NSArray *)categories;
 @end
