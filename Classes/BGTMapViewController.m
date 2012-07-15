@@ -30,14 +30,16 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     socket = [BGTSocket getSharedInstanceWithStake:self];
+    [socket addListener:self];
     [socket subscribeCategoryArray:[NSArray arrayWithObjects:@"map", @"movements", @"quit", nil]];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [socket unsubscribeCategoryArray:[NSArray arrayWithObjects:@"map", @"movements", @"quit", nil]];
-    [super viewDidDisappear:animated];
+    [socket removeListener:self];
     [socket removeStake:self];
     socket = nil;
+    [super viewDidDisappear:animated];
 }
 
 - (void)viewDidUnload{
@@ -48,6 +50,10 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
+}
+
+- (void) receiveUpdate: (NSDictionary*) data {
+    NSLog(@"received event: %@", data);
 }
 
 @end

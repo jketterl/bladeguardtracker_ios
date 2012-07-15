@@ -11,6 +11,7 @@
 #import "BGTSocketCommand.h"
 #import "BGTApp.h"
 #import <Classes/NSObject+SBJson.h>
+#import "BGTSocketEventListener.h"
 
 @interface BGTSocket : NSObject <SRWebSocketDelegate> {
     @private NSMutableArray* stakes;
@@ -20,6 +21,7 @@
     @private NSTimer* disconnectTimer;
     @private NSMutableArray* subscriptions;
     @private NSMutableArray* backlog;
+    @private NSMutableArray* listeners;
 }
 + (BGTSocket *) getSharedInstance;
 + (BGTSocket *) getSharedInstanceWithStake: (id) stake;
@@ -34,4 +36,6 @@
 - (void) subscribeCategoryArray: (NSArray *)categories;
 - (void) unsubscribeCategory: (NSString*) category;
 - (void) unsubscribeCategoryArray: (NSArray *)categories;
+- (void) addListener: (id<BGTSocketEventListener>) listener;
+- (void) removeListener: (id<BGTSocketEventListener>) listener;
 @end

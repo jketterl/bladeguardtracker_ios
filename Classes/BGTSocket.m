@@ -30,6 +30,7 @@
     if (self) {
         stakes = [[NSMutableArray arrayWithCapacity:10] retain];
         subscriptions = [[NSMutableArray arrayWithCapacity:10] retain];
+        listeners = [[NSMutableArray arrayWithCapacity:10] retain];
     }
     return self;
 }
@@ -37,11 +38,21 @@
 - (void) dealloc {
     [stakes release];
     [subscriptions release];
+    [listeners release];
     [super dealloc];
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message {
     //NSLog(@"Received message: %@", message);
+    if (![message isKindOfClass:[NSString class]]) {
+        NSLog(@"binary data received");
+        return;
+    }
+    NSDictionary* json = [message JSONValue];
+    if ([[json valueForKey:@"event"] isEqual:@"update"]) {
+        //NSLog(@"received update: %@", [json valueForKey:@"data"]);
+        [self fireEvent:[json valueForKey:@"data"]];
+    }
 }
 - (void)webSocketDidOpen:(SRWebSocket *)newWebSocket {
     NSLog(@"Websocket is now open!");
@@ -181,6 +192,23 @@
     BGTSocketCommand* command = [[BGTSocketCommand alloc] initwithCommand:@"unSubscribeUpdates" andData:data];
     [self sendCommand:command doQueue:NO];
     [subscriptions removeObjectsInArray:categories];
+}
+
+- (void) addListener: (id<BGTSocketEventListener>) listener {
+    if ([listeners containsObject:listener]) return;
+    [listeners addObject:listener];
+}
+
+- (void) removeListener: (id<BGTSocketEventListener>) listener {
+    if (![listeners containsObject:listener]) return;    
+    [listeners removeObject:listener];
+}
+
+- (void) fireEvent: (NSDictionary*) data {
+    int count = [listeners count];
+    for (int i = 0; i < count; i++) {
+        [[listeners objectAtIndex:i] receiveUpdate:data];
+    }
 }
 
 @end

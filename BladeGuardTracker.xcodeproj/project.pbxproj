@@ -54,6 +54,7 @@
 		36AA640415B310C500128DA0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		36AA640615B314AD00128DA0 /* BGTMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTMapViewController.h; sourceTree = "<group>"; };
 		36AA640715B314AD00128DA0 /* BGTMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTMapViewController.m; sourceTree = "<group>"; };
+		36AA640915B352BB00128DA0 /* BGTSocketEventListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BGTSocketEventListener.h; sourceTree = "<group>"; };
 		36AB05B115A9FE7E00560928 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		36AB05B315A9FE8B00560928 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		36AB05B515A9FEFF00560928 /* BGTSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTSocket.h; sourceTree = "<group>"; };
@@ -114,6 +115,7 @@
 				36AA640215B30AD200128DA0 /* BGTStatisticsViewController.m */,
 				36AA640615B314AD00128DA0 /* BGTMapViewController.h */,
 				36AA640715B314AD00128DA0 /* BGTMapViewController.m */,
+				36AA640915B352BB00128DA0 /* BGTSocketEventListener.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
