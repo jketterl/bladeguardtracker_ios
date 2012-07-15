@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <SocketRocket/SRWebSocket.h>
 #import "BGTSocketCommand.h"
+#import "BGTApp.h"
 
 @interface WebSocketDelegate : NSObject <SRWebSocketDelegate>
 @property(nonatomic,retain) SRWebSocket* webSocket;

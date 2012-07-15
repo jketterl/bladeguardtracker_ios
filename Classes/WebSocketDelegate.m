@@ -34,6 +34,7 @@
     NSLog(@"Websocket is now open!");
     webSocket = newWebSocket;
     
+    [self sendHandshake];
     [self authenticate];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(defaultsChanged:)
@@ -113,6 +114,15 @@
     [stakes removeObject:stake];
     if ([stakes count] >0) return;
     disconnectTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(close) userInfo:nil repeats:NO];
+}
+
+- (void) sendHandshake {
+    NSMutableDictionary* handshake = [NSMutableDictionary dictionaryWithCapacity:2];
+    [handshake setValue:@"iOS" forKey:@"platform"];
+    [handshake setValue:[BGTApp getAppVersion] forKey:@"version"];
+    NSMutableDictionary* message = [NSMutableDictionary dictionaryWithCapacity:1];
+    [message setValue:handshake forKey:@"handshake"];
+    [webSocket send:[message JSONRepresentation]];
 }
 
 @end
