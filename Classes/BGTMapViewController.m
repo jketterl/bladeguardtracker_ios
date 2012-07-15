@@ -53,7 +53,28 @@
 }
 
 - (void) receiveUpdate: (NSDictionary*) data {
-    NSLog(@"received event: %@", data);
+    //NSLog(@"received event: %@", data);
+    NSArray* mapArray = [data valueForKey:@"map"];
+    if (mapArray != nil) {
+        NSDictionary* map = [mapArray objectAtIndex:0];
+        NSArray* points = [map objectForKey:@"points"];
+        int count = [points count];
+        CLLocationCoordinate2D coordinates[count];
+        for (int i = 0; i < count; i++) {
+            NSDictionary* point = [points objectAtIndex:i];
+            coordinates[i] = CLLocationCoordinate2DMake([[point valueForKey:@"lat"] floatValue], [[point valueForKey:@"lon"] floatValue]);
+        }
+        MKPolyline* route = [MKPolyline polylineWithCoordinates:coordinates count:count];
+        [self.mapView addOverlay:route];
+    }
+}
+
+- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
+    MKPolylineView *polylineView = [[[MKPolylineView alloc] initWithPolyline:overlay] autorelease];
+    polylineView.strokeColor = [UIColor blueColor];
+    polylineView.lineWidth = 2.0;
+    
+    return polylineView;
 }
 
 @end

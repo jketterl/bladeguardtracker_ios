@@ -11,7 +11,7 @@
 #import "BGTSocket.h"
 #import "BGTSocketEventListener.h"
 
-@interface BGTMapViewController : UIViewController <BGTSocketEventListener>
+@interface BGTMapViewController : UIViewController <BGTSocketEventListener, MKMapViewDelegate>
 @property (nonatomic, retain) IBOutlet MKMapView* mapView;
 @property (nonatomic, retain) BGTSocket* socket;
 @end
