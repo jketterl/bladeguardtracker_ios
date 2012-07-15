@@ -6,7 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
-        <!--Blade Guard Tracker View Controller-->
+        <!--Blade Guard Tracker View Controller - BladeGuardTracker-->
         <scene sceneID="NXu-a2-xfE">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qhL-B5-0mK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -65,14 +65,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ra2-QL-rtZ"/>
+                    <navigationItem key="navigationItem" title="BladeGuardTracker" id="ra2-QL-rtZ"/>
                     <connections>
                         <outlet property="trackerSwitch" destination="kwu-9n-exD" id="xci-Q0-snH"/>
                         <outlet property="view" destination="cf5-KN-xMO" id="Jgv-8y-lMN"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="144" y="89"/>
+            <point key="canvasLocation" x="-352" y="2"/>
         </scene>
         <!--Statistics View Controller-->
         <scene sceneID="j3a-gs-pos">
@@ -96,13 +96,13 @@
                     <navigationItem key="navigationItem" id="giw-r8-ZWy"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="490" y="-153"/>
+            <point key="canvasLocation" x="186" y="615"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller - Map view-->
         <scene sceneID="5GT-K2-R55">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l9W-nd-6b1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="qie-d5-HoT" sceneMemberID="viewController">
+                <viewController id="qie-d5-HoT" customClass="BGTMapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oV8-1t-cH9">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -114,10 +114,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="iBk-4E-AO6"/>
+                    <navigationItem key="navigationItem" title="Map view" id="iBk-4E-AO6"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="490" y="409"/>
+            <point key="canvasLocation" x="186" y="2"/>
         </scene>
         <!--Navigation Controller - Item-->
         <scene sceneID="nta-RJ-fFO">
@@ -133,21 +133,9 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="-268" y="186"/>
+            <point key="canvasLocation" x="-812" y="2"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="BGTStatisticsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BGTStatisticsViewController.h"/>
-        </class>
-        <class className="BladeGuardTrackerViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BladeGuardTrackerViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="trackerSwitchChanged:"/>
-                <relationship kind="outlet" name="trackerSwitch" candidateClass="UISwitch"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
