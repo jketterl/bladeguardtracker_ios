@@ -13,7 +13,6 @@
     IBOutlet UISwitch* trackerSwitch;
 }
 @property (nonatomic, retain) UISwitch* trackerSwitch;
-@property (nonatomic, retain) WebSocketDelegate* socket;
 @property (nonatomic, retain) GPSDelegate* gps;
 - (IBAction)trackerSwitchChanged:(id)sender;
 

@@ -15,6 +15,7 @@
 		2899E5220DE3E06400AC0155 /* BladeGuardTrackerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* BladeGuardTrackerViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* BladeGuardTrackerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* BladeGuardTrackerViewController.m */; };
+		3609B57315B2CDCD0004EE0F /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3609B57215B2CDCD0004EE0F /* Storyboard.storyboard */; };
 		361531D015A7605200B6FA79 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 361531CF15A7605200B6FA79 /* CFNetwork.framework */; };
 		36AB05B215A9FE7E00560928 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AB05B115A9FE7E00560928 /* Security.framework */; };
 		36AB05B415A9FE8B00560928 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AB05B315A9FE8B00560928 /* libicucore.dylib */; };
@@ -44,6 +45,7 @@
 		28D7ACF70DDB3853001CB0EB /* BladeGuardTrackerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BladeGuardTrackerViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* BladeGuardTracker_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BladeGuardTracker_Prefix.pch; sourceTree = "<group>"; };
+		3609B57215B2CDCD0004EE0F /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		361531CF15A7605200B6FA79 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		36AB05B115A9FE7E00560928 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		36AB05B315A9FE8B00560928 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
@@ -113,6 +115,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				3609B57215B2CDCD0004EE0F /* Storyboard.storyboard */,
 				36AB05D515AB4DD200560928 /* Settings.bundle */,
 				36AB05C115AA255E00560928 /* Sample Track.gpx */,
 				36AB05BC15AA1BC200560928 /* Libraries */,
@@ -238,6 +241,7 @@
 				36AB05F215ACA7A200560928 /* icon-114.png in Resources */,
 				36AB05F415ACA7AE00560928 /* icon-72.png in Resources */,
 				36AB05F615ACA7B100560928 /* icon-144.png in Resources */,
+				3609B57315B2CDCD0004EE0F /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

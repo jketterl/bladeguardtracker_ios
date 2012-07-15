@@ -10,7 +10,7 @@
 
 @implementation WebSocketDelegate
 
-@synthesize webSocket, shouldBeOnline, reconnectTimer;
+@synthesize webSocket, shouldBeOnline, reconnectTimer, disconnectTimer, stakes;
 
 + (WebSocketDelegate *) getSharedInstance {
     static dispatch_once_t pred;
@@ -19,6 +19,12 @@
         shared = [[WebSocketDelegate alloc] init];
     });
     return shared;
+}
+
++ (WebSocketDelegate *) getSharedInstanceWithStake: (id) stake {
+    WebSocketDelegate* socket = [WebSocketDelegate getSharedInstance];
+    [socket addStake:stake];
+    return socket;
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message {
@@ -77,6 +83,10 @@
     return command;
 }
 - (void) connect {
+    if (webSocket && disconnectTimer) {
+        [disconnectTimer invalidate];
+        return;
+    }
     [reconnectTimer invalidate];
     shouldBeOnline = YES;
     NSURL* url = [NSURL URLWithString:@"wss://bgt.justjakob.de/bgt/socket"];
@@ -86,6 +96,23 @@
 }
 - (void) close {
     shouldBeOnline = NO;
-    [webSocket close];
+    if (webSocket) [webSocket close];
 }
+
+- (NSMutableArray*) stakes {
+    if (!stakes) stakes = [NSMutableArray arrayWithCapacity:10];
+    return stakes;
+}
+
+- (void) addStake: (id) stake {
+    [stakes addObject:stake];
+    [self connect];
+}
+
+- (void) removeStake: (id) stake {
+    [stakes removeObject:stake];
+    if ([stakes count] >0) return;
+    disconnectTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(close) userInfo:nil repeats:NO];
+}
+
 @end

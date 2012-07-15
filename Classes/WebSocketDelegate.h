@@ -14,7 +14,10 @@
 @property(nonatomic,retain) SRWebSocket* webSocket;
 @property(nonatomic) bool shouldBeOnline;
 @property(nonatomic, retain) NSTimer* reconnectTimer;
+@property(nonatomic, retain) NSTimer* disconnectTimer;
+@property(nonatomic, retain) NSMutableArray* stakes;
 + (WebSocketDelegate *) getSharedInstance;
++ (WebSocketDelegate *) getSharedInstanceWithStake: (id) stake;
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message;
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket;
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error;
@@ -22,4 +25,6 @@
 - (BGTSocketCommand *)sendCommand:(BGTSocketCommand*) command;
 - (void)connect;
 - (void)close;
+- (void) addStake: (id) stake;
+- (void) removeStake: (id) stake;
 @end
