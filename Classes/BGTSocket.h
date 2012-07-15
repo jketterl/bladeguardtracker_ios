@@ -14,11 +14,11 @@
 
 @interface BGTSocket : NSObject <SRWebSocketDelegate> {
     @private NSMutableArray* stakes;
+    @private SRWebSocket* webSocket;
+    @private bool shouldBeOnline;
+    @private NSTimer* reconnectTimer;
+    @private NSTimer* disconnectTimer;
 }
-@property(nonatomic,retain) SRWebSocket* webSocket;
-@property(nonatomic) bool shouldBeOnline;
-@property(nonatomic, retain) NSTimer* reconnectTimer;
-@property(nonatomic, retain) NSTimer* disconnectTimer;
 + (BGTSocket *) getSharedInstance;
 + (BGTSocket *) getSharedInstanceWithStake: (id) stake;
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message;

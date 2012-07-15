@@ -10,8 +10,6 @@
 
 @implementation BGTSocket
 
-@synthesize webSocket, shouldBeOnline, reconnectTimer, disconnectTimer;
-
 + (BGTSocket *) getSharedInstance {
     static dispatch_once_t pred;
     static BGTSocket* shared = nil;
@@ -33,6 +31,11 @@
         stakes = [[NSMutableArray alloc] init];
     }
     return self;
+}
+
+- (void) dealloc {
+    [stakes release];
+    [super dealloc];
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message {
