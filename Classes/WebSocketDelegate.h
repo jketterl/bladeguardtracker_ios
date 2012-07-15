@@ -23,8 +23,6 @@
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error;
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean;
 - (BGTSocketCommand *)sendCommand:(BGTSocketCommand*) command;
-- (void)connect;
-- (void)close;
 - (void) addStake: (id) stake;
 - (void) removeStake: (id) stake;
 @end
