@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Classes/NSObject+SBJson.h>
 
 @interface BGTSocketCommand : NSObject
 @property (nonatomic, retain) NSString* command;
