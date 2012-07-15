@@ -16,6 +16,8 @@
 		3609B57315B2CDCD0004EE0F /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3609B57215B2CDCD0004EE0F /* Storyboard.storyboard */; };
 		361531D015A7605200B6FA79 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 361531CF15A7605200B6FA79 /* CFNetwork.framework */; };
 		36AA63FE15B2FEDC00128DA0 /* BGTApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AA63FD15B2FEDC00128DA0 /* BGTApp.m */; };
+		36AA640315B30AD200128DA0 /* BGTStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AA640215B30AD200128DA0 /* BGTStatisticsViewController.m */; };
+		36AA640515B310C500128DA0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AA640415B310C500128DA0 /* MapKit.framework */; };
 		36AB05B215A9FE7E00560928 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AB05B115A9FE7E00560928 /* Security.framework */; };
 		36AB05B415A9FE8B00560928 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AB05B315A9FE8B00560928 /* libicucore.dylib */; };
 		36AB05B715A9FEFF00560928 /* WebSocketDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AB05B615A9FEFF00560928 /* WebSocketDelegate.m */; };
@@ -46,6 +48,9 @@
 		361531CF15A7605200B6FA79 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		36AA63FC15B2FEDC00128DA0 /* BGTApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTApp.h; sourceTree = "<group>"; };
 		36AA63FD15B2FEDC00128DA0 /* BGTApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTApp.m; sourceTree = "<group>"; };
+		36AA640115B30AD200128DA0 /* BGTStatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTStatisticsViewController.h; sourceTree = "<group>"; };
+		36AA640215B30AD200128DA0 /* BGTStatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTStatisticsViewController.m; sourceTree = "<group>"; };
+		36AA640415B310C500128DA0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		36AB05B115A9FE7E00560928 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		36AB05B315A9FE8B00560928 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		36AB05B515A9FEFF00560928 /* WebSocketDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebSocketDelegate.h; sourceTree = "<group>"; };
@@ -71,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36AA640515B310C500128DA0 /* MapKit.framework in Frameworks */,
 				36AB05BB15AA1BAE00560928 /* CoreLocation.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				36AB05B415A9FE8B00560928 /* libicucore.dylib in Frameworks */,
@@ -101,6 +107,8 @@
 				36AB05D815AB69C000560928 /* BGTSocketCommand.m */,
 				36AA63FC15B2FEDC00128DA0 /* BGTApp.h */,
 				36AA63FD15B2FEDC00128DA0 /* BGTApp.m */,
+				36AA640115B30AD200128DA0 /* BGTStatisticsViewController.h */,
+				36AA640215B30AD200128DA0 /* BGTStatisticsViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -116,6 +124,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				36AA640415B310C500128DA0 /* MapKit.framework */,
 				3609B57215B2CDCD0004EE0F /* Storyboard.storyboard */,
 				36AB05D515AB4DD200560928 /* Settings.bundle */,
 				36AB05C115AA255E00560928 /* Sample Track.gpx */,
@@ -256,6 +265,7 @@
 				36AB05BF15AA1FCB00560928 /* GPSDelegate.m in Sources */,
 				36AB05D915AB69C100560928 /* BGTSocketCommand.m in Sources */,
 				36AA63FE15B2FEDC00128DA0 /* BGTApp.m in Sources */,
+				36AA640315B30AD200128DA0 /* BGTStatisticsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
