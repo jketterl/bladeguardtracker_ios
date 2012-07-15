@@ -12,12 +12,13 @@
 #import "BGTApp.h"
 #import <Classes/NSObject+SBJson.h>
 
-@interface BGTSocket : NSObject <SRWebSocketDelegate>
+@interface BGTSocket : NSObject <SRWebSocketDelegate> {
+    @private NSMutableArray* stakes;
+}
 @property(nonatomic,retain) SRWebSocket* webSocket;
 @property(nonatomic) bool shouldBeOnline;
 @property(nonatomic, retain) NSTimer* reconnectTimer;
 @property(nonatomic, retain) NSTimer* disconnectTimer;
-@property(nonatomic, retain) NSMutableArray* stakes;
 + (BGTSocket *) getSharedInstance;
 + (BGTSocket *) getSharedInstanceWithStake: (id) stake;
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message;

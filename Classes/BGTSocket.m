@@ -10,7 +10,7 @@
 
 @implementation BGTSocket
 
-@synthesize webSocket, shouldBeOnline, reconnectTimer, disconnectTimer, stakes;
+@synthesize webSocket, shouldBeOnline, reconnectTimer, disconnectTimer;
 
 + (BGTSocket *) getSharedInstance {
     static dispatch_once_t pred;
@@ -25,6 +25,14 @@
     BGTSocket* socket = [BGTSocket getSharedInstance];
     [socket addStake:stake];
     return socket;
+}
+
+- (id) init {
+    self = [super init];
+    if (self) {
+        stakes = [[NSMutableArray alloc] init];
+    }
+    return self;
 }
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message {
@@ -84,8 +92,8 @@
     return command;
 }
 - (void) connect {
-    if (webSocket && disconnectTimer) {
-        [disconnectTimer invalidate];
+    if (webSocket) {
+        if (disconnectTimer) [disconnectTimer invalidate];
         return;
     }
     [reconnectTimer invalidate];
@@ -100,19 +108,18 @@
     if (webSocket) [webSocket close];
 }
 
-- (NSMutableArray*) stakes {
-    if (!stakes) stakes = [NSMutableArray arrayWithCapacity:10];
-    return stakes;
-}
-
 - (void) addStake: (id) stake {
+    if ([stakes containsObject:stake]) return;
     [stakes addObject:stake];
     [self connect];
+    //NSLog(@"# of stakes is now: %i", [stakes count]);
 }
 
 - (void) removeStake: (id) stake {
+    if (![stakes containsObject:stake]) return;
     [stakes removeObject:stake];
-    if ([stakes count] >0) return;
+    //NSLog(@"# of stakes is now: %i", [stakes count]);
+    if ([stakes count] > 0) return;
     disconnectTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(close) userInfo:nil repeats:NO];
 }
 
