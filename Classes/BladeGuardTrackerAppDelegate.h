@@ -10,13 +10,13 @@
 
 @class BladeGuardTrackerViewController;
 
-@interface BladeGuardTrackerAppDelegate : NSObject <UIApplicationDelegate> {
+@interface BladeGuardTrackerAppDelegate : UIResponder <UIApplicationDelegate> {
     UIWindow *window;
     BladeGuardTrackerViewController *viewController;
 }
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet BladeGuardTrackerViewController *viewController;
+@property (strong, nonatomic) UIWindow *window;
+//@property (nonatomic, retain) IBOutlet BladeGuardTrackerViewController *viewController;
 
 @end
 
