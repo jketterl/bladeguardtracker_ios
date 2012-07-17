@@ -57,6 +57,20 @@
 - (void) receiveUpdate: (NSDictionary*) data {
     [self processMap:[data valueForKey:@"map"]];
     [self processMovements:[data valueForKey:@"movements"]];
+    [self processQuits:[data valueForKey:@"quit"]];
+}
+
+- (void) processQuits: (NSArray*) quits {
+    if (quits == nil) return;
+    for (int i = 0, count = [quits count]; i < count; i++) {
+        NSDictionary* quit = [quits objectAtIndex:i];
+        NSDictionary* user = [quit objectForKey:@"user"];
+        NSNumber* userId = [user objectForKey:@"id"];
+        MKPointAnnotation* marker = [userMarkers objectForKey:userId];
+        if (marker == nil) continue;
+        [self.mapView removeAnnotation:marker];
+        [userMarkers removeObjectForKey:userId];
+    }
 }
 
 - (void) processMovements: (NSArray*) movements {
