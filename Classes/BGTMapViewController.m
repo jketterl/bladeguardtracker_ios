@@ -29,6 +29,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    userMarkers = [[[NSMutableDictionary alloc] initWithCapacity:15] retain];
     socket = [BGTSocket getSharedInstanceWithStake:self];
     [socket addListener:self];
     [socket subscribeCategoryArray:[NSArray arrayWithObjects:@"map", @"movements", @"quit", nil]];
@@ -44,6 +45,7 @@
 
 - (void)viewDidUnload{
     [super viewDidUnload];
+    [userMarkers release];
     // Release any retained subviews of the main view.
 }
 
@@ -54,6 +56,24 @@
 
 - (void) receiveUpdate: (NSDictionary*) data {
     [self processMap:[data valueForKey:@"map"]];
+    [self processMovements:[data valueForKey:@"movements"]];
+}
+
+- (void) processMovements: (NSArray*) movements {
+    if (movements == nil) return;
+    for (int i = 0, count = [movements count]; i < count; i++) {
+        NSDictionary* movement = [movements objectAtIndex:i];
+        NSDictionary* user = [movement objectForKey:@"user"];
+        NSNumber* userId = [user objectForKey:@"id"];
+        NSDictionary* location = [movement objectForKey:@"location"];
+        MKPointAnnotation* marker = [userMarkers objectForKey:userId];
+        if (marker == nil) {
+            marker = [[MKPointAnnotation alloc] init];
+            [self.mapView addAnnotation:marker];
+            [userMarkers setObject:marker forKey:userId];
+        }
+        marker.coordinate = CLLocationCoordinate2DMake([[location objectForKey:@"lat"] floatValue], [[location objectForKey:@"lon"] floatValue]);
+    }
 }
 
 - (void) processMap: (NSArray*) mapArray {

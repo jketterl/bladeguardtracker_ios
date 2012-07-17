@@ -10,14 +10,20 @@
 
 @implementation BGTSocketCommand
 
+- (void) dealloc {
+    [command release];
+    [data release];
+    [super dealloc];
+}
+
 - (id) initwithCommand:(NSString*) newCommand {
     self = [self init];
-    if (self) command = newCommand;
+    if (self) command = [newCommand retain];
     return self;
 }
 - (id) initwithCommand:(NSString *)newCommand andData:(NSObject *) newData {
     self = [self initwithCommand:newCommand];
-    if (self) data = newData;
+    if (self) data = [newData retain];
     return self;
 }
 - (NSString*) getJson {

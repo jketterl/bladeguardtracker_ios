@@ -126,7 +126,10 @@
 }
 - (void) connect {
     if (webSocket) {
-        if (disconnectTimer) [disconnectTimer invalidate];
+        if (disconnectTimer) {
+            [disconnectTimer invalidate];
+            [disconnectTimer release];
+        }
         return;
     }
     [reconnectTimer invalidate];
@@ -158,7 +161,7 @@
     [stakes removeObject:stake];
     //NSLog(@"# of stakes is now: %i", [stakes count]);
     if ([stakes count] > 0) return;
-    disconnectTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(close) userInfo:nil repeats:NO];
+    disconnectTimer = [[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(close) userInfo:nil repeats:NO] retain];
 }
 
 - (void) sendHandshake {
