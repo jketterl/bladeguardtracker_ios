@@ -19,6 +19,7 @@
 		36AA640315B30AD200128DA0 /* BGTStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AA640215B30AD200128DA0 /* BGTStatisticsViewController.m */; };
 		36AA640515B310C500128DA0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AA640415B310C500128DA0 /* MapKit.framework */; };
 		36AA640815B314AD00128DA0 /* BGTMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AA640715B314AD00128DA0 /* BGTMapViewController.m */; };
+		36AA640E15B610AF00128DA0 /* map_pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 36AA640D15B610AF00128DA0 /* map_pin.png */; };
 		36AB05B215A9FE7E00560928 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AB05B115A9FE7E00560928 /* Security.framework */; };
 		36AB05B415A9FE8B00560928 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AB05B315A9FE8B00560928 /* libicucore.dylib */; };
 		36AB05B715A9FEFF00560928 /* BGTSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AB05B615A9FEFF00560928 /* BGTSocket.m */; };
@@ -55,6 +56,7 @@
 		36AA640615B314AD00128DA0 /* BGTMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTMapViewController.h; sourceTree = "<group>"; };
 		36AA640715B314AD00128DA0 /* BGTMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTMapViewController.m; sourceTree = "<group>"; };
 		36AA640915B352BB00128DA0 /* BGTSocketEventListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BGTSocketEventListener.h; sourceTree = "<group>"; };
+		36AA640D15B610AF00128DA0 /* map_pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pin.png; sourceTree = "<group>"; };
 		36AB05B115A9FE7E00560928 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		36AB05B315A9FE8B00560928 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		36AB05B515A9FEFF00560928 /* BGTSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTSocket.h; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				36AA640D15B610AF00128DA0 /* map_pin.png */,
 				36AB05F715ACA89500560928 /* icons */,
 				8D1107310486CEB800E47090 /* BladeGuardTracker-Info.plist */,
 			);
@@ -255,6 +258,7 @@
 				36AB05F415ACA7AE00560928 /* icon-72.png in Resources */,
 				36AB05F615ACA7B100560928 /* icon-144.png in Resources */,
 				3609B57315B2CDCD0004EE0F /* Storyboard.storyboard in Resources */,
+				36AA640E15B610AF00128DA0 /* map_pin.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

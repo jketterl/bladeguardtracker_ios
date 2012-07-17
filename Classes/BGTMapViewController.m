@@ -117,4 +117,10 @@
     return polylineView;
 }
 
+- (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    MKAnnotationView *annView = [[MKAnnotationView alloc ] initWithAnnotation:annotation reuseIdentifier:@"currentloc"];
+    annView.image = [ UIImage imageNamed:@"map_pin.png" ];
+    return annView;
+}
+
 @end
