@@ -53,20 +53,25 @@
 }
 
 - (void) receiveUpdate: (NSDictionary*) data {
-    //NSLog(@"received event: %@", data);
-    NSArray* mapArray = [data valueForKey:@"map"];
-    if (mapArray != nil) {
-        NSDictionary* map = [mapArray objectAtIndex:0];
-        NSArray* points = [map objectForKey:@"points"];
-        int count = [points count];
-        CLLocationCoordinate2D coordinates[count];
-        for (int i = 0; i < count; i++) {
-            NSDictionary* point = [points objectAtIndex:i];
-            coordinates[i] = CLLocationCoordinate2DMake([[point valueForKey:@"lat"] floatValue], [[point valueForKey:@"lon"] floatValue]);
-        }
-        MKPolyline* route = [MKPolyline polylineWithCoordinates:coordinates count:count];
-        [self.mapView addOverlay:route];
+    [self processMap:[data valueForKey:@"map"]];
+}
+
+- (void) processMap: (NSArray*) mapArray {
+    if (mapArray == nil) return;
+    NSDictionary* map = [mapArray objectAtIndex:0];
+    NSArray* points = [map objectForKey:@"points"];
+    int count = [points count];
+    CLLocationCoordinate2D coordinates[count];
+    
+    for (int i = 0; i < count; i++) {
+        NSDictionary* point = [points objectAtIndex:i];
+        double lat = [[point valueForKey:@"lat"] floatValue];
+        double lon = [[point valueForKey:@"lon"] floatValue];
+        coordinates[i] = CLLocationCoordinate2DMake(lat, lon);
     }
+    MKPolyline* route = [MKPolyline polylineWithCoordinates:coordinates count:count];
+    [self.mapView addOverlay:route];
+    [self.mapView setVisibleMapRect:route.boundingMapRect];
 }
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
