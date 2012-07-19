@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <SocketRocket/SRWebSocket.h>
 #import "BGTSocketCommand.h"
-#import "BGTApp.h"
 #import <Classes/NSObject+SBJson.h>
 #import "BGTSocketEventListener.h"
 
