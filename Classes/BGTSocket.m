@@ -136,8 +136,20 @@
     [reconnectTimer invalidate];
     shouldBeOnline = YES;
     backlog = [[NSMutableArray arrayWithCapacity:10] retain];
+
     NSURL* url = [NSURL URLWithString:@"wss://bgt.justjakob.de/bgt/socket"];
-    webSocket = [[SRWebSocket alloc] initWithURL:url];
+    NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL:url];
+    
+    NSString *thePath = [[NSBundle mainBundle] pathForResource:@"server" ofType:@"crt"];
+    NSData *DERData = [[NSData alloc] initWithContentsOfFile:thePath];
+    CFDataRef inDERData = (__bridge CFDataRef)DERData;
+    SecCertificateRef cert = SecCertificateCreateWithData(NULL, inDERData);
+    assert(cert != NULL);
+    NSArray* certs = [NSArray arrayWithObject:(id) cert];
+
+    [req setSR_SSLPinnedCertificates:certs];
+    
+    webSocket = [[SRWebSocket alloc] initWithURLRequest:req];
     [webSocket setDelegate:self];
     [webSocket open];
 }
