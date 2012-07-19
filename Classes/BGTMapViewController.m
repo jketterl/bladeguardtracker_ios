@@ -112,7 +112,7 @@
     MKPolylineView *polylineView = [[[MKPolylineView alloc] initWithPolyline:overlay] autorelease];
     polylineView.strokeColor = [UIColor blueColor];
     polylineView.lineWidth = 2.0;
-    polylineView.alpha = 64;
+    polylineView.alpha = .5;
     
     return polylineView;
 }
