@@ -178,9 +178,10 @@
 }
 
 - (void) sendHandshake {
-    NSMutableDictionary* handshake = [NSMutableDictionary dictionaryWithCapacity:2];
+    NSMutableDictionary* handshake = [NSMutableDictionary dictionaryWithCapacity:3];
     [handshake setValue:@"iOS" forKey:@"platform"];
-    [handshake setValue:[BGTApp getAppVersion] forKey:@"version"];
+    [handshake setValue:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"] forKey:@"version"];
+    [handshake setValue:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"] forKey:@"build"];
     NSMutableDictionary* message = [NSMutableDictionary dictionaryWithCapacity:1];
     [message setValue:handshake forKey:@"handshake"];
     [webSocket send:[message JSONRepresentation]];
