@@ -13,6 +13,9 @@
 
 @interface BGTMapViewController : UIViewController <BGTSocketEventListener, MKMapViewDelegate> {
     @private NSMutableDictionary* userMarkers;
+    @private MKPolyline* route;
+    @private MKPolyline* track;
+    @private int from, to;
 }
 @property (nonatomic, retain) IBOutlet MKMapView* mapView;
 @property (nonatomic, retain) BGTSocket* socket;
