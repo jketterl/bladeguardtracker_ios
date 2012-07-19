@@ -6,7 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
-        <!--Blade Guard Tracker View Controller - BladeGuardTracker-->
+        <!--Blade Guard Tracker View Controller - Bladeguard Tracker-->
         <scene sceneID="NXu-a2-xfE">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qhL-B5-0mK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -65,7 +65,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="BladeGuardTracker" id="ra2-QL-rtZ"/>
+                    <navigationItem key="navigationItem" title="Bladeguard Tracker" id="ra2-QL-rtZ"/>
                     <connections>
                         <outlet property="trackerSwitch" destination="kwu-9n-exD" id="xci-Q0-snH"/>
                         <outlet property="view" destination="cf5-KN-xMO" id="Jgv-8y-lMN"/>
@@ -142,24 +142,6 @@
             <point key="canvasLocation" x="-812" y="2"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="BGTMapViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BGTMapViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="BGTStatisticsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BGTStatisticsViewController.h"/>
-        </class>
-        <class className="BladeGuardTrackerViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BladeGuardTrackerViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="trackerSwitchChanged:"/>
-                <relationship kind="outlet" name="trackerSwitch" candidateClass="UISwitch"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
