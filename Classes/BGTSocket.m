@@ -126,9 +126,10 @@
 }
 - (void) connect {
     if (webSocket) {
-        if (disconnectTimer) {
+        if (disconnectTimer != nil) {
             [disconnectTimer invalidate];
             [disconnectTimer release];
+            disconnectTimer=nil;
         }
         return;
     }
