@@ -64,17 +64,19 @@
     
     [self sendHandshake];
     [self authenticate];
-    // re-subscribe to any events that have been previously subscribed, if any
-    [self subscribeCategoryArray:subscriptions];
     
     if (backlog != nil) {
-        int count = [backlog count];
-        for (int i = 0; i < count; i++) {
-            [self sendCommand:[backlog objectAtIndex:i]];
-        }
-        [backlog release];
+        NSArray* blCopy = backlog;
         backlog = nil;
+        
+        for (BGTSocketCommand* command in blCopy) {
+            [self sendCommand:command];
+        }
+        [blCopy release];
     }
+
+    // re-subscribe to any events that have been previously subscribed, if any
+    [self subscribeCategoryArray:subscriptions];
     
     [self setStatus:BGTSocketConnected];
 }
