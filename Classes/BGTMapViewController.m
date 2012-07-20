@@ -90,17 +90,21 @@
 
 - (void) processStats: (NSArray*) statsArray {
     if (statsArray == nil) return;
-    NSDictionary* stats = [statsArray objectAtIndex:0];
-    NSArray* between = [stats objectForKey:@"between"];
-    if (between == nil) return;
-    from = [[between objectAtIndex:0] intValue];
-    to = [[between objectAtIndex:1] intValue];
-    
+
     if (track != nil) {
         [self.mapView removeOverlay:track];
         [track release];
         track = nil;
     }
+    
+    NSDictionary* stats = [statsArray objectAtIndex:0];
+    NSArray* between = [stats objectForKey:@"between"];
+    if (between == nil) {
+        from = 0; to = 0;
+        return;
+    }
+    from = [[between objectAtIndex:0] intValue];
+    to = [[between objectAtIndex:1] intValue];
     
     if (from == 0 && to == 0) return;
     if (route == nil) return;
