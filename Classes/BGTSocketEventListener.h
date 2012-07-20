@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+static const int BGTSocketDisconnected = 0;
+static const int BGTSocketConnected = 1;
+static const int BGTSocketConnecting = 2;
+static const int BGTSocketDisconnecting = 3;
+
 @protocol BGTSocketEventListener <NSObject>
 - (void) receiveUpdate: (NSDictionary*) data;
+- (void) receiveStatus: (int) status;
 @end

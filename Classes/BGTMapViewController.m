@@ -69,6 +69,25 @@
     [self processStats:[data valueForKey:@"stats"]];
 }
 
+- (void) receiveStatus:(int)status {
+    if (status == BGTSocketDisconnected) {
+        if (route != nil) {
+            [self.mapView removeOverlay:route];
+            [route release];
+            route = nil;
+        }
+        if (track != nil) {
+            [self.mapView removeOverlay:track];
+            [track release];
+            track = nil;
+        }
+        for (MKPointAnnotation* marker in [userMarkers allValues]) {
+            [self.mapView removeAnnotation:marker];
+        }
+        [userMarkers removeAllObjects];
+    }
+}
+
 - (void) processStats: (NSArray*) statsArray {
     if (statsArray == nil) return;
     NSDictionary* stats = [statsArray objectAtIndex:0];

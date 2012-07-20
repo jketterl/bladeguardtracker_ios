@@ -31,6 +31,10 @@
         stakes = [[NSMutableArray arrayWithCapacity:10] retain];
         subscriptions = [[NSMutableArray arrayWithCapacity:10] retain];
         listeners = [[NSMutableArray arrayWithCapacity:10] retain];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(defaultsChanged:)
+                                                     name:NSUserDefaultsDidChangeNotification
+                                                   object:nil];
     }
     return self;
 }
@@ -58,27 +62,28 @@
     NSLog(@"Websocket is now open!");
     webSocket = newWebSocket;
     
+    NSArray* localBacklog = nil;
+    if (backlog != nil) {
+        localBacklog = backlog;
+        backlog = nil;
+    }
+
     [self sendHandshake];
     [self authenticate];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(defaultsChanged:)
-                                                 name:NSUserDefaultsDidChangeNotification
-                                               object:nil];
-    
     // re-subscribe to any events that have been previously subscribed, if any
     [self subscribeCategoryArray:subscriptions];
     
-    if (backlog != nil) {
-        int count = [backlog count];
+    if (localBacklog != nil) {
+        int count = [localBacklog count];
         for (int i = 0; i < count; i++) {
-            [self sendCommand:[backlog objectAtIndex:i]];
+            [self sendCommand:[localBacklog objectAtIndex:i]];
         }
-        [backlog release];
-        backlog = nil;
+        [localBacklog release];
     }
+    
+    [self setStatus:BGTSocketConnected];
 }
 - (void)authenticate {
-    if (!webSocket) return;
     NSUserDefaults* settings = [NSUserDefaults standardUserDefaults];
     if (![settings boolForKey:@"anonymous"]) {
         NSMutableDictionary* data = [NSMutableDictionary dictionaryWithCapacity:2];
@@ -99,6 +104,7 @@
     [self onDisconnect];
 }
 - (void) onDisconnect {
+    [self setStatus:BGTSocketDisconnected];
     [webSocket setDelegate:nil];
     [webSocket release];
     webSocket = nil;
@@ -108,7 +114,8 @@
     if (!shouldBeOnline) return;
     [self close];
     //[self connect];
-    reconnectTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(connect) userInfo:nil repeats:NO];
+    if (reconnectTimer != nil) return;
+    reconnectTimer = [[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(connect) userInfo:nil repeats:NO] retain];
 }
 - (void)defaultsChanged:(NSNotification *) notification{
     [self authenticate];
@@ -117,7 +124,7 @@
     return [self sendCommand:command doQueue:YES];
 }
 - (BGTSocketCommand*) sendCommand:(BGTSocketCommand*) command doQueue:(bool) queue {
-    if (!webSocket || webSocket.readyState != SR_OPEN) {
+    if (backlog != nil) {
         if (shouldBeOnline && queue) [backlog addObject:command];
         return command;
     }
@@ -133,7 +140,15 @@
         }
         return;
     }
-    [reconnectTimer invalidate];
+    
+    [self setStatus:BGTSocketConnecting];
+    
+    if (reconnectTimer != nil) {
+        [reconnectTimer invalidate];
+        [reconnectTimer release];
+        reconnectTimer = nil;
+    }
+    
     shouldBeOnline = YES;
     backlog = [[NSMutableArray arrayWithCapacity:10] retain];
 
@@ -154,8 +169,9 @@
     [webSocket open];
 }
 - (void) close {
+    [self setStatus:BGTSocketDisconnecting];
     shouldBeOnline = NO;
-    if (backlog) {
+    if (backlog != nil) {
         [backlog release];
         backlog = nil;
     }
@@ -225,6 +241,16 @@
     int count = [listeners count];
     for (int i = 0; i < count; i++) {
         [[listeners objectAtIndex:i] receiveUpdate:data];
+    }
+}
+
+- (void) setStatus: (int) status {
+    [self fireStatus:status];
+}
+
+- (void) fireStatus: (int) status {
+    for (int i = 0, count = [listeners count]; i < count; i++) {
+        [[listeners objectAtIndex:i] receiveStatus:status];
     }
 }
 
