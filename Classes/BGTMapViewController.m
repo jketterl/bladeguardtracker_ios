@@ -170,6 +170,11 @@
         [self.mapView removeOverlay:route];
         [route release];
     }
+    if (track != nil) {
+        [self.mapView removeOverlay:track];
+        [track release];
+        track = nil;
+    }
     route = [[MKPolyline polylineWithCoordinates:coordinates count:count] retain];
     [self.mapView addOverlay:route];
     [self.mapView setVisibleMapRect:route.boundingMapRect];
