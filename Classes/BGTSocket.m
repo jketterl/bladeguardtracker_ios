@@ -60,25 +60,20 @@
 }
 - (void)webSocketDidOpen:(SRWebSocket *)newWebSocket {
     NSLog(@"Websocket is now open!");
-    webSocket = newWebSocket;
+    webSocket = [newWebSocket retain];
     
-    NSArray* localBacklog = nil;
-    if (backlog != nil) {
-        localBacklog = backlog;
-        backlog = nil;
-    }
-
     [self sendHandshake];
     [self authenticate];
     // re-subscribe to any events that have been previously subscribed, if any
     [self subscribeCategoryArray:subscriptions];
     
-    if (localBacklog != nil) {
-        int count = [localBacklog count];
+    if (backlog != nil) {
+        int count = [backlog count];
         for (int i = 0; i < count; i++) {
-            [self sendCommand:[localBacklog objectAtIndex:i]];
+            [self sendCommand:[backlog objectAtIndex:i]];
         }
-        [localBacklog release];
+        [backlog release];
+        backlog = nil;
     }
     
     [self setStatus:BGTSocketConnected];
@@ -90,7 +85,7 @@
         [data setValue:[settings stringForKey:@"user"] forKey:@"user"];
         [data setValue:[settings stringForKey:@"pass"] forKey:@"pass"];
         BGTSocketCommand* command = [[BGTSocketCommand alloc] initwithCommand:@"auth" andData:data];
-        [self sendCommand:command];
+        [webSocket send:[command getJson]];
     }
 }
 - (void)webSocket:(SRWebSocket *)closingWebSocket didFailWithError:(NSError *)error {
