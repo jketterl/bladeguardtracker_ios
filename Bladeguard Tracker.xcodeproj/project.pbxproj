@@ -20,6 +20,7 @@
 		36AA640815B314AD00128DA0 /* BGTMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AA640715B314AD00128DA0 /* BGTMapViewController.m */; };
 		36AA640E15B610AF00128DA0 /* map_pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 36AA640D15B610AF00128DA0 /* map_pin.png */; };
 		36AA642815B8A37500128DA0 /* server.crt in Resources */ = {isa = PBXBuildFile; fileRef = 36AA642715B8A37500128DA0 /* server.crt */; };
+		36AA642B15B9D93200128DA0 /* map_pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36AA642A15B9D93200128DA0 /* map_pin@2x.png */; };
 		36AB05B215A9FE7E00560928 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AB05B115A9FE7E00560928 /* Security.framework */; };
 		36AB05B415A9FE8B00560928 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AB05B315A9FE8B00560928 /* libicucore.dylib */; };
 		36AB05B715A9FEFF00560928 /* BGTSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AB05B615A9FEFF00560928 /* BGTSocket.m */; };
@@ -56,6 +57,7 @@
 		36AA640915B352BB00128DA0 /* BGTSocketEventListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BGTSocketEventListener.h; sourceTree = "<group>"; };
 		36AA640D15B610AF00128DA0 /* map_pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pin.png; sourceTree = "<group>"; };
 		36AA642715B8A37500128DA0 /* server.crt */ = {isa = PBXFileReference; lastKnownFileType = file; path = server.crt; sourceTree = "<group>"; };
+		36AA642A15B9D93200128DA0 /* map_pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_pin@2x.png"; sourceTree = "<group>"; };
 		36AB05B115A9FE7E00560928 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		36AB05B315A9FE8B00560928 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		36AB05B515A9FEFF00560928 /* BGTSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTSocket.h; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				36AA642A15B9D93200128DA0 /* map_pin@2x.png */,
 				36AA642715B8A37500128DA0 /* server.crt */,
 				36AA640D15B610AF00128DA0 /* map_pin.png */,
 				36AB05F715ACA89500560928 /* icons */,
@@ -258,6 +261,7 @@
 				3609B57315B2CDCD0004EE0F /* Storyboard.storyboard in Resources */,
 				36AA640E15B610AF00128DA0 /* map_pin.png in Resources */,
 				36AA642815B8A37500128DA0 /* server.crt in Resources */,
+				36AA642B15B9D93200128DA0 /* map_pin@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
