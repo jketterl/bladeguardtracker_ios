@@ -12,8 +12,16 @@
 @interface BGTSocketCommand : NSObject {
     @private NSString* command;
     @private NSObject* data;
+    @private int requestId;
+    @private BOOL success;
+    @private NSDictionary* responseData;
+    @private NSMutableArray* callbacks;
 }
 - (id) initwithCommand:(NSString*) command;
 - (id) initwithCommand:(NSString *)command andData:(NSObject *) data;
 - (NSString *) getJson;
+- (BGTSocketCommand*) setRequestId:(int) newRequestId;
+- (void) updateResult:(NSDictionary*) data;
+- (void) updateResultWithBool:(BOOL) success;
+- (void) addCallback:(NSInvocation*) callback;
 @end

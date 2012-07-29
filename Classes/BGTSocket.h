@@ -21,6 +21,8 @@
     @private NSMutableArray* subscriptions;
     @private NSMutableArray* backlog;
     @private NSMutableArray* listeners;
+    @private int requestCount;
+    @private NSMutableDictionary* requests;
 }
 + (BGTSocket *) getSharedInstance;
 + (BGTSocket *) getSharedInstanceWithStake: (id) stake;

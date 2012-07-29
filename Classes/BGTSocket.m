@@ -31,6 +31,7 @@
         stakes = [[NSMutableArray arrayWithCapacity:10] retain];
         subscriptions = [[NSMutableArray arrayWithCapacity:10] retain];
         listeners = [[NSMutableArray arrayWithCapacity:10] retain];
+        requests = [[NSMutableDictionary dictionaryWithCapacity:10] retain];
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(defaultsChanged:)
                                                      name:NSUserDefaultsDidChangeNotification
@@ -43,6 +44,7 @@
     [stakes release];
     [subscriptions release];
     [listeners release];
+    [requests release];
     [super dealloc];
 }
 
@@ -53,7 +55,15 @@
         return;
     }
     NSDictionary* json = [message JSONValue];
-    if ([[json valueForKey:@"event"] isEqual:@"update"]) {
+    if ([json valueForKey:@"requestId"] != NULL) {
+        NSNumber* requestId = [json valueForKey:@"requestId"];
+        BGTSocketCommand* command = [requests objectForKey:requestId];
+        if (command != NULL) {
+            [requests removeObjectForKey:requestId];
+            [command updateResult:json];
+            [command release];
+        }
+    } else if ([[json valueForKey:@"event"] isEqual:@"update"]) {
         //NSLog(@"received update: %@", [json valueForKey:@"data"]);
         [self fireEvent:[json valueForKey:@"data"]];
     }
@@ -63,8 +73,21 @@
     webSocket = [newWebSocket retain];
     
     [self sendHandshake];
-    [self authenticate];
+
+    NSMethodSignature* sig = [self methodSignatureForSelector:@selector(onAuthentication)];
+    NSInvocation* callback = [NSInvocation invocationWithMethodSignature:sig];
+    [callback setTarget:self];
+    [callback setSelector:@selector(onAuthentication)];
+    BGTSocketCommand* command = [self authenticate];
+    if (command != NULL) {
+        [command addCallback:callback];
+    } else {
+        [callback invoke];
+    }
     
+    [self setStatus:BGTSocketConnected];
+}
+- (void) onAuthentication {
     if (backlog != nil) {
         NSArray* blCopy = backlog;
         backlog = nil;
@@ -74,21 +97,20 @@
         }
         [blCopy release];
     }
-
     // re-subscribe to any events that have been previously subscribed, if any
-    [self subscribeCategoryArray:subscriptions];
-    
-    [self setStatus:BGTSocketConnected];
+    [self subscribeCategoryArray:subscriptions];    
 }
-- (void)authenticate {
+- (BGTSocketCommand*) authenticate {
+    if (!shouldBeOnline) return NULL;
     NSUserDefaults* settings = [NSUserDefaults standardUserDefaults];
-    if (![settings boolForKey:@"anonymous"]) {
-        NSMutableDictionary* data = [NSMutableDictionary dictionaryWithCapacity:2];
-        [data setValue:[settings stringForKey:@"user"] forKey:@"user"];
-        [data setValue:[settings stringForKey:@"pass"] forKey:@"pass"];
-        BGTSocketCommand* command = [[BGTSocketCommand alloc] initwithCommand:@"auth" andData:data];
-        [webSocket send:[command getJson]];
-    }
+    if ([settings boolForKey:@"anonymous"]) return NULL;
+    
+    NSMutableDictionary* data = [NSMutableDictionary dictionaryWithCapacity:2];
+    [data setValue:[settings stringForKey:@"user"] forKey:@"user"];
+    [data setValue:[settings stringForKey:@"pass"] forKey:@"pass"];
+    BGTSocketCommand* command = [[BGTSocketCommand alloc] initwithCommand:@"auth" andData:data];
+    [self sendCommand:command doQueue:NO bypass:YES];
+    return command;
 }
 - (void)webSocket:(SRWebSocket *)closingWebSocket didFailWithError:(NSError *)error {
     if (closingWebSocket != webSocket) return;
@@ -121,10 +143,15 @@
     return [self sendCommand:command doQueue:YES];
 }
 - (BGTSocketCommand*) sendCommand:(BGTSocketCommand*) command doQueue:(bool) queue {
-    if (backlog != nil) {
+    return [self sendCommand:command doQueue:queue bypass:NO];
+}
+- (BGTSocketCommand*) sendCommand:(BGTSocketCommand*) command doQueue:(bool) queue bypass:(bool) bypass {
+    if (backlog != nil && !bypass) {
         if (shouldBeOnline && queue) [backlog addObject:command];
         return command;
     }
+    [requests setObject:[command retain] forKey:[NSNumber numberWithInt:requestCount]];
+    [command setRequestId:requestCount++];
     [webSocket send:[command getJson]];
     return command;
 }
