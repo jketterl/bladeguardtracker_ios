@@ -14,7 +14,7 @@
 
 @implementation BGTMapViewController
 
-@synthesize mapView, socket;
+@synthesize mapView, socket, speedLabel, trackLengthLabel, cycleTimeLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -99,6 +99,31 @@
 
 - (void) processStats: (NSArray*) statsArray {
     if (statsArray == nil) return;
+    NSDictionary* stats = [statsArray objectAtIndex:0];
+
+    NSNumber* trackLength = [stats valueForKey:@"bladeNightLength"];
+    if (trackLength != NULL) {
+        NSNumberFormatter* format = [[NSNumberFormatter alloc] init];
+        [format setFormatterBehavior:NSNumberFormatterBehavior10_4];
+        format.numberStyle = NSNumberFormatterDecimalStyle;
+        [format setMaximumFractionDigits:1];
+        [self.trackLengthLabel setText:[[format stringFromNumber:trackLength] stringByAppendingString:@" km"]];
+        [format release];
+    } else {
+        [self.trackLengthLabel setText:@"n/a"];
+    }
+    
+    NSNumber* speed = [stats objectForKey:@"bladeNightSpeed"];
+    if (speed != NULL) {
+        NSNumberFormatter* format = [[NSNumberFormatter alloc] init];
+        [format setFormatterBehavior:NSNumberFormatterBehavior10_4];
+        format.numberStyle = NSNumberFormatterDecimalStyle;
+        [format setMaximumFractionDigits:1];
+        [self.speedLabel setText:[[format stringFromNumber:[NSNumber numberWithFloat:[speed floatValue] * 3.6]] stringByAppendingString:@" km/h"]];
+        [format release];
+    } else {
+        [self.speedLabel setText:@"n/a"];
+    }
 
     if (track != nil) {
         [self.mapView removeOverlay:track];
@@ -106,7 +131,6 @@
         track = nil;
     }
     
-    NSDictionary* stats = [statsArray objectAtIndex:0];
     NSArray* between = [stats objectForKey:@"between"];
     if (between == nil) {
         from = 0; to = 0;

@@ -19,4 +19,7 @@
 }
 @property (nonatomic, retain) IBOutlet MKMapView* mapView;
 @property (nonatomic, retain) BGTSocket* socket;
+@property (nonatomic, retain) IBOutlet UILabel* trackLengthLabel;
+@property (nonatomic, retain) IBOutlet UILabel* speedLabel;
+@property (nonatomic, retain) IBOutlet UILabel* cycleTimeLabel;
 @end
