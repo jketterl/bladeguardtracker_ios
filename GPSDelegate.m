@@ -16,6 +16,9 @@
     NSMutableDictionary* data = [NSMutableDictionary dictionaryWithCapacity:2];
     [data setValue:[NSNumber numberWithFloat:newLocation.coordinate.latitude] forKey:@"lat"];
     [data setValue:[NSNumber numberWithFloat:newLocation.coordinate.longitude] forKey:@"lon"];
+    if (newLocation.speed >= 0) {
+        [data setValue:[NSNumber numberWithFloat:newLocation.speed] forKey:@"speed"];
+    }
     BGTSocketCommand* command = [[BGTSocketCommand alloc] initwithCommand:@"log" andData:data];
     [socket sendCommand:command];
 }
