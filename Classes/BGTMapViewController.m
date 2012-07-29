@@ -35,6 +35,15 @@
     [socket subscribeCategoryArray:[NSArray arrayWithObjects:@"map", @"movements", @"quit", @"stats", nil]];
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    // center the map somewhere around the Theresienhöhe, the default starting location
+    CLLocationCoordinate2D coord = {.latitude = 48.132501, .longitude = 11.543460};
+    MKCoordinateSpan span = {.latitudeDelta = .02, .longitudeDelta = .02};
+    MKCoordinateRegion region = {coord, span};
+    [mapView setRegion:region];
+}
+
 - (void)viewDidDisappear:(BOOL)animated {
     [socket unsubscribeCategoryArray:[NSArray arrayWithObjects:@"map", @"movements", @"quit", @"stats", nil]];
     [socket removeListener:self];
