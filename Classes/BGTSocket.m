@@ -28,10 +28,10 @@
 - (id) init {
     self = [super init];
     if (self) {
-        stakes = [[NSMutableArray arrayWithCapacity:10] retain];
-        subscriptions = [[NSMutableArray arrayWithCapacity:10] retain];
-        listeners = [[NSMutableArray arrayWithCapacity:10] retain];
-        requests = [[NSMutableDictionary dictionaryWithCapacity:10] retain];
+        stakes = [NSMutableArray arrayWithCapacity:10];
+        subscriptions = [NSMutableArray arrayWithCapacity:10];
+        listeners = [NSMutableArray arrayWithCapacity:10];
+        requests = [NSMutableDictionary dictionaryWithCapacity:10];
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(defaultsChanged:)
                                                      name:NSUserDefaultsDidChangeNotification
@@ -40,13 +40,6 @@
     return self;
 }
 
-- (void) dealloc {
-    [stakes release];
-    [subscriptions release];
-    [listeners release];
-    [requests release];
-    [super dealloc];
-}
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message {
     //NSLog(@"Received message: %@", message);
@@ -61,7 +54,6 @@
         if (command != NULL) {
             [requests removeObjectForKey:requestId];
             [command updateResult:json];
-            [command release];
         }
     } else if ([[json valueForKey:@"event"] isEqual:@"update"]) {
         //NSLog(@"received update: %@", [json valueForKey:@"data"]);
@@ -70,7 +62,7 @@
 }
 - (void)webSocketDidOpen:(SRWebSocket *)newWebSocket {
     NSLog(@"Websocket is now open!");
-    webSocket = [newWebSocket retain];
+    webSocket = newWebSocket;
     
     [self sendHandshake];
 
@@ -95,7 +87,6 @@
         for (BGTSocketCommand* command in blCopy) {
             [self sendCommand:command];
         }
-        [blCopy release];
     }
     // re-subscribe to any events that have been previously subscribed, if any
     [self subscribeCategoryArray:subscriptions];    
@@ -108,7 +99,7 @@
     NSMutableDictionary* data = [NSMutableDictionary dictionaryWithCapacity:2];
     [data setValue:[settings stringForKey:@"user"] forKey:@"user"];
     [data setValue:[settings stringForKey:@"pass"] forKey:@"pass"];
-    BGTSocketCommand* command = [[BGTSocketCommand alloc] initwithCommand:@"auth" andData:data];
+    BGTSocketCommand* command = [[BGTSocketCommand alloc] initWithCommand:@"auth" andData:data];
     [self sendCommand:command doQueue:NO bypass:YES];
     return command;
 }
@@ -125,7 +116,6 @@
 - (void) onDisconnect {
     [self setStatus:BGTSocketDisconnected];
     [webSocket setDelegate:nil];
-    [webSocket release];
     webSocket = nil;
     [self reConnect];
 }
@@ -134,7 +124,7 @@
     [self close];
     //[self connect];
     if (reconnectTimer != nil) return;
-    reconnectTimer = [[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(connect) userInfo:nil repeats:NO] retain];
+    reconnectTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(connect) userInfo:nil repeats:NO];
 }
 - (void)defaultsChanged:(NSNotification *) notification{
     [self authenticate];
@@ -150,7 +140,7 @@
         if (shouldBeOnline && queue) [backlog addObject:command];
         return command;
     }
-    [requests setObject:[command retain] forKey:[NSNumber numberWithInt:requestCount]];
+    [requests setObject:command forKey:[NSNumber numberWithInt:requestCount]];
     [command setRequestId:requestCount++];
     [webSocket send:[command getJson]];
     return command;
@@ -159,7 +149,6 @@
     if (webSocket) {
         if (disconnectTimer != nil) {
             [disconnectTimer invalidate];
-            [disconnectTimer release];
             disconnectTimer=nil;
         }
         return;
@@ -169,12 +158,11 @@
     
     if (reconnectTimer != nil) {
         [reconnectTimer invalidate];
-        [reconnectTimer release];
         reconnectTimer = nil;
     }
     
     shouldBeOnline = YES;
-    backlog = [[NSMutableArray arrayWithCapacity:10] retain];
+    backlog = [NSMutableArray arrayWithCapacity:10];
 
     NSURL* url = [NSURL URLWithString:@"wss://bgt.justjakob.de/bgt/socket"];
     NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL:url];
@@ -184,7 +172,7 @@
     CFDataRef inDERData = (__bridge CFDataRef)DERData;
     SecCertificateRef cert = SecCertificateCreateWithData(NULL, inDERData);
     assert(cert != NULL);
-    NSArray* certs = [NSArray arrayWithObject:(id) cert];
+    NSArray* certs = [NSArray arrayWithObject:(id) (__bridge id) cert];
 
     [req setSR_SSLPinnedCertificates:certs];
     
@@ -196,7 +184,6 @@
     [self setStatus:BGTSocketDisconnecting];
     shouldBeOnline = NO;
     if (backlog != nil) {
-        [backlog release];
         backlog = nil;
     }
     if (webSocket) [webSocket close];
@@ -214,7 +201,7 @@
     [stakes removeObject:stake];
     //NSLog(@"# of stakes is now: %i", [stakes count]);
     if ([stakes count] > 0) return;
-    disconnectTimer = [[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(close) userInfo:nil repeats:NO] retain];
+    disconnectTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(close) userInfo:nil repeats:NO];
 }
 
 - (void) sendHandshake {
@@ -234,7 +221,7 @@
 
 - (void) subscribeCategoryArray: (NSArray*) categories {
     NSDictionary* data = [NSDictionary dictionaryWithObject:categories forKey:@"category"];
-    BGTSocketCommand* command = [[BGTSocketCommand alloc] initwithCommand:@"subscribeUpdates" andData:data];
+    BGTSocketCommand* command = [[BGTSocketCommand alloc] initWithCommand:@"subscribeUpdates" andData:data];
     [self sendCommand:command doQueue:NO];
     [subscriptions addObjectsFromArray:categories];
 }
@@ -246,7 +233,7 @@
 
 - (void) unsubscribeCategoryArray: (NSArray *) categories {
     NSDictionary* data = [NSDictionary dictionaryWithObject:categories forKey:@"category"];
-    BGTSocketCommand* command = [[BGTSocketCommand alloc] initwithCommand:@"unSubscribeUpdates" andData:data];
+    BGTSocketCommand* command = [[BGTSocketCommand alloc] initWithCommand:@"unSubscribeUpdates" andData:data];
     [self sendCommand:command doQueue:NO];
     [subscriptions removeObjectsInArray:categories];
 }

@@ -17,8 +17,8 @@
     @private NSDictionary* responseData;
     @private NSMutableArray* callbacks;
 }
-- (id) initwithCommand:(NSString*) command;
-- (id) initwithCommand:(NSString *)command andData:(NSObject *) data;
+- (id) initWithCommand:(NSString*) command;
+- (id) initWithCommand:(NSString *)command andData:(NSObject *) data;
 - (NSString *) getJson;
 - (BGTSocketCommand*) setRequestId:(int) newRequestId;
 - (void) updateResult:(NSDictionary*) data;

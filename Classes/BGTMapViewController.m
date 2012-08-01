@@ -29,7 +29,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    userMarkers = [[[NSMutableDictionary alloc] initWithCapacity:15] retain];
+    userMarkers = [[NSMutableDictionary alloc] initWithCapacity:15];
     socket = [BGTSocket getSharedInstanceWithStake:self];
     [socket addListener:self];
     [socket subscribeCategoryArray:[NSArray arrayWithObjects:@"map", @"movements", @"quit", @"stats", nil]];
@@ -54,13 +54,10 @@
 
 - (void)viewDidUnload{
     [super viewDidUnload];
-    [userMarkers release];
     if (route != nil) {
-        [route release];
         route = nil;
     }
     if (track != nil) {
-        [track release];
         track = nil;
     }
     // Release any retained subviews of the main view.
@@ -82,12 +79,10 @@
     if (status == BGTSocketDisconnected) {
         if (route != nil) {
             [self.mapView removeOverlay:route];
-            [route release];
             route = nil;
         }
         if (track != nil) {
             [self.mapView removeOverlay:track];
-            [track release];
             track = nil;
         }
         for (MKPointAnnotation* marker in [userMarkers allValues]) {
@@ -108,7 +103,6 @@
         format.numberStyle = NSNumberFormatterDecimalStyle;
         [format setMaximumFractionDigits:1];
         [self.trackLengthLabel setText:[[format stringFromNumber:trackLength] stringByAppendingString:@" km"]];
-        [format release];
     } else {
         [self.trackLengthLabel setText:@"n/a"];
     }
@@ -120,7 +114,6 @@
         format.numberStyle = NSNumberFormatterDecimalStyle;
         [format setMaximumFractionDigits:1];
         [self.speedLabel setText:[[format stringFromNumber:[NSNumber numberWithFloat:[speed floatValue] * 3.6]] stringByAppendingString:@" km/h"]];
-        [format release];
     } else {
         [self.speedLabel setText:@"n/a"];
     }
@@ -132,14 +125,12 @@
         format.numberStyle = NSNumberFormatterDecimalStyle;
         [format setMaximumFractionDigits:0];
         [self.cycleTimeLabel setText:[[format stringFromNumber:[NSNumber numberWithFloat:cycleTime]] stringByAppendingString:@" min"]];
-        [format release];
     } else {
         [self.cycleTimeLabel setText:@"n/a"];
     }
 
     if (track != nil) {
         [self.mapView removeOverlay:track];
-        [track release];
         track = nil;
     }
     
@@ -163,7 +154,7 @@
         if (i >= route.pointCount) i = 0;
     }
     
-    track = [[MKPolyline polylineWithPoints:coordinates count:k] retain];
+    track = [MKPolyline polylineWithPoints:coordinates count:k];
     [self.mapView addOverlay:track];
     
     // this is a little trick to keep the route overlay *above* the track overlay.
@@ -217,21 +208,19 @@
     }
     if (route != nil) {
         [self.mapView removeOverlay:route];
-        [route release];
     }
     if (track != nil) {
         [self.mapView removeOverlay:track];
-        [track release];
         track = nil;
     }
-    route = [[MKPolyline polylineWithCoordinates:coordinates count:count] retain];
+    route = [MKPolyline polylineWithCoordinates:coordinates count:count];
     [self.mapView addOverlay:route];
     [self.mapView setVisibleMapRect:route.boundingMapRect];
 }
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
     if (overlay == route) {
-        MKPolylineView *polylineView = [[[MKPolylineView alloc] initWithPolyline:overlay] autorelease];
+        MKPolylineView *polylineView = [[MKPolylineView alloc] initWithPolyline:overlay];
         polylineView.strokeColor = [UIColor blueColor];
         polylineView.lineWidth = 2.0;
         polylineView.alpha = .5;
@@ -240,7 +229,7 @@
     }
     
     if (overlay == track) {
-        MKPolylineView *polylineView = [[[MKPolylineView alloc] initWithPolyline:overlay] autorelease];
+        MKPolylineView *polylineView = [[MKPolylineView alloc] initWithPolyline:overlay];
         polylineView.strokeColor = [UIColor colorWithRed:1 green:.75 blue:0 alpha:1];
         polylineView.lineWidth = 6.0;
         polylineView.alpha = 1;

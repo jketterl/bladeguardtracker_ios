@@ -10,31 +10,24 @@
 
 @implementation BGTSocketCommand
 
-- (void) dealloc {
-    [command release];
-    [data release];
-    if (responseData != nil) [responseData release];
-    [callbacks release];
-    [super dealloc];
-}
 
 - (id) init {
     self = [super init];
     if (self) {
         requestId = -1;
-        callbacks = [[NSMutableArray arrayWithCapacity:2] retain];
+        callbacks = [NSMutableArray arrayWithCapacity:2];
     }
     return self;
 }
 
-- (id) initwithCommand:(NSString*) newCommand {
+- (id) initWithCommand:(NSString*) newCommand {
     self = [self init];
-    if (self) command = [newCommand retain];
+    if (self) command = newCommand;
     return self;
 }
-- (id) initwithCommand:(NSString *)newCommand andData:(NSObject *) newData {
-    self = [self initwithCommand:newCommand];
-    if (self) data = [newData retain];
+- (id) initWithCommand:(NSString *)newCommand andData:(NSObject *) newData {
+    self = [self initWithCommand:newCommand];
+    if (self) data = newData;
     return self;
 }
 - (NSString*) getJson {
@@ -50,7 +43,7 @@
 }
 - (void) updateResult:(NSDictionary *)resData {
     NSDictionary* res = [resData valueForKey:@"data"];
-    if (res != NULL) responseData = [resData retain];
+    if (res != NULL) responseData = resData;
     [self updateResultWithBool:[[resData valueForKey:@"success"] boolValue]];
 }
 - (void) updateResultWithBool:(BOOL)mySuccess {
@@ -58,13 +51,11 @@
     [self runCallbacks];
 }
 - (void) addCallback:(NSInvocation *)callback {
-    [callback retain];
     [callbacks addObject:callback];
 }
 - (void) runCallbacks {
     for (NSInvocation* callback in callbacks) {
         [callback invoke];
-        [callback release];
     }
 }
 @end

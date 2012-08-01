@@ -17,9 +17,9 @@
     @private MKPolyline* track;
     @private int from, to;
 }
-@property (nonatomic, retain) IBOutlet MKMapView* mapView;
-@property (nonatomic, retain) BGTSocket* socket;
-@property (nonatomic, retain) IBOutlet UILabel* trackLengthLabel;
-@property (nonatomic, retain) IBOutlet UILabel* speedLabel;
-@property (nonatomic, retain) IBOutlet UILabel* cycleTimeLabel;
+@property (nonatomic) IBOutlet MKMapView* mapView;
+@property (nonatomic) BGTSocket* socket;
+@property (nonatomic) IBOutlet UILabel* trackLengthLabel;
+@property (nonatomic) IBOutlet UILabel* speedLabel;
+@property (nonatomic) IBOutlet UILabel* cycleTimeLabel;
 @end

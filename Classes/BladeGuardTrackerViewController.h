@@ -12,8 +12,8 @@
 @interface BladeGuardTrackerViewController : UIViewController {
     IBOutlet UISwitch* trackerSwitch;
 }
-@property (nonatomic, retain) UISwitch* trackerSwitch;
-@property (nonatomic, retain) GPSDelegate* gps;
+@property (nonatomic) UISwitch* trackerSwitch;
+@property (nonatomic) GPSDelegate* gps;
 - (IBAction)trackerSwitchChanged:(id)sender;
 
 @end

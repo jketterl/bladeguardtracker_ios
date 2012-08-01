@@ -58,10 +58,6 @@
 }
 
 
-- (void)dealloc {
-    [super dealloc];
-    [trackerSwitch release];
-}
 
 - (GPSDelegate*) getGps {
     if (!gps) {

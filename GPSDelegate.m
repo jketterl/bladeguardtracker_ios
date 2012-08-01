@@ -19,7 +19,7 @@
     if (newLocation.speed >= 0) {
         [data setValue:[NSNumber numberWithFloat:newLocation.speed] forKey:@"speed"];
     }
-    BGTSocketCommand* command = [[BGTSocketCommand alloc] initwithCommand:@"log" andData:data];
+    BGTSocketCommand* command = [[BGTSocketCommand alloc] initWithCommand:@"log" andData:data];
     [socket sendCommand:command];
 }
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
@@ -32,12 +32,11 @@
     [locationManager startUpdatingLocation];
 }
 - (void) endUpdates {
-    BGTSocketCommand* quit = [[BGTSocketCommand alloc] initwithCommand:@"quit"];
+    BGTSocketCommand* quit = [[BGTSocketCommand alloc] initWithCommand:@"quit"];
     [socket sendCommand:quit];
     [socket removeStake:self];
     [locationManager stopUpdatingLocation];
     locationManager.delegate = nil;
-    [locationManager release];
     socket = nil;
 }
 @end
