@@ -124,6 +124,18 @@
     } else {
         [self.speedLabel setText:@"n/a"];
     }
+    
+    if (speed != NULL && trackLength != NULL) {
+        float cycleTime = ([trackLength floatValue] * 1000 / [speed floatValue]) / 60;
+        NSNumberFormatter* format = [[NSNumberFormatter alloc] init];
+        [format setFormatterBehavior:NSNumberFormatterBehavior10_4];
+        format.numberStyle = NSNumberFormatterDecimalStyle;
+        [format setMaximumFractionDigits:0];
+        [self.cycleTimeLabel setText:[[format stringFromNumber:[NSNumber numberWithFloat:cycleTime]] stringByAppendingString:@" min"]];
+        [format release];
+    } else {
+        [self.cycleTimeLabel setText:@"n/a"];
+    }
 
     if (track != nil) {
         [self.mapView removeOverlay:track];
