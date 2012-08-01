@@ -10,7 +10,7 @@
 
 @implementation BladeGuardTrackerViewController
 
-@synthesize trackerSwitch, gps;
+@synthesize trackerSwitch, gps, mapButton, trackerSwitchLabel;
 
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
@@ -30,12 +30,12 @@
 */
 
 
-/*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+    self.trackerSwitchLabel.text = NSLocalizedString(@"Enable tracker", nil);
+    [self.mapButton setTitle: NSLocalizedString(@"View on map", nil) forState:UIControlStateNormal];
     [super viewDidLoad];
 }
-*/
 
 
 // Override to allow orientations other than the default portrait orientation.

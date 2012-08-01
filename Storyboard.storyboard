@@ -67,7 +67,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Bladeguard Tracker" id="ra2-QL-rtZ"/>
                     <connections>
+                        <outlet property="mapButton" destination="bV3-RJ-WcT" id="sZx-nP-g85"/>
                         <outlet property="trackerSwitch" destination="kwu-9n-exD" id="xci-Q0-snH"/>
+                        <outlet property="trackerSwitchLabel" destination="VnX-lS-eGi" id="Efh-Dl-ah4"/>
                         <outlet property="view" destination="cf5-KN-xMO" id="Jgv-8y-lMN"/>
                     </connections>
                 </viewController>
@@ -180,10 +182,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Map view" id="iBk-4E-AO6"/>
                     <connections>
-                        <outlet property="cycleTimeLabel" destination="u2u-6D-OCp" id="PRX-qg-eqQ"/>
+                        <outlet property="cycleTimeLabel" destination="qSF-dt-jdW" id="beT-1b-ko9"/>
+                        <outlet property="cycleTimeView" destination="u2u-6D-OCp" id="709-1G-iJa"/>
                         <outlet property="mapView" destination="VWx-sL-nBc" id="KZp-9S-yRm"/>
-                        <outlet property="speedLabel" destination="wan-iR-dPU" id="gaY-DO-HIW"/>
-                        <outlet property="trackLengthLabel" destination="u5U-nV-TVE" id="wPK-jB-fL4"/>
+                        <outlet property="speedLabel" destination="B3U-HK-UJe" id="2Df-I3-HEo"/>
+                        <outlet property="speedView" destination="wan-iR-dPU" id="eTU-WP-2DR"/>
+                        <outlet property="trackLengthLabel" destination="fih-n9-lqA" id="iiO-DZ-jBg"/>
+                        <outlet property="trackLengthView" destination="u5U-nV-TVE" id="Fnl-e1-P0s"/>
                     </connections>
                 </viewController>
             </objects>

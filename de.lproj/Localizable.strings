@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  Bladeguard Tracker
+
+  Created by Jakob Ketterl on 01.08.12.
+  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+*/
+
+"Map View" = "Kartenansicht";
+"Track length" = "Zuglänge";
+"Speed" = "Geschwindigkeit";
+"Cycle time" = "Durchlaufzeit";
+"Enable tracker" = "Tracker aktivieren";
+"View on map" = "Auf der Karte ansehen";

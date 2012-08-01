@@ -14,7 +14,7 @@
 
 @implementation BGTMapViewController
 
-@synthesize mapView, socket, speedLabel, trackLengthLabel, cycleTimeLabel;
+@synthesize mapView, socket, speedView, trackLengthView, cycleTimeView, trackLengthLabel, cycleTimeLabel, speedLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,6 +33,11 @@
     socket = [BGTSocket getSharedInstanceWithStake:self];
     [socket addListener:self];
     [socket subscribeCategoryArray:[NSArray arrayWithObjects:@"map", @"movements", @"quit", @"stats", nil]];
+    // Localization
+    self.title = NSLocalizedString(@"Map View", nil);
+    self.trackLengthLabel.text = NSLocalizedString(@"Track length", nil);
+    self.speedLabel.text = NSLocalizedString(@"Speed", nil);
+    self.cycleTimeLabel.text = NSLocalizedString(@"Cycle time", nil);
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -102,9 +107,9 @@
         [format setFormatterBehavior:NSNumberFormatterBehavior10_4];
         format.numberStyle = NSNumberFormatterDecimalStyle;
         [format setMaximumFractionDigits:1];
-        [self.trackLengthLabel setText:[[format stringFromNumber:trackLength] stringByAppendingString:@" km"]];
+        [self.trackLengthView setText:[[format stringFromNumber:trackLength] stringByAppendingString:@" km"]];
     } else {
-        [self.trackLengthLabel setText:@"n/a"];
+        [self.trackLengthView setText:@"n/a"];
     }
     
     NSNumber* speed = [stats objectForKey:@"bladeNightSpeed"];
@@ -113,9 +118,9 @@
         [format setFormatterBehavior:NSNumberFormatterBehavior10_4];
         format.numberStyle = NSNumberFormatterDecimalStyle;
         [format setMaximumFractionDigits:1];
-        [self.speedLabel setText:[[format stringFromNumber:[NSNumber numberWithFloat:[speed floatValue] * 3.6]] stringByAppendingString:@" km/h"]];
+        [self.speedView setText:[[format stringFromNumber:[NSNumber numberWithFloat:[speed floatValue] * 3.6]] stringByAppendingString:@" km/h"]];
     } else {
-        [self.speedLabel setText:@"n/a"];
+        [self.speedView setText:@"n/a"];
     }
     
     if (speed != NULL && trackLength != NULL) {
@@ -124,9 +129,9 @@
         [format setFormatterBehavior:NSNumberFormatterBehavior10_4];
         format.numberStyle = NSNumberFormatterDecimalStyle;
         [format setMaximumFractionDigits:0];
-        [self.cycleTimeLabel setText:[[format stringFromNumber:[NSNumber numberWithFloat:cycleTime]] stringByAppendingString:@" min"]];
+        [self.cycleTimeView setText:[[format stringFromNumber:[NSNumber numberWithFloat:cycleTime]] stringByAppendingString:@" min"]];
     } else {
-        [self.cycleTimeLabel setText:@"n/a"];
+        [self.cycleTimeView setText:@"n/a"];
     }
 
     if (track != nil) {

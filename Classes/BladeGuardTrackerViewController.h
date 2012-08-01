@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "GPSDelegate.h"
 
-@interface BladeGuardTrackerViewController : UIViewController {
-    IBOutlet UISwitch* trackerSwitch;
-}
-@property (nonatomic) UISwitch* trackerSwitch;
+@interface BladeGuardTrackerViewController : UIViewController
+
+@property (nonatomic) IBOutlet UISwitch* trackerSwitch;
 @property (nonatomic) GPSDelegate* gps;
 - (IBAction)trackerSwitchChanged:(id)sender;
+@property (nonatomic) IBOutlet UILabel* trackerSwitchLabel;
+@property (nonatomic) IBOutlet UIButton* mapButton;
 
 @end
 
