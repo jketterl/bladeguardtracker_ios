@@ -94,6 +94,9 @@
             [self.mapView removeAnnotation:marker];
         }
         [userMarkers removeAllObjects];
+        [trackLengthView setText:@"n/a"];
+        [speedView setText:@"n/a"];
+        [cycleTimeView setText:@"n/a"];
     }
 }
 
