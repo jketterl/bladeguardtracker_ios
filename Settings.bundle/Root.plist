@@ -14,7 +14,7 @@
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
-			<string>Anonymous Tracking</string>
+			<string>Anonymous tracking</string>
 			<key>Key</key>
 			<string>anonymous</string>
 			<key>DefaultValue</key>
