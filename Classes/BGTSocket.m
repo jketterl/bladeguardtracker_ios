@@ -110,7 +110,7 @@
 }
 - (void)webSocket:(SRWebSocket *)closingWebSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean{
     if (closingWebSocket != webSocket) return;
-    NSLog(@"socket did close");
+    NSLog(@"socket did close with code %i (reason: %@)", code, reason);
     [self onDisconnect];
 }
 - (void) onDisconnect {
