@@ -27,6 +27,8 @@
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
      */
+    
+    [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert];
 
     return YES;
 }
@@ -77,6 +79,10 @@
     /*
      Free up as much memory as possible by purging cached data objects that can be recreated (or reloaded from disk) later.
      */
+}
+
+- (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    NSLog(@"%@", deviceToken);
 }
 
 
