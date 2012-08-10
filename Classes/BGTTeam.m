@@ -30,7 +30,6 @@ static BGTTeam* anonymousTeam;
 + (BGTTeam*) teamForId: (int) id {
     if (teams == NULL) teams = [NSMutableArray arrayWithCapacity:10];
     while (id > [teams count]) {
-        NSLog(@"team count is now: %i", [teams count]);
         BGTTeam* team = [[BGTTeam alloc] init];
         team->teamId = [teams count] + 1;
         [teams addObject:team];
@@ -45,11 +44,9 @@ static BGTTeam* anonymousTeam;
 }
 - (UIImage*) getImage {
     if (image == nil) {
-        NSLog(@"creating image for team %i", teamId);
         if (teamId != 1) {
             image = [UIImage imageNamed:@"map_pin.png"];
         } else {
-            NSLog(@"creating special image");
             // Make the input image recipe
             CIImage *inputImage = [CIImage imageWithCGImage:[UIImage imageNamed:@"map_pin.png"].CGImage];
             
@@ -69,7 +66,7 @@ static BGTTeam* anonymousTeam;
             CIContext *context = [CIContext contextWithOptions:nil];
             CGImageRef cgimg = [context createCGImage:outputImage fromRect:[outputImage extent]];
             
-            return [UIImage imageWithCGImage:cgimg];
+            image = [UIImage imageWithCGImage:cgimg];
         }
     }
     return image;
