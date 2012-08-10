@@ -16,6 +16,10 @@
 		361531D015A7605200B6FA79 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 361531CF15A7605200B6FA79 /* CFNetwork.framework */; };
 		362D44A915C9BBD100D43E22 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 362D44AB15C9BBD100D43E22 /* Localizable.strings */; };
 		362D44B515C9BE0600D43E22 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 362D44B615C9BE0600D43E22 /* Storyboard.storyboard */; };
+		3678B2C715D591600017ABA5 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3678B2C615D591600017ABA5 /* CoreImage.framework */; };
+		3678B2CA15D592A80017ABA5 /* BGTTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = 3678B2C915D592A80017ABA5 /* BGTTeam.m */; };
+		3678B2CD15D5973C0017ABA5 /* BGTUserMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3678B2CC15D5973C0017ABA5 /* BGTUserMarker.m */; };
+		3678B2D015D597610017ABA5 /* BGTUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3678B2CF15D597610017ABA5 /* BGTUser.m */; };
 		36912EF715C5D83F00B626B8 /* box.png in Resources */ = {isa = PBXBuildFile; fileRef = 36912EF615C5D83F00B626B8 /* box.png */; };
 		36AA640315B30AD200128DA0 /* BGTStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AA640215B30AD200128DA0 /* BGTStatisticsViewController.m */; };
 		36AA640515B310C500128DA0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AA640415B310C500128DA0 /* MapKit.framework */; };
@@ -53,6 +57,13 @@
 		362D44AA15C9BBD100D43E22 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		362D44B415C9BC8800D43E22 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		362D44B615C9BE0600D43E22 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		3678B2C615D591600017ABA5 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		3678B2C815D592A80017ABA5 /* BGTTeam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTTeam.h; sourceTree = "<group>"; };
+		3678B2C915D592A80017ABA5 /* BGTTeam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTTeam.m; sourceTree = "<group>"; };
+		3678B2CB15D5973C0017ABA5 /* BGTUserMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTUserMarker.h; sourceTree = "<group>"; };
+		3678B2CC15D5973C0017ABA5 /* BGTUserMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTUserMarker.m; sourceTree = "<group>"; };
+		3678B2CE15D597610017ABA5 /* BGTUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTUser.h; sourceTree = "<group>"; };
+		3678B2CF15D597610017ABA5 /* BGTUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTUser.m; sourceTree = "<group>"; };
 		36912EF615C5D83F00B626B8 /* box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box.png; sourceTree = "<group>"; };
 		36AA640115B30AD200128DA0 /* BGTStatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTStatisticsViewController.h; sourceTree = "<group>"; };
 		36AA640215B30AD200128DA0 /* BGTStatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTStatisticsViewController.m; sourceTree = "<group>"; };
@@ -88,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3678B2C715D591600017ABA5 /* CoreImage.framework in Frameworks */,
 				36AA640515B310C500128DA0 /* MapKit.framework in Frameworks */,
 				36AB05BB15AA1BAE00560928 /* CoreLocation.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
@@ -122,6 +134,12 @@
 				36AA640615B314AD00128DA0 /* BGTMapViewController.h */,
 				36AA640715B314AD00128DA0 /* BGTMapViewController.m */,
 				36AA640915B352BB00128DA0 /* BGTSocketEventListener.h */,
+				3678B2C815D592A80017ABA5 /* BGTTeam.h */,
+				3678B2C915D592A80017ABA5 /* BGTTeam.m */,
+				3678B2CB15D5973C0017ABA5 /* BGTUserMarker.h */,
+				3678B2CC15D5973C0017ABA5 /* BGTUserMarker.m */,
+				3678B2CE15D597610017ABA5 /* BGTUser.h */,
+				3678B2CF15D597610017ABA5 /* BGTUser.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -137,6 +155,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				3678B2C615D591600017ABA5 /* CoreImage.framework */,
 				362D44B615C9BE0600D43E22 /* Storyboard.storyboard */,
 				36AB05D515AB4DD200560928 /* Settings.bundle */,
 				36AB05C115AA255E00560928 /* Sample Track.gpx */,
@@ -290,6 +309,9 @@
 				36AB05D915AB69C100560928 /* BGTSocketCommand.m in Sources */,
 				36AA640315B30AD200128DA0 /* BGTStatisticsViewController.m in Sources */,
 				36AA640815B314AD00128DA0 /* BGTMapViewController.m in Sources */,
+				3678B2CA15D592A80017ABA5 /* BGTTeam.m in Sources */,
+				3678B2CD15D5973C0017ABA5 /* BGTUserMarker.m in Sources */,
+				3678B2D015D597610017ABA5 /* BGTUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

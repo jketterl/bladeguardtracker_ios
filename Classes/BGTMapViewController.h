@@ -10,6 +10,9 @@
 #import <MapKit/MKMapView.h>
 #import "BGTSocket.h"
 #import "BGTSocketEventListener.h"
+#import "BGTTeam.h"
+#import "BGTUser.h"
+#import "BGTUserMarker.h"
 
 @interface BGTMapViewController : UIViewController <BGTSocketEventListener, MKMapViewDelegate> {
     @private NSMutableDictionary* userMarkers;

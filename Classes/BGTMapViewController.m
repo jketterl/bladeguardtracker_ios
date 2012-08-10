@@ -190,10 +190,15 @@
         NSDictionary* movement = [movements objectAtIndex:i];
         NSDictionary* user = [movement objectForKey:@"user"];
         NSNumber* userId = [user objectForKey:@"id"];
+        BGTUser* userObj = [BGTUser userWithId:[userId intValue]];
+        NSString* teamName = [user objectForKey:@"team"];
+        BGTTeam* teamObj = [BGTTeam teamForName:teamName];
+        [userObj setTeam:teamObj];
+        
         NSDictionary* location = [movement objectForKey:@"location"];
-        MKPointAnnotation* marker = [userMarkers objectForKey:userId];
+        BGTUserMarker* marker = [userMarkers objectForKey:userId];
         if (marker == nil) {
-            marker = [[MKPointAnnotation alloc] init];
+            marker = [BGTUserMarker markerWithUser:userObj];
             [self.mapView addAnnotation:marker];
             [userMarkers setObject:marker forKey:userId];
         }
@@ -248,8 +253,12 @@
 }
 
 - (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-    MKAnnotationView *annView = [[MKAnnotationView alloc ] initWithAnnotation:annotation reuseIdentifier:@"currentloc"];
-    annView.image = [ UIImage imageNamed:@"map_pin.png" ];
+    if ([annotation class] != [BGTUserMarker class]) return nil;
+    BGTUserMarker* marker = (BGTUserMarker*) annotation;
+    
+    MKAnnotationView *annView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"currentloc"];
+
+    annView.image = [[[marker getUser] getTeam] getImage];
     return annView;
 }
 
