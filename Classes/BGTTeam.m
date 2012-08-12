@@ -64,7 +64,6 @@ static NSArray* teamColors;
     }
     if (image == nil) {
         if (teamId <= 0 || [teamColors count] < teamId) {
-            NSLog(@"%i", teamId);
             image = [UIImage imageNamed:@"pin.png"];
         } else {
             BGTColorManipulation* man = [teamColors objectAtIndex:teamId - 1];
