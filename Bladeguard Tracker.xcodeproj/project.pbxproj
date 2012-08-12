@@ -21,15 +21,15 @@
 		3678B2CD15D5973C0017ABA5 /* BGTUserMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3678B2CC15D5973C0017ABA5 /* BGTUserMarker.m */; };
 		3678B2D015D597610017ABA5 /* BGTUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3678B2CF15D597610017ABA5 /* BGTUser.m */; };
 		3678B2D315D841E70017ABA5 /* BGTColorManipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3678B2D215D841E70017ABA5 /* BGTColorManipulation.m */; };
-		3678B2D615D846970017ABA5 /* pin_common.png in Resources */ = {isa = PBXBuildFile; fileRef = 3678B2D415D846970017ABA5 /* pin_common.png */; };
-		3678B2D715D846970017ABA5 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 3678B2D515D846970017ABA5 /* pin.png */; };
+		3678B2D615D846970017ABA5 /* pin_common@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3678B2D415D846970017ABA5 /* pin_common@2x.png */; };
+		3678B2D715D846970017ABA5 /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3678B2D515D846970017ABA5 /* pin@2x.png */; };
+		3678B2D915D84C710017ABA5 /* pin_common.png in Resources */ = {isa = PBXBuildFile; fileRef = 3678B2D815D84C710017ABA5 /* pin_common.png */; };
+		3678B2DB15D84C7E0017ABA5 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 3678B2DA15D84C7E0017ABA5 /* pin.png */; };
 		36912EF715C5D83F00B626B8 /* box.png in Resources */ = {isa = PBXBuildFile; fileRef = 36912EF615C5D83F00B626B8 /* box.png */; };
 		36AA640315B30AD200128DA0 /* BGTStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AA640215B30AD200128DA0 /* BGTStatisticsViewController.m */; };
 		36AA640515B310C500128DA0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AA640415B310C500128DA0 /* MapKit.framework */; };
 		36AA640815B314AD00128DA0 /* BGTMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AA640715B314AD00128DA0 /* BGTMapViewController.m */; };
-		36AA640E15B610AF00128DA0 /* map_pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 36AA640D15B610AF00128DA0 /* map_pin.png */; };
 		36AA642815B8A37500128DA0 /* server.crt in Resources */ = {isa = PBXBuildFile; fileRef = 36AA642715B8A37500128DA0 /* server.crt */; };
-		36AA642B15B9D93200128DA0 /* map_pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36AA642A15B9D93200128DA0 /* map_pin@2x.png */; };
 		36AB05B215A9FE7E00560928 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AB05B115A9FE7E00560928 /* Security.framework */; };
 		36AB05B415A9FE8B00560928 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AB05B315A9FE8B00560928 /* libicucore.dylib */; };
 		36AB05B715A9FEFF00560928 /* BGTSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AB05B615A9FEFF00560928 /* BGTSocket.m */; };
@@ -69,8 +69,10 @@
 		3678B2CF15D597610017ABA5 /* BGTUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTUser.m; sourceTree = "<group>"; };
 		3678B2D115D841E70017ABA5 /* BGTColorManipulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTColorManipulation.h; sourceTree = "<group>"; };
 		3678B2D215D841E70017ABA5 /* BGTColorManipulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTColorManipulation.m; sourceTree = "<group>"; };
-		3678B2D415D846970017ABA5 /* pin_common.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin_common.png; sourceTree = "<group>"; };
-		3678B2D515D846970017ABA5 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
+		3678B2D415D846970017ABA5 /* pin_common@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin_common@2x.png"; sourceTree = "<group>"; };
+		3678B2D515D846970017ABA5 /* pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin@2x.png"; sourceTree = "<group>"; };
+		3678B2D815D84C710017ABA5 /* pin_common.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin_common.png; sourceTree = "<group>"; };
+		3678B2DA15D84C7E0017ABA5 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
 		36912EF615C5D83F00B626B8 /* box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box.png; sourceTree = "<group>"; };
 		36AA640115B30AD200128DA0 /* BGTStatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTStatisticsViewController.h; sourceTree = "<group>"; };
 		36AA640215B30AD200128DA0 /* BGTStatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTStatisticsViewController.m; sourceTree = "<group>"; };
@@ -78,9 +80,7 @@
 		36AA640615B314AD00128DA0 /* BGTMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTMapViewController.h; sourceTree = "<group>"; };
 		36AA640715B314AD00128DA0 /* BGTMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTMapViewController.m; sourceTree = "<group>"; };
 		36AA640915B352BB00128DA0 /* BGTSocketEventListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BGTSocketEventListener.h; sourceTree = "<group>"; };
-		36AA640D15B610AF00128DA0 /* map_pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pin.png; sourceTree = "<group>"; };
 		36AA642715B8A37500128DA0 /* server.crt */ = {isa = PBXFileReference; lastKnownFileType = file; path = server.crt; sourceTree = "<group>"; };
-		36AA642A15B9D93200128DA0 /* map_pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_pin@2x.png"; sourceTree = "<group>"; };
 		36AB05B115A9FE7E00560928 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		36AB05B315A9FE8B00560928 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		36AB05B515A9FEFF00560928 /* BGTSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTSocket.h; sourceTree = "<group>"; };
@@ -190,13 +190,13 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				3678B2D415D846970017ABA5 /* pin_common.png */,
-				3678B2D515D846970017ABA5 /* pin.png */,
+				3678B2DA15D84C7E0017ABA5 /* pin.png */,
+				3678B2D815D84C710017ABA5 /* pin_common.png */,
+				3678B2D415D846970017ABA5 /* pin_common@2x.png */,
+				3678B2D515D846970017ABA5 /* pin@2x.png */,
 				362D44AB15C9BBD100D43E22 /* Localizable.strings */,
 				36912EF615C5D83F00B626B8 /* box.png */,
-				36AA642A15B9D93200128DA0 /* map_pin@2x.png */,
 				36AA642715B8A37500128DA0 /* server.crt */,
-				36AA640D15B610AF00128DA0 /* map_pin.png */,
 				36AB05F715ACA89500560928 /* icons */,
 				8D1107310486CEB800E47090 /* Bladeguard Tracker-Info.plist */,
 			);
@@ -297,13 +297,13 @@
 				36AB05F415ACA7AE00560928 /* icon-72.png in Resources */,
 				36AB05F615ACA7B100560928 /* icon-144.png in Resources */,
 				362D44B515C9BE0600D43E22 /* Storyboard.storyboard in Resources */,
-				36AA640E15B610AF00128DA0 /* map_pin.png in Resources */,
 				36AA642815B8A37500128DA0 /* server.crt in Resources */,
-				36AA642B15B9D93200128DA0 /* map_pin@2x.png in Resources */,
 				36912EF715C5D83F00B626B8 /* box.png in Resources */,
 				362D44A915C9BBD100D43E22 /* Localizable.strings in Resources */,
-				3678B2D615D846970017ABA5 /* pin_common.png in Resources */,
-				3678B2D715D846970017ABA5 /* pin.png in Resources */,
+				3678B2D615D846970017ABA5 /* pin_common@2x.png in Resources */,
+				3678B2D715D846970017ABA5 /* pin@2x.png in Resources */,
+				3678B2D915D84C710017ABA5 /* pin_common.png in Resources */,
+				3678B2DB15D84C7E0017ABA5 /* pin.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
