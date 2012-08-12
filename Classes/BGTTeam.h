@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BGTColorManipulation.h"
 
 @interface BGTTeam : NSObject
 + (BGTTeam*) teamForName: (NSString*) name;

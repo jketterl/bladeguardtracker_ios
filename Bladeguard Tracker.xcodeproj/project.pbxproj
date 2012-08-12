@@ -20,6 +20,9 @@
 		3678B2CA15D592A80017ABA5 /* BGTTeam.m in Sources */ = {isa = PBXBuildFile; fileRef = 3678B2C915D592A80017ABA5 /* BGTTeam.m */; };
 		3678B2CD15D5973C0017ABA5 /* BGTUserMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3678B2CC15D5973C0017ABA5 /* BGTUserMarker.m */; };
 		3678B2D015D597610017ABA5 /* BGTUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3678B2CF15D597610017ABA5 /* BGTUser.m */; };
+		3678B2D315D841E70017ABA5 /* BGTColorManipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3678B2D215D841E70017ABA5 /* BGTColorManipulation.m */; };
+		3678B2D615D846970017ABA5 /* pin_common.png in Resources */ = {isa = PBXBuildFile; fileRef = 3678B2D415D846970017ABA5 /* pin_common.png */; };
+		3678B2D715D846970017ABA5 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 3678B2D515D846970017ABA5 /* pin.png */; };
 		36912EF715C5D83F00B626B8 /* box.png in Resources */ = {isa = PBXBuildFile; fileRef = 36912EF615C5D83F00B626B8 /* box.png */; };
 		36AA640315B30AD200128DA0 /* BGTStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AA640215B30AD200128DA0 /* BGTStatisticsViewController.m */; };
 		36AA640515B310C500128DA0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AA640415B310C500128DA0 /* MapKit.framework */; };
@@ -64,6 +67,10 @@
 		3678B2CC15D5973C0017ABA5 /* BGTUserMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTUserMarker.m; sourceTree = "<group>"; };
 		3678B2CE15D597610017ABA5 /* BGTUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTUser.h; sourceTree = "<group>"; };
 		3678B2CF15D597610017ABA5 /* BGTUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTUser.m; sourceTree = "<group>"; };
+		3678B2D115D841E70017ABA5 /* BGTColorManipulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTColorManipulation.h; sourceTree = "<group>"; };
+		3678B2D215D841E70017ABA5 /* BGTColorManipulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTColorManipulation.m; sourceTree = "<group>"; };
+		3678B2D415D846970017ABA5 /* pin_common.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin_common.png; sourceTree = "<group>"; };
+		3678B2D515D846970017ABA5 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
 		36912EF615C5D83F00B626B8 /* box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box.png; sourceTree = "<group>"; };
 		36AA640115B30AD200128DA0 /* BGTStatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTStatisticsViewController.h; sourceTree = "<group>"; };
 		36AA640215B30AD200128DA0 /* BGTStatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTStatisticsViewController.m; sourceTree = "<group>"; };
@@ -140,6 +147,8 @@
 				3678B2CC15D5973C0017ABA5 /* BGTUserMarker.m */,
 				3678B2CE15D597610017ABA5 /* BGTUser.h */,
 				3678B2CF15D597610017ABA5 /* BGTUser.m */,
+				3678B2D115D841E70017ABA5 /* BGTColorManipulation.h */,
+				3678B2D215D841E70017ABA5 /* BGTColorManipulation.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -181,6 +190,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3678B2D415D846970017ABA5 /* pin_common.png */,
+				3678B2D515D846970017ABA5 /* pin.png */,
 				362D44AB15C9BBD100D43E22 /* Localizable.strings */,
 				36912EF615C5D83F00B626B8 /* box.png */,
 				36AA642A15B9D93200128DA0 /* map_pin@2x.png */,
@@ -291,6 +302,8 @@
 				36AA642B15B9D93200128DA0 /* map_pin@2x.png in Resources */,
 				36912EF715C5D83F00B626B8 /* box.png in Resources */,
 				362D44A915C9BBD100D43E22 /* Localizable.strings in Resources */,
+				3678B2D615D846970017ABA5 /* pin_common.png in Resources */,
+				3678B2D715D846970017ABA5 /* pin.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +325,7 @@
 				3678B2CA15D592A80017ABA5 /* BGTTeam.m in Sources */,
 				3678B2CD15D5973C0017ABA5 /* BGTUserMarker.m in Sources */,
 				3678B2D015D597610017ABA5 /* BGTUser.m in Sources */,
+				3678B2D315D841E70017ABA5 /* BGTColorManipulation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

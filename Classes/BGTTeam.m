@@ -14,7 +14,8 @@
 }
 static NSMutableArray* teams;
 static BGTTeam* anonymousTeam;
-
+static NSArray* teamColors;
+               
 + (BGTTeam*) teamForName: (NSString*) name {
     NSError* error;
     NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:@"([0-9]+)" options:0 error:&error];
@@ -43,30 +44,31 @@ static BGTTeam* anonymousTeam;
     return anonymousTeam;
 }
 - (UIImage*) getImage {
+    if (teamColors == nil) {
+        teamColors = [NSArray arrayWithObjects:
+                      // Team 1 gets a nice red
+                      [BGTColorManipulation manipulationWithHue:15 Saturation:2 Value:1],
+                      // Team 2 gets the original png color, kind of orange
+                      [BGTColorManipulation manipulationWithHue:0 Saturation:1 Value:1],
+                      // Team 3 gets deep purple
+                      [BGTColorManipulation manipulationWithHue:109 Saturation:1.4 Value:.5],
+                      // Team 4 is bright blue
+                      [BGTColorManipulation manipulationWithHue:165 Saturation:1 Value:1.1],
+                      // Team 5 is bright green
+                      [BGTColorManipulation manipulationWithHue:-106 Saturation:1 Value:1.1],
+                      // Team 6 wishes to be blue
+                      [BGTColorManipulation manipulationWithHue:170 Saturation:1.6 Value:.6],
+                      // Team 7 is yellow
+                      [BGTColorManipulation manipulationWithHue:-37 Saturation:2.2 Value:1],
+                      nil];
+    }
     if (image == nil) {
-        if (teamId != 1) {
-            image = [UIImage imageNamed:@"map_pin.png"];
+        if (teamId <= 0 || [teamColors count] < teamId) {
+            NSLog(@"%i", teamId);
+            image = [UIImage imageNamed:@"pin.png"];
         } else {
-            // Make the input image recipe
-            CIImage *inputImage = [CIImage imageWithCGImage:[UIImage imageNamed:@"map_pin.png"].CGImage];
-            
-            // Make the filter
-            CIFilter *colorMatrixFilter = [CIFilter filterWithName:@"CIColorMatrix"];
-            [colorMatrixFilter setDefaults];
-            [colorMatrixFilter setValue:inputImage forKey:kCIInputImageKey];
-            [colorMatrixFilter setValue:[CIVector vectorWithX:0 Y:1 Z:0 W:0] forKey:@"inputRVector"];
-            [colorMatrixFilter setValue:[CIVector vectorWithX:1 Y:0 Z:0 W:0] forKey:@"inputGVector"];
-            [colorMatrixFilter setValue:[CIVector vectorWithX:0 Y:0 Z:1 W:0] forKey:@"inputBVector"];
-            [colorMatrixFilter setValue:[CIVector vectorWithX:0 Y:0 Z:0 W:1] forKey:@"inputAVector"];
-            
-            // Get the output image recipe
-            CIImage *outputImage = [colorMatrixFilter outputImage];
-            
-            // Create the context and instruct CoreImage to draw the output image recipe into a CGImage
-            CIContext *context = [CIContext contextWithOptions:nil];
-            CGImageRef cgimg = [context createCGImage:outputImage fromRect:[outputImage extent]];
-            
-            image = [UIImage imageWithCGImage:cgimg];
+            BGTColorManipulation* man = [teamColors objectAtIndex:teamId - 1];
+            image = [man manipulateImage:[UIImage imageNamed:@"pin_common.png"]];
         }
     }
     return image;
