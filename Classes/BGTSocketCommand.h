@@ -24,4 +24,5 @@
 - (void) updateResult:(NSDictionary*) data;
 - (void) updateResultWithBool:(BOOL) success;
 - (void) addCallback:(NSInvocation*) callback;
+- (NSDictionary *) getResult;
 @end

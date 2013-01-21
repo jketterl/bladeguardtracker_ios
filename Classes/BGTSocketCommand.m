@@ -43,7 +43,7 @@
 }
 - (void) updateResult:(NSDictionary *)resData {
     NSDictionary* res = [resData valueForKey:@"data"];
-    if (res != NULL) responseData = resData;
+    if (res != NULL) responseData = res;
     [self updateResultWithBool:[[resData valueForKey:@"success"] boolValue]];
 }
 - (void) updateResultWithBool:(BOOL)mySuccess {
@@ -57,5 +57,8 @@
     for (NSInvocation* callback in callbacks) {
         [callback invoke];
     }
+}
+- (NSDictionary *) getResult {
+    return responseData;
 }
 @end
