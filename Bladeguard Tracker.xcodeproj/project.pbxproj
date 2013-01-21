@@ -26,6 +26,10 @@
 		3678B2D915D84C710017ABA5 /* pin_common.png in Resources */ = {isa = PBXBuildFile; fileRef = 3678B2D815D84C710017ABA5 /* pin_common.png */; };
 		3678B2DB15D84C7E0017ABA5 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 3678B2DA15D84C7E0017ABA5 /* pin.png */; };
 		36912EF715C5D83F00B626B8 /* box.png in Resources */ = {isa = PBXBuildFile; fileRef = 36912EF615C5D83F00B626B8 /* box.png */; };
+		369D541616AC684700FC9A48 /* BGTGetEventsCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 369D541516AC684700FC9A48 /* BGTGetEventsCommand.m */; };
+		369D541C16AC6D3D00FC9A48 /* BGTEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 369D541B16AC6D3D00FC9A48 /* BGTEventViewController.m */; };
+		36A3082116ADD85F001044D7 /* cert.crt in Resources */ = {isa = PBXBuildFile; fileRef = 36A3082016ADD85F001044D7 /* cert.crt */; };
+		36A3082516ADD92D001044D7 /* BGTEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A3082416ADD92D001044D7 /* BGTEvent.m */; };
 		36AA640315B30AD200128DA0 /* BGTStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AA640215B30AD200128DA0 /* BGTStatisticsViewController.m */; };
 		36AA640515B310C500128DA0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AA640415B310C500128DA0 /* MapKit.framework */; };
 		36AA640815B314AD00128DA0 /* BGTMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AA640715B314AD00128DA0 /* BGTMapViewController.m */; };
@@ -74,6 +78,13 @@
 		3678B2D815D84C710017ABA5 /* pin_common.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin_common.png; sourceTree = "<group>"; };
 		3678B2DA15D84C7E0017ABA5 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
 		36912EF615C5D83F00B626B8 /* box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box.png; sourceTree = "<group>"; };
+		369D541416AC684700FC9A48 /* BGTGetEventsCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTGetEventsCommand.h; sourceTree = "<group>"; };
+		369D541516AC684700FC9A48 /* BGTGetEventsCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTGetEventsCommand.m; sourceTree = "<group>"; };
+		369D541A16AC6D3D00FC9A48 /* BGTEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTEventViewController.h; sourceTree = "<group>"; };
+		369D541B16AC6D3D00FC9A48 /* BGTEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTEventViewController.m; sourceTree = "<group>"; };
+		36A3082016ADD85F001044D7 /* cert.crt */ = {isa = PBXFileReference; lastKnownFileType = file; path = cert.crt; sourceTree = "<group>"; };
+		36A3082316ADD92D001044D7 /* BGTEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTEvent.h; sourceTree = "<group>"; };
+		36A3082416ADD92D001044D7 /* BGTEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTEvent.m; sourceTree = "<group>"; };
 		36AA640115B30AD200128DA0 /* BGTStatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTStatisticsViewController.h; sourceTree = "<group>"; };
 		36AA640215B30AD200128DA0 /* BGTStatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTStatisticsViewController.m; sourceTree = "<group>"; };
 		36AA640415B310C500128DA0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -126,6 +137,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				36A3082216ADD915001044D7 /* event */,
+				369D541316AC681C00FC9A48 /* commands */,
 				36AB05BD15AA1FCB00560928 /* GPSDelegate.h */,
 				36AB05BE15AA1FCB00560928 /* GPSDelegate.m */,
 				1D3623240D0F684500981E51 /* BladeGuardTrackerAppDelegate.h */,
@@ -149,6 +162,8 @@
 				3678B2CF15D597610017ABA5 /* BGTUser.m */,
 				3678B2D115D841E70017ABA5 /* BGTColorManipulation.h */,
 				3678B2D215D841E70017ABA5 /* BGTColorManipulation.m */,
+				369D541A16AC6D3D00FC9A48 /* BGTEventViewController.h */,
+				369D541B16AC6D3D00FC9A48 /* BGTEventViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -174,6 +189,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				36A3082016ADD85F001044D7 /* cert.crt */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -216,6 +232,24 @@
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		369D541316AC681C00FC9A48 /* commands */ = {
+			isa = PBXGroup;
+			children = (
+				369D541416AC684700FC9A48 /* BGTGetEventsCommand.h */,
+				369D541516AC684700FC9A48 /* BGTGetEventsCommand.m */,
+			);
+			name = commands;
+			sourceTree = "<group>";
+		};
+		36A3082216ADD915001044D7 /* event */ = {
+			isa = PBXGroup;
+			children = (
+				36A3082316ADD92D001044D7 /* BGTEvent.h */,
+				36A3082416ADD92D001044D7 /* BGTEvent.m */,
+			);
+			name = event;
 			sourceTree = "<group>";
 		};
 		36AB05BC15AA1BC200560928 /* Libraries */ = {
@@ -304,6 +338,7 @@
 				3678B2D715D846970017ABA5 /* pin@2x.png in Resources */,
 				3678B2D915D84C710017ABA5 /* pin_common.png in Resources */,
 				3678B2DB15D84C7E0017ABA5 /* pin.png in Resources */,
+				36A3082116ADD85F001044D7 /* cert.crt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +361,9 @@
 				3678B2CD15D5973C0017ABA5 /* BGTUserMarker.m in Sources */,
 				3678B2D015D597610017ABA5 /* BGTUser.m in Sources */,
 				3678B2D315D841E70017ABA5 /* BGTColorManipulation.m in Sources */,
+				369D541616AC684700FC9A48 /* BGTGetEventsCommand.m in Sources */,
+				369D541C16AC6D3D00FC9A48 /* BGTEventViewController.m in Sources */,
+				36A3082516ADD92D001044D7 /* BGTEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
