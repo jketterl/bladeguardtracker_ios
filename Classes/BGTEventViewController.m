@@ -53,7 +53,6 @@
         BGTEvent* event = [[BGTEvent alloc] initWithJSON:entry];
         [events addObject:event];
     }
-    NSLog(@"array size is now: %d", [events count]);
     [self.tableView reloadData];
 }
 
@@ -80,20 +79,26 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    NSLog(@"querying; %d", [events count]);
     return [events count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"%@", indexPath);
     static NSString *CellIdentifier = @"dunno";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
     BGTEvent* event = [events objectAtIndex:[indexPath row]];
     
     cell.textLabel.text = [event getName];
-    // Configure the cell...
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    
+    NSMutableString* detail = [[NSMutableString alloc] init];
+    [detail appendString:[formatter stringFromDate:[event getStart]]];
+    [detail appendString:@" "];
+    [detail appendString:[event getMapName]];
+    cell.detailTextLabel.text = detail;
     
     return cell;
 }

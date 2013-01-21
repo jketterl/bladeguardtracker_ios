@@ -10,9 +10,13 @@
 
 @interface BGTEvent : NSObject {
     @private NSString* name;
+    @private NSString* mapName;
+    @private NSDate* start;
 }
 
 - (id) initWithJSON: (NSDictionary*) json;
 - (NSString *) getName;
+- (NSString *) getMapName;
+- (NSDate *) getStart;
 
 @end
