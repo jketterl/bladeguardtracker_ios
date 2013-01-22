@@ -56,7 +56,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"dunno";
+    static NSString *CellIdentifier = @"event";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     BGTEvent* event = [events objectAtIndex:[indexPath row]];
