@@ -2,16 +2,21 @@
 //  BGTEventViewController.h
 //  Bladeguard Tracker
 //
-//  Created by Jakob Ketterl on 20.01.13.
+//  Created by Jakob Ketterl on 22.01.13.
 //  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "BGTEvent.h"
-#import "BGTEventList.h"
 
-@interface BGTEventViewController : UITableViewController {
-@private BGTEventList* events;
+@interface BGTEventViewController : UIViewController {
+@private BGTEvent* event;
 }
+
+@property (nonatomic) IBOutlet UILabel* nameLabel;
+@property (nonatomic) IBOutlet UILabel* mapNameLabel;
+@property (nonatomic) IBOutlet UILabel* startLabel;
+
+-(void) setEvent: (BGTEvent *) event;
 
 @end

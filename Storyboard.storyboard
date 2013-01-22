@@ -115,11 +115,11 @@
             </objects>
             <point key="canvasLocation" x="186" y="615"/>
         </scene>
-        <!--Event View Controller - Events-->
+        <!--Event List View Controller - Events-->
         <scene sceneID="fO5-gf-w85">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OD6-nz-pav" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="0N7-CF-2YN" customClass="BGTEventViewController" sceneMemberID="viewController">
+                <tableViewController id="0N7-CF-2YN" customClass="BGTEventListViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ksm-Wh-ZGo">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -149,6 +149,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="FxE-o2-jvQ" kind="push" identifier="showDetails" id="Ms7-tb-xlD"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -160,6 +163,70 @@
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="186" y="-583"/>
+        </scene>
+        <!--Event View Controller - Event detail-->
+        <scene sceneID="MXS-ex-xh4">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h0Q-GV-jLp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="FxE-o2-jvQ" customClass="BGTEventViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1zG-aq-YAb">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Strecke" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="PoK-rp-Kro">
+                                <rect key="frame" x="20" y="49" width="59" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Start" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="5Su-u2-m1H">
+                                <rect key="frame" x="20" y="78" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="g4E-VP-77L">
+                                <rect key="frame" x="119" y="20" width="181" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Dwh-bB-EiV">
+                                <rect key="frame" x="20" y="20" width="59" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="fUl-CG-T8h">
+                                <rect key="frame" x="119" y="49" width="181" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="vG4-vf-uBs">
+                                <rect key="frame" x="119" y="78" width="181" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Event detail" id="Vao-9k-LYv"/>
+                    <connections>
+                        <outlet property="mapNameLabel" destination="fUl-CG-T8h" id="nPj-bZ-MEQ"/>
+                        <outlet property="nameLabel" destination="g4E-VP-77L" id="CWc-Eh-9ke"/>
+                        <outlet property="startLabel" destination="vG4-vf-uBs" id="3xl-e3-elG"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="652" y="-583"/>
         </scene>
         <!--Map View Controller - Map view-->
         <scene sceneID="5GT-K2-R55">
@@ -275,35 +342,6 @@
     <resources>
         <image name="box.png" width="107" height="56"/>
     </resources>
-    <classes>
-        <class className="BGTEventViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BGTEventViewController.h"/>
-        </class>
-        <class className="BGTMapViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BGTMapViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="cycleTimeLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="cycleTimeView" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="speedLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="speedView" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="trackLengthLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="trackLengthView" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="BGTStatisticsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BGTStatisticsViewController.h"/>
-        </class>
-        <class className="BladeGuardTrackerViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BladeGuardTrackerViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="trackerSwitchChanged:"/>
-                <relationship kind="outlet" name="mapButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="trackerSwitch" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="trackerSwitchLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

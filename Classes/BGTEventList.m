@@ -75,4 +75,8 @@
     return cell;
 }
 
+- (BGTEvent *) eventAtIndex:(int)index {
+    return [events objectAtIndex:index];
+}
+
 @end
