@@ -34,7 +34,7 @@
     [socket addListener:self];
     [socket subscribeCategoryArray:[NSArray arrayWithObjects:@"map", @"movements", @"quit", @"stats", nil] forEvent:event];
     // Localization
-    self.title = NSLocalizedString(@"Map View", nil);
+    self.title = NSLocalizedString([event getMapName], nil);
     self.trackLengthLabel.text = NSLocalizedString(@"Track length", nil);
     self.speedLabel.text = NSLocalizedString(@"Speed", nil);
     self.cycleTimeLabel.text = NSLocalizedString(@"Cycle time", nil);
