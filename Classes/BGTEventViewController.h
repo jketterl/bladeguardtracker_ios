@@ -7,13 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BGTSocket.h"
-#import "BGTSocketCommand.h"
-#import "BGTGetEventsCommand.h"
 #import "BGTEvent.h"
+#import "BGTEventList.h"
 
 @interface BGTEventViewController : UITableViewController {
-@private NSMutableArray* events;
+@private BGTEventList* events;
 }
 
 @end
