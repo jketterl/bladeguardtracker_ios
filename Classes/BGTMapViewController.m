@@ -32,7 +32,7 @@
     userMarkers = [[NSMutableDictionary alloc] initWithCapacity:15];
     socket = [BGTSocket getSharedInstanceWithStake:self];
     [socket addListener:self];
-    [socket subscribeCategoryArray:[NSArray arrayWithObjects:@"map", @"movements", @"quit", @"stats", nil]];
+    [socket subscribeCategoryArray:[NSArray arrayWithObjects:@"map", @"movements", @"quit", @"stats", nil] forEvent:event];
     // Localization
     self.title = NSLocalizedString(@"Map View", nil);
     self.trackLengthLabel.text = NSLocalizedString(@"Track length", nil);
@@ -50,7 +50,7 @@
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-    [socket unsubscribeCategoryArray:[NSArray arrayWithObjects:@"map", @"movements", @"quit", @"stats", nil]];
+    [socket unsubscribeCategoryArray:[NSArray arrayWithObjects:@"map", @"movements", @"quit", @"stats", nil] forEvent:event];
     [socket removeListener:self];
     [socket removeStake:self];
     socket = nil;
@@ -260,6 +260,10 @@
 
     annView.image = [[[marker getUser] getTeam] getImage];
     return annView;
+}
+
+- (void) setEvent:(BGTEvent *) newEvent {
+    event = newEvent;
 }
 
 @end

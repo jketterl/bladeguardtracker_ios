@@ -13,12 +13,14 @@
 #import "BGTTeam.h"
 #import "BGTUser.h"
 #import "BGTUserMarker.h"
+#import "BGTEvent.h"
 
 @interface BGTMapViewController : UIViewController <BGTSocketEventListener, MKMapViewDelegate> {
     @private NSMutableDictionary* userMarkers;
     @private MKPolyline* route;
     @private MKPolyline* track;
     @private int from, to;
+    @private BGTEvent* event;
 }
 @property (nonatomic) IBOutlet MKMapView* mapView;
 @property (nonatomic) BGTSocket* socket;
@@ -28,4 +30,7 @@
 @property (nonatomic) IBOutlet UILabel* trackLengthLabel;
 @property (nonatomic) IBOutlet UILabel* speedLabel;
 @property (nonatomic) IBOutlet UILabel* cycleTimeLabel;
+
+- (void) setEvent: (BGTEvent*) event;
+
 @end

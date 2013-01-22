@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface BGTEvent : NSObject {
+    @private int eventId;
     @private NSString* name;
     @private NSString* mapName;
     @private NSDate* start;
@@ -18,5 +19,6 @@
 - (NSString *) getName;
 - (NSString *) getMapName;
 - (NSDate *) getStart;
+- (int) getId;
 
 @end

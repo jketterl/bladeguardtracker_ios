@@ -13,6 +13,7 @@
 - (id) initWithJSON:(NSDictionary *)json {
     self = [super init];
     if (self) {
+        eventId = [[json valueForKey:@"id"] intValue];
         name = [json valueForKey:@"title"];
         mapName = [json valueForKey:@"mapName"];
         
@@ -36,6 +37,10 @@
 
 - (NSDate *) getStart {
     return start;
+}
+
+- (int) getId {
+    return eventId;
 }
 
 @end

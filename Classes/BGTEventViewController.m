@@ -52,4 +52,11 @@
     event = newEvent;
 }
 
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"map"]) {
+        BGTMapViewController* destination = [segue destinationViewController];
+        [destination setEvent: event];
+    }
+}
+
 @end

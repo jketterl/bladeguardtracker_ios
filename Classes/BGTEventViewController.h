@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BGTEvent.h"
+#import "BGTMapViewController.h"
 
 @interface BGTEventViewController : UIViewController {
 @private BGTEvent* event;

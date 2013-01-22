@@ -89,7 +89,7 @@
         }
     }
     // re-subscribe to any events that have been previously subscribed, if any
-    [self subscribeCategoryArray:subscriptions];    
+    //[self subscribeCategoryArray:subscriptions];    
 }
 - (BGTSocketCommand*) authenticate {
     if (!shouldBeOnline) return NULL;
@@ -214,26 +214,26 @@
     [webSocket send:[message JSONRepresentation]];
 }
 
-- (void) subscribeCategory: (NSString*) category {
+- (void) subscribeCategory: (NSString*) category forEvent: (BGTEvent*) event {
     NSArray* categories = [NSArray arrayWithObjects:category, nil];
-    [self subscribeCategoryArray:categories];
+    [self subscribeCategoryArray:categories forEvent:event];
 }
 
-- (void) subscribeCategoryArray: (NSArray*) categories {
-    NSDictionary* data = [NSDictionary dictionaryWithObject:categories forKey:@"category"];
+- (void) subscribeCategoryArray: (NSArray*) categories forEvent: (BGTEvent*) event {
+    NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:categories, @"category", [NSNumber numberWithInt:[event getId]], @"eventId", nil];
     BGTSocketCommand* command = [[BGTSocketCommand alloc] initWithCommand:@"subscribeUpdates" andData:data];
     [self sendCommand:command doQueue:NO];
     [subscriptions addObjectsFromArray:categories];
 }
 
-- (void) unsubscribeCategory: (NSString*) category {
+- (void) unsubscribeCategory: (NSString*) category forEvent: (BGTEvent*) event {
     NSArray* categories = [NSArray arrayWithObjects:category, nil];
-    [self unsubscribeCategoryArray:categories];
+    [self unsubscribeCategoryArray:categories forEvent:event];
 }
 
-- (void) unsubscribeCategoryArray: (NSArray *) categories {
-    NSDictionary* data = [NSDictionary dictionaryWithObject:categories forKey:@"category"];
-    BGTSocketCommand* command = [[BGTSocketCommand alloc] initWithCommand:@"unSubscribeUpdates" andData:data];
+- (void) unsubscribeCategoryArray: (NSArray *) categories forEvent: (BGTEvent*) event {
+    NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:categories, @"category", [NSNumber numberWithInt:[event getId]], @"eventId", nil];
+    BGTSocketCommand* command = [[BGTSocketCommand alloc] initWithCommand:@"unsubscribeUpdates" andData:data];
     [self sendCommand:command doQueue:NO];
     [subscriptions removeObjectsInArray:categories];
 }
