@@ -45,7 +45,7 @@
     return eventId;
 }
 
-- (void) addSubscriber:(BGTEventSubscriber *)subscriber forCategories:(NSArray *)categories {
+- (void) addSubscriber:(id<BGTEventSubscriber>)subscriber forCategories:(NSArray *)categories {
     NSMutableArray* newCategories = [NSMutableArray arrayWithCapacity:5];
     for (NSString* category in categories) {
         NSMutableArray* catSub = [subscriptions objectForKey:category];
@@ -65,7 +65,7 @@
     }
 }
 
-- (void) removeSubscriber:(BGTEventSubscriber *)subscriber {
+- (void) removeSubscriber:(id<BGTEventSubscriber>)subscriber {
     NSMutableArray* obsoleteCategories = [NSMutableArray arrayWithCapacity:5];
     for (NSString* category in subscriptions) {
         NSMutableArray* subscribers = [subscriptions objectForKey:category];
