@@ -32,7 +32,7 @@
     userMarkers = [[NSMutableDictionary alloc] initWithCapacity:15];
     socket = [BGTSocket getSharedInstanceWithStake:self];
     [socket addListener:self];
-    [socket subscribeCategoryArray:[NSArray arrayWithObjects:@"map", @"movements", @"quit", @"stats", nil] forEvent:event];
+    [event addSubscriber:self forCategories:[NSArray arrayWithObjects:@"map", @"movements", @"quit", @"stats", nil]];
     // Localization
     self.title = NSLocalizedString([event getMapName], nil);
     self.trackLengthLabel.text = NSLocalizedString(@"Track length", nil);
@@ -50,7 +50,7 @@
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-    [socket unsubscribeCategoryArray:[NSArray arrayWithObjects:@"map", @"movements", @"quit", @"stats", nil] forEvent:event];
+    [event removeSubscriber:self];
     [socket removeListener:self];
     [socket removeStake:self];
     socket = nil;
@@ -264,6 +264,10 @@
 
 - (void) setEvent:(BGTEvent *) newEvent {
     event = newEvent;
+}
+
+- (void) receiveMessage:(NSString *)type withData:(NSDictionary *)data fromEvent:(BGTEvent *)event {
+    
 }
 
 @end
