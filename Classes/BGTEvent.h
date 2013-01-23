@@ -31,7 +31,7 @@
 - (NSDate *) getStart;
 - (int) getId;
 
-- (void) addSubscriber: (BGTEventSubscriber*) subscriber forCategories:(NSArray *) categories;
-- (void) removeSubscriber: (BGTEventSubscriber*) subscriber;
+- (void) addSubscriber: (id<BGTEventSubscriber>) subscriber forCategories:(NSArray *) categories;
+- (void) removeSubscriber: (id<BGTEventSubscriber>) subscriber;
 
 @end
