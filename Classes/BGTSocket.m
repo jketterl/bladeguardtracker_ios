@@ -214,30 +214,6 @@
     [webSocket send:[message JSONRepresentation]];
 }
 
-- (void) subscribeCategory: (NSString*) category forEvent: (BGTEvent*) event {
-    NSArray* categories = [NSArray arrayWithObjects:category, nil];
-    [self subscribeCategoryArray:categories forEvent:event];
-}
-
-- (void) subscribeCategoryArray: (NSArray*) categories forEvent: (BGTEvent*) event {
-    NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:categories, @"category", [NSNumber numberWithInt:[event getId]], @"eventId", nil];
-    BGTSocketCommand* command = [[BGTSocketCommand alloc] initWithCommand:@"subscribeUpdates" andData:data];
-    [self sendCommand:command doQueue:NO];
-    [subscriptions addObjectsFromArray:categories];
-}
-
-- (void) unsubscribeCategory: (NSString*) category forEvent: (BGTEvent*) event {
-    NSArray* categories = [NSArray arrayWithObjects:category, nil];
-    [self unsubscribeCategoryArray:categories forEvent:event];
-}
-
-- (void) unsubscribeCategoryArray: (NSArray *) categories forEvent: (BGTEvent*) event {
-    NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:categories, @"category", [NSNumber numberWithInt:[event getId]], @"eventId", nil];
-    BGTSocketCommand* command = [[BGTSocketCommand alloc] initWithCommand:@"unsubscribeUpdates" andData:data];
-    [self sendCommand:command doQueue:NO];
-    [subscriptions removeObjectsInArray:categories];
-}
-
 - (void) addListener: (id<BGTSocketEventListener>) listener {
     if ([listeners containsObject:listener]) return;
     [listeners addObject:listener];
