@@ -166,7 +166,6 @@
     
     NSString* path = [[NSBundle mainBundle] pathForResource:@"config" ofType:@"plist"];
     NSDictionary* config = [[NSDictionary alloc] initWithContentsOfFile:path];
-    NSLog(@"%@", [config JSONRepresentation]);
     
     NSMutableString* urlString = [[NSMutableString alloc] init];
     [urlString appendString:@"wss://"];
