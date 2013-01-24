@@ -62,6 +62,8 @@
         
         BGTSocket* socket = [BGTSocket getSharedInstance];
         [socket sendCommand:command];
+        
+        [socket addListener:self];
     }
 }
 
@@ -84,6 +86,30 @@
     for (NSString* category in obsoleteCategories) {
         [subscriptions removeObjectForKey:category];
     }
+    
+    if ([subscriptions count] == 0) {
+        [[BGTSocket getSharedInstance] removeListener:self];
+    }
+}
+
+- (void) receiveUpdate: (NSDictionary*) data {
+    for (NSString* key in data) {
+        NSArray* messages = [data objectForKey:key];
+        NSArray* subscribers = [subscriptions objectForKey:key];
+        if (subscribers == nil) continue;
+        for (NSDictionary* message in messages) {
+            NSNumber* eId = [message valueForKey:@"eventId"];
+            // if (eId == nil) NSLog(@"WARN: event update without event ID");
+            if ([eId intValue] != [self getId]) continue;
+            for (id<BGTEventSubscriber> sub in subscribers) {
+                [sub receiveMessage:key withData:message fromEvent:self];
+            }
+        }
+    }
+}
+
+- (void) receiveStatus: (int) status {
+    // this is not really interesting for us.
 }
 
 @end

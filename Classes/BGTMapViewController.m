@@ -74,10 +74,7 @@
 }
 
 - (void) receiveUpdate: (NSDictionary*) data {
-    [self processMap:[data valueForKey:@"map"]];
-    [self processMovements:[data valueForKey:@"movements"]];
-    [self processQuits:[data valueForKey:@"quit"]];
-    [self processStats:[data valueForKey:@"stats"]];
+    // nothing happening here. we receive our updates through the event
 }
 
 - (void) receiveStatus:(int)status {
@@ -100,10 +97,7 @@
     }
 }
 
-- (void) processStats: (NSArray*) statsArray {
-    if (statsArray == nil) return;
-    NSDictionary* stats = [statsArray objectAtIndex:0];
-
+- (void) processStats: (NSDictionary*) stats {
     NSNumber* trackLength = [stats valueForKey:@"bladeNightLength"];
     if (trackLength != NULL) {
         NSNumberFormatter* format = [[NSNumberFormatter alloc] init];
@@ -115,7 +109,7 @@
         [self.trackLengthView setText:@"n/a"];
     }
     
-    NSNumber* speed = [stats objectForKey:@"bladeNightSpeed"];
+    NSNumber* speed = [stats valueForKey:@"bladeNightSpeed"];
     if (speed != NULL) {
         NSNumberFormatter* format = [[NSNumberFormatter alloc] init];
         [format setFormatterBehavior:NSNumberFormatterBehavior10_4];
@@ -171,44 +165,34 @@
     [self.mapView addOverlay:route];
 }
 
-- (void) processQuits: (NSArray*) quits {
-    if (quits == nil) return;
-    for (int i = 0, count = [quits count]; i < count; i++) {
-        NSDictionary* quit = [quits objectAtIndex:i];
-        NSDictionary* user = [quit objectForKey:@"user"];
-        NSNumber* userId = [user objectForKey:@"id"];
-        MKPointAnnotation* marker = [userMarkers objectForKey:userId];
-        if (marker == nil) continue;
-        [self.mapView removeAnnotation:marker];
-        [userMarkers removeObjectForKey:userId];
-    }
+- (void) processQuits: (NSDictionary*) quit {
+    NSDictionary* user = [quit objectForKey:@"user"];
+    NSNumber* userId = [user objectForKey:@"id"];
+    MKPointAnnotation* marker = [userMarkers objectForKey:userId];
+    if (marker == nil) return;
+    [self.mapView removeAnnotation:marker];
+    [userMarkers removeObjectForKey:userId];
 }
 
-- (void) processMovements: (NSArray*) movements {
-    if (movements == nil) return;
-    for (int i = 0, count = [movements count]; i < count; i++) {
-        NSDictionary* movement = [movements objectAtIndex:i];
-        NSDictionary* user = [movement objectForKey:@"user"];
-        NSNumber* userId = [user objectForKey:@"id"];
-        BGTUser* userObj = [BGTUser userWithId:[userId intValue]];
-        NSString* teamName = [user objectForKey:@"team"];
-        BGTTeam* teamObj = [BGTTeam teamForName:teamName];
-        [userObj setTeam:teamObj];
-        
-        NSDictionary* location = [movement objectForKey:@"location"];
-        BGTUserMarker* marker = [userMarkers objectForKey:userId];
-        if (marker == nil) {
-            marker = [BGTUserMarker markerWithUser:userObj];
-            [self.mapView addAnnotation:marker];
-            [userMarkers setObject:marker forKey:userId];
-        }
-        marker.coordinate = CLLocationCoordinate2DMake([[location objectForKey:@"lat"] floatValue], [[location objectForKey:@"lon"] floatValue]);
+- (void) processMovements: (NSDictionary*) movement {
+    NSDictionary* user = [movement objectForKey:@"user"];
+    NSNumber* userId = [user objectForKey:@"id"];
+    BGTUser* userObj = [BGTUser userWithId:[userId intValue]];
+    NSString* teamName = [user objectForKey:@"team"];
+    BGTTeam* teamObj = [BGTTeam teamForName:teamName];
+    [userObj setTeam:teamObj];
+    
+    NSDictionary* location = [movement objectForKey:@"location"];
+    BGTUserMarker* marker = [userMarkers objectForKey:userId];
+    if (marker == nil) {
+        marker = [BGTUserMarker markerWithUser:userObj];
+        [self.mapView addAnnotation:marker];
+        [userMarkers setObject:marker forKey:userId];
     }
+    marker.coordinate = CLLocationCoordinate2DMake([[location objectForKey:@"lat"] floatValue], [[location objectForKey:@"lon"] floatValue]);
 }
 
-- (void) processMap: (NSArray*) mapArray {
-    if (mapArray == nil) return;
-    NSDictionary* map = [mapArray objectAtIndex:0];
+- (void) processMap: (NSDictionary*) map {
     NSArray* points = [map objectForKey:@"points"];
     int count = [points count];
     CLLocationCoordinate2D coordinates[count];
@@ -267,7 +251,17 @@
 }
 
 - (void) receiveMessage:(NSString *)type withData:(NSDictionary *)data fromEvent:(BGTEvent *)event {
-    
+    if ([type isEqualToString:@"map"]) {
+        [self processMap:data];
+    } else if ([type isEqualToString:@"movements"]) {
+        [self processMovements:data];
+    } else if ([type isEqualToString:@"quit"]) {
+        [self processQuits:data];
+    } else if ([type isEqualToString:@"stats"]) {
+        [self processStats:data];
+    } else {
+        NSLog(@"received unknown message type: %@", type);
+    }
 }
 
 @end

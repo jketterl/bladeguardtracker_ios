@@ -7,16 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BGTEventSubscriber.h"
 
+#import "BGTSocket.h"
+#import "BGTSocketEventListener.h"
+#import "BGTEventSubscriber.h"
 #import "BGTSubscribeUpdatesCommand.h"
 #import "BGTUnsubscribeUpdatesCommand.h"
-#import "BGTSocket.h"
 
 // forward class declaration due to circular dependency between BGTEvent & BGTEventSubscriber
-@class BGTEventSubscriber;
+@protocol BGTEventSubscriber;
 
-@interface BGTEvent : NSObject {
+@interface BGTEvent : NSObject <BGTSocketEventListener> {
     @private int eventId;
     @private NSString* name;
     @private NSString* mapName;
