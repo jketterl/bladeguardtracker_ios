@@ -165,7 +165,7 @@
     [self.mapView addOverlay:route];
 }
 
-- (void) processQuits: (NSDictionary*) quit {
+- (void) processQuit: (NSDictionary*) quit {
     NSDictionary* user = [quit objectForKey:@"user"];
     NSNumber* userId = [user objectForKey:@"id"];
     MKPointAnnotation* marker = [userMarkers objectForKey:userId];
@@ -251,17 +251,22 @@
 }
 
 - (void) receiveMessage:(NSString *)type withData:(NSDictionary *)data fromEvent:(BGTEvent *)event {
-    if ([type isEqualToString:@"map"]) {
-        [self processMap:data];
-    } else if ([type isEqualToString:@"movements"]) {
-        [self processMovements:data];
-    } else if ([type isEqualToString:@"quit"]) {
-        [self processQuits:data];
-    } else if ([type isEqualToString:@"stats"]) {
-        [self processStats:data];
-    } else {
-        NSLog(@"received unknown message type: %@", type);
+    NSMutableString* method = [[NSMutableString alloc] init];
+    [method appendString:@"process"];
+    [method appendString:[type capitalizedString]];
+    [method appendString:@":"];
+    
+    SEL s = NSSelectorFromString(method);
+    if (! [self respondsToSelector:s]) {
+        NSLog(@"Don't know how to handle update of type \"%@\"", type);
+        return;
     }
+    NSMethodSignature* sig = [self methodSignatureForSelector:s];
+    NSInvocation* inv = [NSInvocation invocationWithMethodSignature:sig];
+    [inv setTarget:self];
+    [inv setSelector:s];
+    [inv setArgument:&data atIndex:2];
+    [inv invoke];
 }
 
 @end
