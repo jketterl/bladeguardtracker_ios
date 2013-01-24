@@ -163,8 +163,17 @@
     
     shouldBeOnline = YES;
     backlog = [NSMutableArray arrayWithCapacity:10];
+    
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"config" ofType:@"plist"];
+    NSDictionary* config = [[NSDictionary alloc] initWithContentsOfFile:path];
+    NSLog(@"%@", [config JSONRepresentation]);
+    
+    NSMutableString* urlString = [[NSMutableString alloc] init];
+    [urlString appendString:@"wss://"];
+    [urlString appendString:[config objectForKey:@"server"]];
+    [urlString appendString:@"/bgt/socket"];
 
-    NSURL* url = [NSURL URLWithString:@"wss://bgt.justjakob.de/bgt/socket"];
+    NSURL* url = [NSURL URLWithString:urlString];
     NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL:url];
     
     NSString *thePath = [[NSBundle mainBundle] pathForResource:@"server" ofType:@"crt"];
