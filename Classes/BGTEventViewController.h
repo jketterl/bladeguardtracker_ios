@@ -17,6 +17,7 @@
 @property (nonatomic) IBOutlet UILabel* nameLabel;
 @property (nonatomic) IBOutlet UILabel* mapNameLabel;
 @property (nonatomic) IBOutlet UILabel* startLabel;
+@property (nonatomic) IBOutlet UILabel* weatherLabel;
 
 -(void) setEvent: (BGTEvent *) event;
 

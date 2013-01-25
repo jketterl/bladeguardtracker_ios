@@ -22,6 +22,7 @@
     @private NSString* name;
     @private NSString* mapName;
     @private NSDate* start;
+    @private NSNumber* weather;
     
     @private NSMutableDictionary* subscriptions;
 }
@@ -31,6 +32,7 @@
 - (NSString *) getMapName;
 - (NSDate *) getStart;
 - (int) getId;
+- (NSNumber *) getWeather;
 
 - (void) addSubscriber: (id<BGTEventSubscriber>) subscriber forCategories:(NSArray *) categories;
 - (void) removeSubscriber: (id<BGTEventSubscriber>) subscriber;

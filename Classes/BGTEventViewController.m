@@ -14,7 +14,7 @@
 
 @implementation BGTEventViewController
 
-@synthesize nameLabel, startLabel, mapNameLabel;
+@synthesize nameLabel, startLabel, mapNameLabel, weatherLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,6 +35,14 @@
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
     self.startLabel.text = [formatter stringFromDate:[event getStart]];
+    NSNumber* weather = [event getWeather];
+    if (weather == (NSNumber*)[NSNull null]) {
+        self.weatherLabel.text = @"No decision yet";
+    } else if ([weather intValue] == 1) {
+        self.weatherLabel.text = @"Yes, we're rolling!";
+    } else {
+        self.weatherLabel.text = @"Event cancelled";
+    }
 }
 
 - (void)viewDidUnload

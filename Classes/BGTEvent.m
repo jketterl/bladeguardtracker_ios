@@ -24,6 +24,8 @@
         [parser setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
         start = [parser dateFromString:[json valueForKey:@"start"]];
         
+        weather = [json valueForKey:@"weather"];
+        
         subscriptions = [NSMutableDictionary dictionaryWithCapacity:5];
     }
     return self;
@@ -43,6 +45,10 @@
 
 - (int) getId {
     return eventId;
+}
+
+- (NSNumber *) getWeather {
+    return weather;
 }
 
 - (void) addSubscriber:(id<BGTEventSubscriber>)subscriber forCategories:(NSArray *)categories {
