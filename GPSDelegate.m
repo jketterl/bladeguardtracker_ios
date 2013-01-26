@@ -12,6 +12,15 @@
 
 @synthesize locationManager, socket;
 
++ (GPSDelegate *) getSharedInstance {
+    static dispatch_once_t pred;
+    static GPSDelegate* shared = nil;
+    dispatch_once(&pred, ^{
+        shared = [[GPSDelegate alloc] init];
+    });
+    return shared;
+}
+
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     if (newLocation.horizontalAccuracy > 50) return;
     BGTLogCommand* command = [[BGTLogCommand alloc] initWithLocation:newLocation];
@@ -34,4 +43,5 @@
     locationManager.delegate = nil;
     socket = nil;
 }
+
 @end

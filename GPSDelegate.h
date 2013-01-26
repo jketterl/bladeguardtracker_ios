@@ -15,6 +15,7 @@
 @interface GPSDelegate : NSObject <CLLocationManagerDelegate>
 @property (nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) BGTSocket* socket;
++ (GPSDelegate *) getSharedInstance;
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation;
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error;
 - (void)startUpdates;
