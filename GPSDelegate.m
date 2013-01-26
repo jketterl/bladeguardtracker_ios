@@ -13,6 +13,7 @@
 @synthesize locationManager, socket;
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    if (newLocation.horizontalAccuracy > 50) return;
     BGTLogCommand* command = [[BGTLogCommand alloc] initWithLocation:newLocation];
     [socket sendCommand:command];
 }
