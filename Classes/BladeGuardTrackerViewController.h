@@ -8,14 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "GPSDelegate.h"
+#import "BGTEventList.h"
+#import "BGTEventViewController.h"
 
-@interface BladeGuardTrackerViewController : UIViewController
+@interface BladeGuardTrackerViewController : UIViewController {
+    @private BGTEventList* events;
+}
 
 @property (nonatomic) IBOutlet UISwitch* trackerSwitch;
 @property (nonatomic) GPSDelegate* gps;
 - (IBAction)trackerSwitchChanged:(id)sender;
 @property (nonatomic) IBOutlet UILabel* trackerSwitchLabel;
-@property (nonatomic) IBOutlet UIButton* mapButton;
+@property (nonatomic) IBOutlet UITableView* tableView;
 
 @end
 

@@ -27,7 +27,6 @@
 		3678B2DB15D84C7E0017ABA5 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 3678B2DA15D84C7E0017ABA5 /* pin.png */; };
 		36912EF715C5D83F00B626B8 /* box.png in Resources */ = {isa = PBXBuildFile; fileRef = 36912EF615C5D83F00B626B8 /* box.png */; };
 		369D541616AC684700FC9A48 /* BGTGetEventsCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 369D541516AC684700FC9A48 /* BGTGetEventsCommand.m */; };
-		369D541C16AC6D3D00FC9A48 /* BGTEventListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 369D541B16AC6D3D00FC9A48 /* BGTEventListViewController.m */; };
 		36A3082516ADD92D001044D7 /* BGTEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A3082416ADD92D001044D7 /* BGTEvent.m */; };
 		36A3082816AF1D2F001044D7 /* BGTEventList.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A3082716AF1D2F001044D7 /* BGTEventList.m */; };
 		36A3082C16AF2750001044D7 /* BGTEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A3082B16AF2750001044D7 /* BGTEventViewController.m */; };
@@ -86,8 +85,6 @@
 		36912EF615C5D83F00B626B8 /* box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box.png; sourceTree = "<group>"; };
 		369D541416AC684700FC9A48 /* BGTGetEventsCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTGetEventsCommand.h; sourceTree = "<group>"; };
 		369D541516AC684700FC9A48 /* BGTGetEventsCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTGetEventsCommand.m; sourceTree = "<group>"; };
-		369D541A16AC6D3D00FC9A48 /* BGTEventListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTEventListViewController.h; sourceTree = "<group>"; };
-		369D541B16AC6D3D00FC9A48 /* BGTEventListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTEventListViewController.m; sourceTree = "<group>"; };
 		36A3082316ADD92D001044D7 /* BGTEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTEvent.h; sourceTree = "<group>"; };
 		36A3082416ADD92D001044D7 /* BGTEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTEvent.m; sourceTree = "<group>"; };
 		36A3082616AF1D2F001044D7 /* BGTEventList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTEventList.h; sourceTree = "<group>"; };
@@ -279,8 +276,6 @@
 				36AA640215B30AD200128DA0 /* BGTStatisticsViewController.m */,
 				28D7ACF60DDB3853001CB0EB /* BladeGuardTrackerViewController.h */,
 				28D7ACF70DDB3853001CB0EB /* BladeGuardTrackerViewController.m */,
-				369D541A16AC6D3D00FC9A48 /* BGTEventListViewController.h */,
-				369D541B16AC6D3D00FC9A48 /* BGTEventListViewController.m */,
 				36A3082A16AF2750001044D7 /* BGTEventViewController.h */,
 				36A3082B16AF2750001044D7 /* BGTEventViewController.m */,
 			);
@@ -409,7 +404,6 @@
 				3678B2D015D597610017ABA5 /* BGTUser.m in Sources */,
 				3678B2D315D841E70017ABA5 /* BGTColorManipulation.m in Sources */,
 				369D541616AC684700FC9A48 /* BGTGetEventsCommand.m in Sources */,
-				369D541C16AC6D3D00FC9A48 /* BGTEventListViewController.m in Sources */,
 				36A3082516ADD92D001044D7 /* BGTEvent.m in Sources */,
 				36A3082816AF1D2F001044D7 /* BGTEventList.m in Sources */,
 				36A3082C16AF2750001044D7 /* BGTEventViewController.m in Sources */,

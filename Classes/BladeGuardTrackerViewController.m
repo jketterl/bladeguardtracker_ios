@@ -10,7 +10,7 @@
 
 @implementation BladeGuardTrackerViewController
 
-@synthesize trackerSwitch, gps, mapButton, trackerSwitchLabel;
+@synthesize trackerSwitch, gps, trackerSwitchLabel, tableView;
 
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
@@ -33,7 +33,10 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     self.trackerSwitchLabel.text = NSLocalizedString(@"Enable tracker", nil);
-    [self.mapButton setTitle: NSLocalizedString(@"View on map", nil) forState:UIControlStateNormal];
+    
+    events = [[BGTEventList alloc] initWithTableview:self.tableView];
+    [self.tableView setDataSource:events];
+    
     [super viewDidLoad];
 }
 
@@ -72,4 +75,13 @@
         [[self getGps] endUpdates];
     }
 }
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"showDetails"]) {
+        NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
+        BGTEventViewController *detailViewController = [segue destinationViewController];
+        [detailViewController setEvent: [events eventAtIndex:selectedRowIndex.row]];
+    }
+}
+
 @end
