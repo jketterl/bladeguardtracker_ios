@@ -15,10 +15,6 @@
     @private BGTEventList* events;
 }
 
-@property (nonatomic) IBOutlet UISwitch* trackerSwitch;
-@property (nonatomic) GPSDelegate* gps;
-- (IBAction)trackerSwitchChanged:(id)sender;
-@property (nonatomic) IBOutlet UILabel* trackerSwitchLabel;
 @property (nonatomic) IBOutlet UITableView* tableView;
 
 @end
