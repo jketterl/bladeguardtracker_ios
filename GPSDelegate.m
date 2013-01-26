@@ -13,13 +13,7 @@
 @synthesize locationManager, socket;
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    NSMutableDictionary* data = [NSMutableDictionary dictionaryWithCapacity:2];
-    [data setValue:[NSNumber numberWithFloat:newLocation.coordinate.latitude] forKey:@"lat"];
-    [data setValue:[NSNumber numberWithFloat:newLocation.coordinate.longitude] forKey:@"lon"];
-    if (newLocation.speed >= 0) {
-        [data setValue:[NSNumber numberWithFloat:newLocation.speed] forKey:@"speed"];
-    }
-    BGTSocketCommand* command = [[BGTSocketCommand alloc] initWithCommand:@"log" andData:data];
+    BGTLogCommand* command = [[BGTLogCommand alloc] initWithLocation:newLocation];
     [socket sendCommand:command];
 }
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
@@ -32,7 +26,7 @@
     [locationManager startUpdatingLocation];
 }
 - (void) endUpdates {
-    BGTSocketCommand* quit = [[BGTSocketCommand alloc] initWithCommand:@"quit"];
+    BGTQuitCommand* quit = [[BGTQuitCommand alloc] initWithDefaults];
     [socket sendCommand:quit];
     [socket removeStake:self];
     [locationManager stopUpdatingLocation];

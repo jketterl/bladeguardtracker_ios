@@ -9,7 +9,8 @@
 #import "BGTSocket.h"
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-#import "BGTSocketCommand.h"
+#import "BGTLogCommand.h"
+#import "BGTQuitCommand.h"
 
 @interface GPSDelegate : NSObject <CLLocationManagerDelegate>
 @property (nonatomic) CLLocationManager *locationManager;
