@@ -29,6 +29,9 @@
      */
     
     [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert];
+    
+    //UIImage* background = [UIImage imageNamed:@"icon.png"];
+    //[[UINavigationBar appearance] setBackgroundImage: background forBarMetrics:UIBarMetricsDefault];
 
     return YES;
 }

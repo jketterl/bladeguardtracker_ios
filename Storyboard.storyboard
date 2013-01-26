@@ -148,7 +148,7 @@
             </objects>
             <point key="canvasLocation" x="186" y="2"/>
         </scene>
-        <!--Event View Controller - Event detail-->
+        <!--Event View Controller - Event details-->
         <scene sceneID="MXS-ex-xh4">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h0Q-GV-jLp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -231,7 +231,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Event detail" id="Vao-9k-LYv"/>
+                    <navigationItem key="navigationItem" title="Event details" id="Vao-9k-LYv"/>
                     <connections>
                         <outlet property="mapNameLabel" destination="fUl-CG-T8h" id="nPj-bZ-MEQ"/>
                         <outlet property="nameLabel" destination="g4E-VP-77L" id="CWc-Eh-9ke"/>
@@ -365,6 +365,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="J6c-EM-9u7"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="7jd-8P-co0">
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.0" green="0.76825747282608692" blue="0.024721015897213709" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="5i9-wZ-Y57" kind="relationship" relationship="rootViewController" id="pcw-gc-Beg"/>
