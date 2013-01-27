@@ -11,13 +11,21 @@
 #import <CoreLocation/CoreLocation.h>
 #import "BGTLogCommand.h"
 #import "BGTQuitCommand.h"
+#import "BGTEvent.h"
 
-@interface GPSDelegate : NSObject <CLLocationManagerDelegate>
+@interface GPSDelegate : NSObject <CLLocationManagerDelegate>{
+  @private
+    NSMutableArray* events;
+    bool running;
+}
 @property (nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) BGTSocket* socket;
+- (id) init;
 + (GPSDelegate *) getSharedInstance;
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation;
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error;
-- (void)startUpdates;
-- (void)endUpdates;
+
+- (void) addEvent: (BGTEvent*) event;
+- (void) removeEvent: (BGTEvent*) event;
+- (bool) hasEvent: (BGTEvent*) event;
 @end

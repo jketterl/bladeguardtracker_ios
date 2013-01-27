@@ -8,7 +8,8 @@
 
 #import "BGTSocketCommand.h"
 #import <CoreLocation/CoreLocation.h>
+#import "BGTEvent.h"
 
 @interface BGTLogCommand : BGTSocketCommand
-- (id) initWithLocation: (CLLocation*) location;
+- (id) initWithLocation: (CLLocation*) location andEvent:(BGTEvent*) event;
 @end

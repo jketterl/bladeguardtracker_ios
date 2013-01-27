@@ -152,6 +152,9 @@
                             <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Ak8-Kc-C0Q">
                                 <rect key="frame" x="20" y="136" width="79" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="toggle:" destination="FxE-o2-jvQ" eventType="valueChanged" id="sx6-SF-o81"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="I'm participating" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="POQ-XH-wro">
                                 <rect key="frame" x="119" y="139" width="181" height="21"/>
@@ -165,6 +168,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Event details" id="Vao-9k-LYv"/>
                     <connections>
+                        <outlet property="enableSwitch" destination="Ak8-Kc-C0Q" id="lD9-u1-Xev"/>
                         <outlet property="mapNameLabel" destination="fUl-CG-T8h" id="nPj-bZ-MEQ"/>
                         <outlet property="nameLabel" destination="g4E-VP-77L" id="CWc-Eh-9ke"/>
                         <outlet property="startLabel" destination="vG4-vf-uBs" id="3xl-e3-elG"/>
@@ -310,41 +314,6 @@
     <resources>
         <image name="box.png" width="107" height="56"/>
     </resources>
-    <classes>
-        <class className="BGTEventViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BGTEventViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="mapNameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="startLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="weatherLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="BGTMapViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BGTMapViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="cycleTimeLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="cycleTimeView" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="speedLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="speedView" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="trackLengthLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="trackLengthView" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="BGTNavigationBar" superclassName="UINavigationBar">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BGTNavigationBar.h"/>
-        </class>
-        <class className="BGTStatisticsView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BGTStatisticsView.h"/>
-        </class>
-        <class className="BladeGuardTrackerViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BladeGuardTrackerViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

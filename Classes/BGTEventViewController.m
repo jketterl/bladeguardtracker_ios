@@ -14,7 +14,7 @@
 
 @implementation BGTEventViewController
 
-@synthesize nameLabel, startLabel, mapNameLabel, weatherLabel;
+@synthesize nameLabel, startLabel, mapNameLabel, weatherLabel, enableSwitch;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,6 +43,7 @@
     } else {
         self.weatherLabel.text = @"Event cancelled";
     }
+    self.enableSwitch.on=[[GPSDelegate getSharedInstance] hasEvent:event];
 }
 
 - (void)viewDidUnload
@@ -64,6 +65,14 @@
     if ([[segue identifier] isEqualToString:@"map"]) {
         BGTMapViewController* destination = [segue destinationViewController];
         [destination setEvent: event];
+    }
+}
+
+- (IBAction)toggle:(id)sender {
+    if (enableSwitch.on) {
+        [[GPSDelegate getSharedInstance] addEvent:event];
+    } else {
+        [[GPSDelegate getSharedInstance] removeEvent:event];
     }
 }
 

@@ -12,6 +12,14 @@
 
 @synthesize locationManager, socket;
 
+- (id) init {
+    self = [super init];
+    if (self) {
+        events = [NSMutableArray arrayWithCapacity:5];
+    }
+    return self;
+}
+
 + (GPSDelegate *) getSharedInstance {
     static dispatch_once_t pred;
     static GPSDelegate* shared = nil;
@@ -23,21 +31,44 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
     if (newLocation.horizontalAccuracy > 50) return;
-    BGTLogCommand* command = [[BGTLogCommand alloc] initWithLocation:newLocation];
-    [socket sendCommand:command];
+    for (BGTEvent* event in events) {
+        BGTLogCommand* command = [[BGTLogCommand alloc] initWithLocation:newLocation andEvent:event];
+        [socket sendCommand:command];
+    }
 }
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     NSLog(@"failure: %@", error);
 }
+
+- (void) addEvent:(BGTEvent *)event {
+    if ([self hasEvent:event]) return;
+    [events addObject:event];
+    [self startUpdates];
+}
+
+- (void) removeEvent:(BGTEvent *)event {
+    if (![self hasEvent:event]) return;
+    [events removeObject:event];
+    BGTQuitCommand* quit = [[BGTQuitCommand alloc] initWithEvent:event];
+    [socket sendCommand:quit];
+    if ([events count] == 0) [self endUpdates];
+}
+
+- (bool) hasEvent:(BGTEvent *)event {
+    return [events containsObject:event];
+}
+
 - (void)startUpdates {
+    if (running) return;
+    running = true;
     socket = [BGTSocket getSharedInstanceWithStake:self];
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     [locationManager startUpdatingLocation];
 }
 - (void) endUpdates {
-    BGTQuitCommand* quit = [[BGTQuitCommand alloc] initWithDefaults];
-    [socket sendCommand:quit];
+    if (!running) return;
+    running = false;
     [socket removeStake:self];
     [locationManager stopUpdatingLocation];
     locationManager.delegate = nil;

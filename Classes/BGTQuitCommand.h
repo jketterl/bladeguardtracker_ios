@@ -7,7 +7,8 @@
 //
 
 #import "BGTSocketCommand.h"
+#import "BGTEvent.h"
 
 @interface BGTQuitCommand : BGTSocketCommand
-- (id) initWithDefaults;
+- (id) initWithEvent:(BGTEvent*) event;
 @end

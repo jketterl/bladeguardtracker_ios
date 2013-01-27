@@ -10,8 +10,9 @@
 
 @implementation BGTQuitCommand
 
-- (id) initWithDefaults {
-    self = [super initWithCommand:@"quit"];
+- (id) initWithEvent:(BGTEvent *)event {
+    NSDictionary* data = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:[event getId]], @"eventId", nil];
+    self = [super initWithCommand:@"quit" andData:data];
     return self;
 }
 
