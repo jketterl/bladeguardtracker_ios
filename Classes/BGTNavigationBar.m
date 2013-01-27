@@ -26,6 +26,8 @@
     
     CGRect iconFrame = CGRectMake(0, 0, height, height);
     [icon setFrame:iconFrame];
+    
+    [super layoutSubviews];
 }
 
 @end
