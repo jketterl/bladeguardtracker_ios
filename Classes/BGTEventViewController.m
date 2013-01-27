@@ -14,7 +14,7 @@
 
 @implementation BGTEventViewController
 
-@synthesize nameValue, startValue, mapNameValue, weatherValue,
+@synthesize nameValue, startValue, mapNameValue, weatherView,
             nameLabel, startLabel, mapNameLabel, weatherLabel,
             enableSwitch, mapButton, switchLabel;
 
@@ -38,15 +38,9 @@
     [formatter setTimeStyle:NSDateFormatterShortStyle];
     self.startValue.text = [formatter stringFromDate:[event getStart]];
     NSNumber* weather = [event getWeather];
-    NSString* weatherText;
-    if (weather == (NSNumber*)[NSNull null]) {
-        weatherText = @"No decision yet";
-    } else if ([weather intValue] == 1) {
-        weatherText = @"Yes, we're rolling!";
-    } else {
-        weatherText = @"Event cancelled";
-    }
-    self.weatherValue.text = NSLocalizedString(weatherText, nil);
+    self.weatherView.value = weather;
+    
+    //self.weatherValue.text = NSLocalizedString(weatherText, nil);
     self.enableSwitch.on=[[GPSDelegate getSharedInstance] hasEvent:event];
 
     // Localization
