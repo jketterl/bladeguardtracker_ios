@@ -314,7 +314,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="J6c-EM-9u7"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="7jd-8P-co0" customClass="BGTNavigationBar">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.0" green="0.76825747282608692" blue="0.024721015897213709" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <connections>
                         <segue destination="5i9-wZ-Y57" kind="relationship" relationship="rootViewController" id="pcw-gc-Beg"/>

@@ -16,6 +16,13 @@
         UIImage* image = [UIImage imageNamed:@"icon.png"];
         icon = [[UIImageView alloc] initWithImage:image];
         [super addSubview:icon];
+        NSDictionary* attributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    [UIColor blackColor], UITextAttributeTextColor,
+                                    [NSValue valueWithUIOffset:UIOffsetMake(0, 0)], UITextAttributeTextShadowOffset,
+                                    [UIColor clearColor], UITextAttributeTextShadowColor,
+                                    nil];
+        self.titleTextAttributes = attributes;
+        [[UIBarButtonItem appearance] setTitleTextAttributes:attributes forState:UIControlStateNormal];
     }
     return self;
 }
