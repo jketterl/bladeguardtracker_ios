@@ -17,5 +17,8 @@
 
 @property (nonatomic) IBOutlet UITableView* tableView;
 
+@property (nonatomic) IBOutlet UILabel* selectLabel;
+@property (nonatomic) IBOutlet UILabel* upcomingLabel;
+
 @end
 

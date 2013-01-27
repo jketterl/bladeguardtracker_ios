@@ -10,5 +10,6 @@
 "Track length" = "Zuglänge";
 "Speed" = "Geschwindigkeit";
 "Cycle time" = "Durchlaufzeit";
-"Enable tracker" = "Tracker aktivieren";
 "View on map" = "Auf der Karte ansehen";
+"select_event" = "Bitte wähle einen der gezeigten Termine aus, um teilzunehmen!";
+"Upcoming bladenight events" = "Die nächsten Bladenights:";

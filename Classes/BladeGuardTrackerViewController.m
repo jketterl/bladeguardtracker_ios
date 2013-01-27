@@ -10,7 +10,7 @@
 
 @implementation BladeGuardTrackerViewController
 
-@synthesize tableView;
+@synthesize tableView, selectLabel, upcomingLabel;
 
 /*
 // The designated initializer. Override to perform setup that is required before the view is loaded.
@@ -34,6 +34,9 @@
 - (void)viewDidLoad {
     events = [[BGTEventList alloc] initWithTableview:self.tableView];
     [self.tableView setDataSource:events];
+    
+    self.selectLabel.text = NSLocalizedString(@"select_event", nil);
+    self.upcomingLabel.text = NSLocalizedString(@"Upcoming bladenight events", nil);
     
     [super viewDidLoad];
 }
