@@ -37,10 +37,8 @@
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
     self.startValue.text = [formatter stringFromDate:[event getStart]];
-    NSNumber* weather = [event getWeather];
-    self.weatherView.value = weather;
+    self.weatherView.value = [event getWeather];
     
-    //self.weatherValue.text = NSLocalizedString(weatherText, nil);
     self.enableSwitch.on=[[GPSDelegate getSharedInstance] hasEvent:event];
 
     // Localization
