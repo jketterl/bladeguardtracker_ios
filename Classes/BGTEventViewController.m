@@ -14,7 +14,9 @@
 
 @implementation BGTEventViewController
 
-@synthesize nameLabel, startLabel, mapNameLabel, weatherLabel, enableSwitch;
+@synthesize nameValue, startValue, mapNameValue, weatherValue,
+            nameLabel, startLabel, mapNameLabel, weatherLabel,
+            enableSwitch, mapButton, switchLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,21 +31,32 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.nameLabel.text = [event getName];
-    self.mapNameLabel.text = [event getMapName];
+    self.nameValue.text = [event getName];
+    self.mapNameValue.text = [event getMapName];
     NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
-    self.startLabel.text = [formatter stringFromDate:[event getStart]];
+    self.startValue.text = [formatter stringFromDate:[event getStart]];
     NSNumber* weather = [event getWeather];
+    NSString* weatherText;
     if (weather == (NSNumber*)[NSNull null]) {
-        self.weatherLabel.text = @"No decision yet";
+        weatherText = @"No decision yet";
     } else if ([weather intValue] == 1) {
-        self.weatherLabel.text = @"Yes, we're rolling!";
+        weatherText = @"Yes, we're rolling!";
     } else {
-        self.weatherLabel.text = @"Event cancelled";
+        weatherText = @"Event cancelled";
     }
+    self.weatherValue.text = NSLocalizedString(weatherText, nil);
     self.enableSwitch.on=[[GPSDelegate getSharedInstance] hasEvent:event];
+
+    // Localization
+    [self.mapButton setTitle: NSLocalizedString(@"View on map", nil) forState:UIControlStateNormal ];
+    self.nameLabel.text = NSLocalizedString(@"Title", nil);
+    self.startLabel.text = NSLocalizedString(@"Start time", nil);
+    self.mapNameLabel.text = NSLocalizedString(@"Map", nil);
+    self.weatherLabel.text = NSLocalizedString(@"Weather", nil);
+    self.switchLabel.text = NSLocalizedString(@"Yes! I'm participating!", nil);
+    self.navigationItem.title = NSLocalizedString(@"Event details", nil);
 }
 
 - (void)viewDidUnload

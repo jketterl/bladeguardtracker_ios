@@ -115,7 +115,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="fUl-CG-T8h">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="fUl-CG-T8h">
                                 <rect key="frame" x="119" y="78" width="181" height="21"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -165,7 +165,7 @@
                                     <action selector="toggle:" destination="FxE-o2-jvQ" eventType="valueChanged" id="sx6-SF-o81"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="I'm participating" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="POQ-XH-wro">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Yes! I'm participating!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="POQ-XH-wro">
                                 <rect key="frame" x="119" y="139" width="181" height="21"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -178,10 +178,16 @@
                     <navigationItem key="navigationItem" title="Event details" id="Vao-9k-LYv"/>
                     <connections>
                         <outlet property="enableSwitch" destination="Ak8-Kc-C0Q" id="lD9-u1-Xev"/>
-                        <outlet property="mapNameLabel" destination="fUl-CG-T8h" id="nPj-bZ-MEQ"/>
-                        <outlet property="nameLabel" destination="g4E-VP-77L" id="CWc-Eh-9ke"/>
-                        <outlet property="startLabel" destination="vG4-vf-uBs" id="3xl-e3-elG"/>
-                        <outlet property="weatherLabel" destination="6yO-Is-e7Q" id="uQk-a2-HIZ"/>
+                        <outlet property="mapButton" destination="vJF-wv-DNG" id="kxs-EE-Yqv"/>
+                        <outlet property="mapNameLabel" destination="PoK-rp-Kro" id="iCT-ps-A8r"/>
+                        <outlet property="mapNameValue" destination="fUl-CG-T8h" id="Vkc-iD-xil"/>
+                        <outlet property="nameLabel" destination="Dwh-bB-EiV" id="ygF-1o-GnV"/>
+                        <outlet property="nameValue" destination="g4E-VP-77L" id="i12-Kn-Xhr"/>
+                        <outlet property="startLabel" destination="5Su-u2-m1H" id="8i1-pN-xZH"/>
+                        <outlet property="startValue" destination="vG4-vf-uBs" id="oEu-2m-TRK"/>
+                        <outlet property="switchLabel" destination="POQ-XH-wro" id="yCV-Xh-8PX"/>
+                        <outlet property="weatherLabel" destination="8cD-tg-MTu" id="ixJ-NE-OzO"/>
+                        <outlet property="weatherValue" destination="6yO-Is-e7Q" id="Q7F-fT-1hH"/>
                     </connections>
                 </viewController>
             </objects>

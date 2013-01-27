@@ -13,3 +13,12 @@
 "View on map" = "View on map";
 "select_event" = "Please select one of the above events to participate!";
 "Upcoming bladenight events" = "Upcoming bladenight events:";
+"Title" = "Title:";
+"Start time" = "Start time:";
+"Map" = "Map name:";
+"Weather" = "Weather:";
+"No decision yet" = "No decision yet";
+"Yes, we're rolling!" = "Yes, we're rolling!";
+"Event cancelled" = "Event cancelled";
+"Yes! I'm participating!" = "Yes! I'm participating!";
+"Event details" = "Event details";

@@ -13,3 +13,12 @@
 "View on map" = "Auf der Karte ansehen";
 "select_event" = "Bitte wähle einen der gezeigten Termine aus, um teilzunehmen!";
 "Upcoming bladenight events" = "Die nächsten Bladenights:";
+"Title" = "Titel:";
+"Start time" = "Startzeit:";
+"Map" = "Strecke:";
+"Weather" = "Wetter:";
+"No decision yet" = "Noch keine Entscheidung";
+"Yes, we're rolling!" = "Ja, wir fahren!";
+"Event cancelled" = "Fällt leider aus";
+"Yes! I'm participating!" = "Ja! ich bin dabei!";
+"Event details" = "Details";
