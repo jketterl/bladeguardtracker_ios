@@ -59,7 +59,7 @@
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Please select one of the above events to participate!" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="7wV-RL-wbx">
                                 <rect key="frame" x="20" y="349" width="280" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -328,7 +328,7 @@
         <image name="box.png" width="107" height="56"/>
     </resources>
     <classes>
-        <class className="BGTEventViewController" superclassName="UIViewController">
+        <class className="BGTEventViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BGTEventViewController.h"/>
             <relationships>
                 <relationship kind="action" name="toggle:"/>
