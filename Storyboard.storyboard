@@ -295,7 +295,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="whm-Hg-xoO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="JfU-xT-3Gz" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="J6c-EM-9u7"/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="7jd-8P-co0">
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="7jd-8P-co0" customClass="BGTNavigationBar">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.0" green="0.76825747282608692" blue="0.024721015897213709" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
@@ -331,6 +331,9 @@
                 <relationship kind="outlet" name="trackLengthLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="trackLengthView" candidateClass="UILabel"/>
             </relationships>
+        </class>
+        <class className="BGTNavigationBar" superclassName="UINavigationBar">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BGTNavigationBar.h"/>
         </class>
         <class className="BGTStatisticsView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BGTStatisticsView.h"/>
