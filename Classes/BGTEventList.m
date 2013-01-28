@@ -16,19 +16,23 @@
         events = [[NSMutableArray alloc] init];
         tableview = newTableview;
     
-        BGTSocket* socket = [BGTSocket getSharedInstanceWithStake:self];
-        BGTSocketCommand* command = [[BGTGetEventsCommand alloc] initWithDefaults];
-    
-        NSMethodSignature* sig = [self methodSignatureForSelector:@selector(onCommandResult:)];
-        NSInvocation* callback = [NSInvocation invocationWithMethodSignature:sig];
-        [callback setArgument:&command atIndex:2];
-        [callback setTarget:self];
-        [callback setSelector:@selector(onCommandResult:)];
-        [command addCallback:callback];
-    
-        [socket sendCommand:command];
     }
     return self;
+}
+
+- (void) load: (NSInvocation*) onLoad {
+    BGTSocket* socket = [BGTSocket getSharedInstanceWithStake:self];
+    BGTSocketCommand* command = [[BGTGetEventsCommand alloc] initWithDefaults];
+    
+    NSMethodSignature* sig = [self methodSignatureForSelector:@selector(onCommandResult:)];
+    NSInvocation* callback = [NSInvocation invocationWithMethodSignature:sig];
+    [callback setArgument:&command atIndex:2];
+    [callback setTarget:self];
+    [callback setSelector:@selector(onCommandResult:)];
+    [command addCallback:callback];
+    [command addCallback:onLoad];
+    
+    [socket sendCommand:command];
 }
 
 - (void) onCommandResult: (BGTSocketCommand *) command

@@ -35,12 +35,23 @@
     events = [[BGTEventList alloc] initWithTableview:self.tableView];
     [self.tableView setDataSource:events];
     
+    [activity startAnimating];
+    
+    NSMethodSignature* sig = [self methodSignatureForSelector:@selector(eventListLoaded)];
+    NSInvocation* inv = [NSInvocation invocationWithMethodSignature:sig];
+    [inv setTarget:self];
+    [inv setSelector:@selector(eventListLoaded)];
+    [events load:inv];
+    
     self.selectLabel.text = NSLocalizedString(@"select_event", nil);
     self.upcomingLabel.text = NSLocalizedString(@"Upcoming bladenight events", nil);
     
     [super viewDidLoad];
 }
 
+- (void) eventListLoaded {
+    [activity stopAnimating];
+}
 
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

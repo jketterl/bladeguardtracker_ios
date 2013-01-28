@@ -19,6 +19,11 @@
                                 <rect key="frame" x="0.0" y="57" width="320" height="284"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" alpha="0.60000000000000009" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" id="8rh-Z7-kzJ">
+                                    <rect key="frame" x="0.0" y="66" width="320" height="37"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </activityIndicatorView>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="event" textLabel="F5P-qI-H7M" detailTextLabel="7wS-pT-t7q" style="IBUITableViewCellStyleSubtitle" id="fva-uc-SpN" customClass="BGTEventTableViewCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="44"/>
@@ -69,6 +74,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Bladeguard Tracker" id="ra2-QL-rtZ"/>
                     <connections>
+                        <outlet property="activity" destination="8rh-Z7-kzJ" id="Qwk-Am-LgS"/>
                         <outlet property="selectLabel" destination="7wV-RL-wbx" id="Z4n-KR-DVb"/>
                         <outlet property="tableView" destination="Ksm-Wh-ZGo" id="Qw7-9G-8i8"/>
                         <outlet property="upcomingLabel" destination="2s5-5p-syW" id="RXX-dy-P4F"/>
@@ -290,7 +296,7 @@
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <activityIndicatorView hidden="YES" opaque="NO" alpha="0.60000000000000009" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" id="O6A-WB-4yC">
-                                <rect key="frame" x="143" y="188" width="37" height="37"/>
+                                <rect key="frame" x="142" y="189" width="37" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
@@ -333,6 +339,59 @@
     <resources>
         <image name="box.png" width="107" height="56"/>
     </resources>
+    <classes>
+        <class className="BGTEventTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BGTEventTableViewCell.h"/>
+        </class>
+        <class className="BGTEventViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BGTEventViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="toggle:"/>
+                <relationship kind="outlet" name="enableSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="mapButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="mapNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="mapNameValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nameValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="startLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="startValue" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="switchLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="weatherLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="weatherView" candidateClass="BGTWeatherView"/>
+            </relationships>
+        </class>
+        <class className="BGTMapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BGTMapViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="activity" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="cycleTimeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cycleTimeView" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="speedLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="speedView" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="trackLengthLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="trackLengthView" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="BGTNavigationBar" superclassName="UINavigationBar">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BGTNavigationBar.h"/>
+        </class>
+        <class className="BGTStatisticsView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BGTStatisticsView.h"/>
+        </class>
+        <class className="BGTWeatherView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BGTWeatherView.h"/>
+        </class>
+        <class className="BladeGuardTrackerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BladeGuardTrackerViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="activity" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="selectLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="upcomingLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -12,6 +12,7 @@
 #import "BGTEventViewController.h"
 
 @interface BladeGuardTrackerViewController : UIViewController {
+    IBOutlet UIActivityIndicatorView* activity;
     @private BGTEventList* events;
 }
 

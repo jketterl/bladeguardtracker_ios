@@ -20,5 +20,6 @@
 
 - (id) initWithTableview:(UITableView *) tableview;
 - (BGTEvent *) eventAtIndex: (int) index;
+- (void) load: (NSInvocation*) onLoad;
 
 @end
