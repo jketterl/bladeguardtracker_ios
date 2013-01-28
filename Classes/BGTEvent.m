@@ -115,7 +115,9 @@
 }
 
 - (void) receiveStatus: (int) status {
-    // this is not really interesting for us.
+    if (status != BGTSocketConnected) return;
+    BGTSubscribeUpdatesCommand* command = [[BGTSubscribeUpdatesCommand alloc] initWithEvent:self andCategories:[subscriptions allKeys]];
+    [[BGTSocket getSharedInstance] sendCommand:command];
 }
 
 @end
