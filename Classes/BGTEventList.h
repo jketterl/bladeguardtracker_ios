@@ -11,6 +11,7 @@
 #import "BGTSocketCommand.h"
 #import "BGTGetEventsCommand.h"
 #import "BGTEvent.h"
+#import "BGTEventTableViewCell.h"
 
 @interface BGTEventList : NSObject <UITableViewDataSource> {
     @private NSMutableArray* events;

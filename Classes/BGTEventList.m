@@ -57,7 +57,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"event";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    BGTEventTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     BGTEvent* event = [events objectAtIndex:[indexPath row]];
     
@@ -71,6 +71,15 @@
     [detail appendString:@" "];
     [detail appendString:[event getMapName]];
     cell.detailTextLabel.text = detail;
+    
+    NSNumber* weather = [event getWeather];
+    if (weather == (NSNumber*) [NSNull null]) {
+        [cell.weatherIcon setImage:nil];
+    } else if ([weather intValue] == 1) {
+        [cell.weatherIcon setImage:[UIImage imageNamed:@"ampel_gruen.png"]];
+    } else {
+        [cell.weatherIcon setImage:[UIImage imageNamed:@"ampel_rot.png"]];
+    }
     
     return cell;
 }

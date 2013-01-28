@@ -27,6 +27,7 @@
 		3678B2DB15D84C7E0017ABA5 /* pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 3678B2DA15D84C7E0017ABA5 /* pin.png */; };
 		367BBFEA16B5C73F00B64DCF /* ampel_gruen.png in Resources */ = {isa = PBXBuildFile; fileRef = 367BBFE816B5C73F00B64DCF /* ampel_gruen.png */; };
 		367BBFEB16B5C73F00B64DCF /* ampel_rot.png in Resources */ = {isa = PBXBuildFile; fileRef = 367BBFE916B5C73F00B64DCF /* ampel_rot.png */; };
+		367BBFF316B720C800B64DCF /* BGTEventTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 367BBFF216B720C800B64DCF /* BGTEventTableViewCell.m */; };
 		36912EF715C5D83F00B626B8 /* box.png in Resources */ = {isa = PBXBuildFile; fileRef = 36912EF615C5D83F00B626B8 /* box.png */; };
 		369D541616AC684700FC9A48 /* BGTGetEventsCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 369D541516AC684700FC9A48 /* BGTGetEventsCommand.m */; };
 		36A3082516ADD92D001044D7 /* BGTEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A3082416ADD92D001044D7 /* BGTEvent.m */; };
@@ -90,6 +91,8 @@
 		3678B2DA15D84C7E0017ABA5 /* pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pin.png; sourceTree = "<group>"; };
 		367BBFE816B5C73F00B64DCF /* ampel_gruen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ampel_gruen.png; path = "../workspace/BladeGuardTracker/res/drawable-hdpi/ampel_gruen.png"; sourceTree = "<group>"; };
 		367BBFE916B5C73F00B64DCF /* ampel_rot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ampel_rot.png; path = "../workspace/BladeGuardTracker/res/drawable-hdpi/ampel_rot.png"; sourceTree = "<group>"; };
+		367BBFF116B720C800B64DCF /* BGTEventTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTEventTableViewCell.h; sourceTree = "<group>"; };
+		367BBFF216B720C800B64DCF /* BGTEventTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTEventTableViewCell.m; sourceTree = "<group>"; };
 		36912EF615C5D83F00B626B8 /* box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box.png; sourceTree = "<group>"; };
 		369D541416AC684700FC9A48 /* BGTGetEventsCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTGetEventsCommand.h; sourceTree = "<group>"; };
 		369D541516AC684700FC9A48 /* BGTGetEventsCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTGetEventsCommand.m; sourceTree = "<group>"; };
@@ -323,6 +326,8 @@
 			children = (
 				36A3084F16B5BAB0001044D7 /* BGTWeatherView.h */,
 				36A3085016B5BAB0001044D7 /* BGTWeatherView.m */,
+				367BBFF116B720C800B64DCF /* BGTEventTableViewCell.h */,
+				367BBFF216B720C800B64DCF /* BGTEventTableViewCell.m */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -450,6 +455,7 @@
 				36A3084A16B47001001044D7 /* BGTQuitCommand.m in Sources */,
 				36A3084D16B544B0001044D7 /* BGTNavigationBar.m in Sources */,
 				36A3085116B5BAB0001044D7 /* BGTWeatherView.m in Sources */,
+				367BBFF316B720C800B64DCF /* BGTEventTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
