@@ -17,6 +17,7 @@
 #import "BGTEventSubscriber.h"
 
 @interface BGTMapViewController : UIViewController <BGTSocketEventListener, MKMapViewDelegate, BGTEventSubscriber> {
+    IBOutlet UIActivityIndicatorView* activity;
     @private NSMutableDictionary* userMarkers;
     @private MKPolyline* route;
     @private MKPolyline* track;

@@ -10,6 +10,8 @@
 
 @implementation BGTSocket
 
+@synthesize status;
+
 + (BGTSocket *) getSharedInstance {
     static dispatch_once_t pred;
     static BGTSocket* shared = nil;
@@ -239,13 +241,14 @@
     }
 }
 
-- (void) setStatus: (int) status {
-    [self fireStatus:status];
+- (void) setStatus: (int) newStatus {
+    [self fireStatus:newStatus];
+    status = newStatus;
 }
 
-- (void) fireStatus: (int) status {
+- (void) fireStatus: (int) newStatus {
     for (int i = 0, count = [listeners count]; i < count; i++) {
-        [[listeners objectAtIndex:i] receiveStatus:status];
+        [[listeners objectAtIndex:i] receiveStatus:newStatus];
     }
 }
 

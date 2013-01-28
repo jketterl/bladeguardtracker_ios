@@ -36,4 +36,7 @@
 - (void) removeStake: (id) stake;
 - (void) addListener: (id<BGTSocketEventListener>) listener;
 - (void) removeListener: (id<BGTSocketEventListener>) listener;
+
+@property (nonatomic) int status;
+
 @end

@@ -31,6 +31,7 @@
 	// Do any additional setup after loading the view.
     userMarkers = [[NSMutableDictionary alloc] initWithCapacity:15];
     socket = [BGTSocket getSharedInstanceWithStake:self];
+    if (socket.status != BGTSocketConnected) [activity startAnimating];
     [socket addListener:self];
     [event addSubscriber:self forCategories:[NSArray arrayWithObjects:@"map", @"movements", @"quit", @"stats", nil]];
     // Localization
@@ -94,6 +95,11 @@
         [trackLengthView setText:@"n/a"];
         [speedView setText:@"n/a"];
         [cycleTimeView setText:@"n/a"];
+    }
+    if (status != BGTSocketConnected) {
+        [activity startAnimating];
+    } else {
+        [activity stopAnimating];
     }
 }
 
