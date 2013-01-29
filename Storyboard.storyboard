@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="JfU-xT-3Gz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="JfU-xT-3Gz">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
-        <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
+        <deployment defaultVersion="1552" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
         <!--Blade Guard Tracker View Controller - Bladeguard Tracker-->
         <scene sceneID="NXu-a2-xfE">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qhL-B5-0mK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="5i9-wZ-Y57" customClass="BladeGuardTrackerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cf5-KN-xMO">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
@@ -81,13 +79,13 @@
                         <outlet property="view" destination="cf5-KN-xMO" id="Jgv-8y-lMN"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qhL-B5-0mK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-352" y="2"/>
         </scene>
         <!--Event View Controller - Event details-->
         <scene sceneID="MXS-ex-xh4">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h0Q-GV-jLp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="FxE-o2-jvQ" customClass="BGTEventViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1zG-aq-YAb">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
@@ -194,13 +192,13 @@
                         <outlet property="weatherView" destination="IUS-Vz-d6a" id="c62-9c-e5S"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h0Q-GV-jLp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="186" y="2"/>
         </scene>
         <!--Map View Controller - Map view-->
         <scene sceneID="5GT-K2-R55">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="l9W-nd-6b1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="qie-d5-HoT" customClass="BGTMapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oV8-1t-cH9">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
@@ -297,7 +295,7 @@
                             </view>
                             <activityIndicatorView hidden="YES" opaque="NO" alpha="0.60000000000000009" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" id="O6A-WB-4yC">
                                 <rect key="frame" x="142" y="189" width="37" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
                         </subviews>
@@ -315,13 +313,13 @@
                         <outlet property="trackLengthView" destination="u5U-nV-TVE" id="Fnl-e1-P0s"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l9W-nd-6b1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="680" y="2"/>
         </scene>
         <!--Navigation Controller - Item-->
         <scene sceneID="nta-RJ-fFO">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="whm-Hg-xoO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="JfU-xT-3Gz" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="J6c-EM-9u7"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="7jd-8P-co0" customClass="BGTNavigationBar">
@@ -332,6 +330,7 @@
                         <segue destination="5i9-wZ-Y57" kind="relationship" relationship="rootViewController" id="pcw-gc-Beg"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="whm-Hg-xoO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-812" y="2"/>
         </scene>
