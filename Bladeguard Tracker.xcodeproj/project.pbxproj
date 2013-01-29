@@ -13,6 +13,7 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		28D7ACF80DDB3853001CB0EB /* BladeGuardTrackerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* BladeGuardTrackerViewController.m */; };
+		3612C0C016B8602600F4811B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3612C0BF16B8602600F4811B /* Default-568h@2x.png */; };
 		361531D015A7605200B6FA79 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 361531CF15A7605200B6FA79 /* CFNetwork.framework */; };
 		362D44A915C9BBD100D43E22 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 362D44AB15C9BBD100D43E22 /* Localizable.strings */; };
 		362D44B515C9BE0600D43E22 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 362D44B615C9BE0600D43E22 /* Storyboard.storyboard */; };
@@ -72,6 +73,7 @@
 		28D7ACF70DDB3853001CB0EB /* BladeGuardTrackerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BladeGuardTrackerViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Bladeguard Tracker_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bladeguard Tracker_Prefix.pch"; sourceTree = "<group>"; };
+		3612C0BF16B8602600F4811B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		361531CF15A7605200B6FA79 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		362D44AA15C9BBD100D43E22 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		362D44B415C9BC8800D43E22 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				3612C0BF16B8602600F4811B /* Default-568h@2x.png */,
 				36A3083B16B1BA30001044D7 /* config.plist */,
 				3678B2C615D591600017ABA5 /* CoreImage.framework */,
 				362D44B615C9BE0600D43E22 /* Storyboard.storyboard */,
@@ -422,6 +425,7 @@
 				36A3084416B3331E001044D7 /* icon.png in Resources */,
 				367BBFEA16B5C73F00B64DCF /* ampel_gruen.png in Resources */,
 				367BBFEB16B5C73F00B64DCF /* ampel_rot.png in Resources */,
+				3612C0C016B8602600F4811B /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,7 +530,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jakob Ketterl";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jakob Ketterl (PLG5AB57L6)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -540,8 +544,7 @@
 					"/Users/jakob/Library/Developer/Xcode/DerivedData/SBJson-bkrqcbzfsyfflecrivoximytggxj/Build/Products/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ED99770C-7582-4C53-8BA3-E91CB886A868";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6A395740-2CCF-49B7-B692-F66D79B8262C";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -551,7 +554,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jakob Ketterl";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -566,8 +569,7 @@
 				);
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-ObjC";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "28BD1F8E-7867-410F-86B5-B708AC5D70D1";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
