@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BGTSocket.h"
+#import "BGTUpdateRegistrationCommand.h"
 
 @class BladeGuardTrackerViewController;
 

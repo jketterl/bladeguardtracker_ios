@@ -14,6 +14,7 @@
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		28D7ACF80DDB3853001CB0EB /* BladeGuardTrackerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* BladeGuardTrackerViewController.m */; };
 		3612C0C016B8602600F4811B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3612C0BF16B8602600F4811B /* Default-568h@2x.png */; };
+		3612C0C516B893B300F4811B /* BGTUpdateRegistrationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 3612C0C416B893B300F4811B /* BGTUpdateRegistrationCommand.m */; };
 		361531D015A7605200B6FA79 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 361531CF15A7605200B6FA79 /* CFNetwork.framework */; };
 		362D44A915C9BBD100D43E22 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 362D44AB15C9BBD100D43E22 /* Localizable.strings */; };
 		362D44B515C9BE0600D43E22 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 362D44B615C9BE0600D43E22 /* Storyboard.storyboard */; };
@@ -74,6 +75,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Bladeguard Tracker_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bladeguard Tracker_Prefix.pch"; sourceTree = "<group>"; };
 		3612C0BF16B8602600F4811B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		3612C0C316B893B300F4811B /* BGTUpdateRegistrationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTUpdateRegistrationCommand.h; sourceTree = "<group>"; };
+		3612C0C416B893B300F4811B /* BGTUpdateRegistrationCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTUpdateRegistrationCommand.m; sourceTree = "<group>"; };
 		361531CF15A7605200B6FA79 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		362D44AA15C9BBD100D43E22 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		362D44B415C9BC8800D43E22 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -282,6 +285,8 @@
 				36A3084616B46E40001044D7 /* BGTLogCommand.m */,
 				36A3084816B47000001044D7 /* BGTQuitCommand.h */,
 				36A3084916B47000001044D7 /* BGTQuitCommand.m */,
+				3612C0C316B893B300F4811B /* BGTUpdateRegistrationCommand.h */,
+				3612C0C416B893B300F4811B /* BGTUpdateRegistrationCommand.m */,
 			);
 			name = commands;
 			sourceTree = "<group>";
@@ -460,6 +465,7 @@
 				36A3084D16B544B0001044D7 /* BGTNavigationBar.m in Sources */,
 				36A3085116B5BAB0001044D7 /* BGTWeatherView.m in Sources */,
 				367BBFF316B720C800B64DCF /* BGTEventTableViewCell.m in Sources */,
+				3612C0C516B893B300F4811B /* BGTUpdateRegistrationCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

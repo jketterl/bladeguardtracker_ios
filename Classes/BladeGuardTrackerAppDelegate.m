@@ -85,10 +85,13 @@
 }
 
 - (void) application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    NSLog(@"%@", deviceToken);
+    BGTUpdateRegistrationCommand* command = [[BGTUpdateRegistrationCommand alloc] initWithToken:deviceToken];
+    [[BGTSocket getSharedInstance] sendCommand:command];
 }
 
-
+- (void) application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"%@", error);
+}
 
 
 @end
