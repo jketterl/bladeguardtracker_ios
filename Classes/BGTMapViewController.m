@@ -225,7 +225,7 @@
     if (overlay == route) {
         MKPolylineView *polylineView = [[MKPolylineView alloc] initWithPolyline:overlay];
         polylineView.strokeColor = [UIColor blueColor];
-        polylineView.lineWidth = 2.0;
+        polylineView.lineWidth = 2.0 * [UIScreen mainScreen].scale;
         polylineView.alpha = .5;
     
         return polylineView;
@@ -234,7 +234,7 @@
     if (overlay == track) {
         MKPolylineView *polylineView = [[MKPolylineView alloc] initWithPolyline:overlay];
         polylineView.strokeColor = [UIColor colorWithRed:1 green:.75 blue:0 alpha:1];
-        polylineView.lineWidth = 6.0;
+        polylineView.lineWidth = 6.0 * [UIScreen mainScreen].scale;
         polylineView.alpha = 1;
         
         return polylineView;
