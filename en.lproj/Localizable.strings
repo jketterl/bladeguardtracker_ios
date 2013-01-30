@@ -22,3 +22,5 @@
 "Event cancelled" = "Event cancelled";
 "Yes! I'm participating!" = "Yes! I'm participating!";
 "Event details" = "Event details";
+"yes_rolling" = "%@: Yes, we're rolling!";
+"no_cancelled" = "%@: Event cancelled";
