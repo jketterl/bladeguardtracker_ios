@@ -35,6 +35,17 @@
     events = [[BGTEventList alloc] initWithTableview:self.tableView];
     [self.tableView setDataSource:events];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadEvents) name:UIApplicationDidBecomeActiveNotification object:nil];
+    
+    // localization
+    self.selectLabel.text = NSLocalizedString(@"select_event", nil);
+    self.upcomingLabel.text = NSLocalizedString(@"Upcoming bladenight events", nil);
+    
+    [super viewDidLoad];
+}
+
+- (void) reloadEvents {
+    NSLog(@"reloading events");
     [activity startAnimating];
     
     NSMethodSignature* sig = [self methodSignatureForSelector:@selector(eventListLoaded)];
@@ -42,11 +53,6 @@
     [inv setTarget:self];
     [inv setSelector:@selector(eventListLoaded)];
     [events load:inv];
-    
-    self.selectLabel.text = NSLocalizedString(@"select_event", nil);
-    self.upcomingLabel.text = NSLocalizedString(@"Upcoming bladenight events", nil);
-    
-    [super viewDidLoad];
 }
 
 - (void) eventListLoaded {

@@ -28,6 +28,7 @@
 }
 
 - (id) initWithJSON: (NSDictionary*) json;
+- (void) applyJSON: (NSDictionary*) json;
 - (NSString *) getName;
 - (NSString *) getMapName;
 - (NSDate *) getStart;

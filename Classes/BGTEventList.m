@@ -38,8 +38,14 @@
 - (void) onCommandResult: (BGTSocketCommand *) command
 {
     for (NSDictionary* entry in [command getResult]) {
-        BGTEvent* event = [[BGTEvent alloc] initWithJSON:entry];
-        [events addObject:event];
+        NSNumber* eventId = [entry valueForKey:@"id"];
+        BGTEvent* event = [self eventWithId:[eventId intValue]];
+        if (event == nil) {
+            BGTEvent* event = [[BGTEvent alloc] initWithJSON:entry];
+            [events addObject:event];
+        } else {
+            [event applyJSON:entry];
+        }
     }
     [tableview reloadData];
     BGTSocket* socket = [BGTSocket getSharedInstanceWithStake:self];
@@ -90,6 +96,13 @@
 
 - (BGTEvent *) eventAtIndex:(int)index {
     return [events objectAtIndex:index];
+}
+
+- (BGTEvent *) eventWithId:(int)eventId {
+    for (BGTEvent* event in events) {
+        if ([event getId] == eventId) return event;
+    }
+    return nil;
 }
 
 @end

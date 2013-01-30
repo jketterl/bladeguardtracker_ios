@@ -12,23 +12,25 @@
 
 - (id) initWithJSON:(NSDictionary *)json {
     self = [super init];
-    if (self) {
-        eventId = [[json valueForKey:@"id"] intValue];
-        name = [json valueForKey:@"title"];
-        mapName = [json valueForKey:@"mapName"];
-        
-        NSDateFormatter* parser = [[NSDateFormatter alloc] init];
-        // tell the parser the Z is literal (even though its actually a time zone specifier)
-        [parser setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
-        // and since the time zone information would be lost otherwise: fix the UTC timezone
-        [parser setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
-        start = [parser dateFromString:[json valueForKey:@"start"]];
-        
-        weather = [json valueForKey:@"weather"];
-        
-        subscriptions = [NSMutableDictionary dictionaryWithCapacity:5];
-    }
+    if (self) [self applyJSON:json];
     return self;
+}
+
+- (void) applyJSON:(NSDictionary*) json {
+    eventId = [[json valueForKey:@"id"] intValue];
+    name = [json valueForKey:@"title"];
+    mapName = [json valueForKey:@"mapName"];
+    
+    NSDateFormatter* parser = [[NSDateFormatter alloc] init];
+    // tell the parser the Z is literal (even though its actually a time zone specifier)
+    [parser setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+    // and since the time zone information would be lost otherwise: fix the UTC timezone
+    [parser setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    start = [parser dateFromString:[json valueForKey:@"start"]];
+    
+    weather = [json valueForKey:@"weather"];
+    
+    subscriptions = [NSMutableDictionary dictionaryWithCapacity:5];
 }
 
 - (NSString *) getName {
