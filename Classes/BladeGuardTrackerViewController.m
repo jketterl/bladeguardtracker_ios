@@ -45,7 +45,9 @@
 }
 
 - (void) reloadEvents {
-    NSLog(@"reloading events");
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    
     [activity startAnimating];
     
     NSMethodSignature* sig = [self methodSignatureForSelector:@selector(eventListLoaded)];
