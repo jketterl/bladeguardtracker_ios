@@ -93,8 +93,28 @@
     // re-subscribe to any events that have been previously subscribed, if any
     //[self subscribeCategoryArray:subscriptions];    
 }
+
 - (BGTSocketCommand*) authenticate {
     if (!shouldBeOnline) return NULL;
+    
+    BladeGuardTrackerAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    [appDelegate openSessionWithAllowLoginUI:false];
+    if (FBSession.activeSession.isOpen) {
+        [[FBRequest requestForMe] startWithCompletionHandler:
+         ^(FBRequestConnection *connection,
+           NSDictionary<FBGraphUser> *user,
+           NSError *error) {
+             if (!error) {
+                 BGTFacebookLoginCommand* command = [[BGTFacebookLoginCommand alloc] initWithUserId:[user valueForKey:@"username"]];
+                 [self sendCommand:command doQueue:NO bypass:YES];
+             } else {
+                 NSLog(@"%@", error);
+             }
+         }];
+        
+        return NULL;
+    }
+    
     NSUserDefaults* settings = [NSUserDefaults standardUserDefaults];
     if ([settings boolForKey:@"anonymous"]) return NULL;
     

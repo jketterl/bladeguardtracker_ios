@@ -20,6 +20,7 @@
 		3612C0D016BC298C00F4811B /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3612C0CF16BC298C00F4811B /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		3612C0D216BC299700F4811B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3612C0D116BC299700F4811B /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		3612C0D416BC299D00F4811B /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3612C0D316BC299D00F4811B /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		3612C0D716BC494200F4811B /* BGTFacebookLoginCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 3612C0D616BC494200F4811B /* BGTFacebookLoginCommand.m */; };
 		361531D015A7605200B6FA79 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 361531CF15A7605200B6FA79 /* CFNetwork.framework */; };
 		362D44A915C9BBD100D43E22 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 362D44AB15C9BBD100D43E22 /* Localizable.strings */; };
 		362D44B515C9BE0600D43E22 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 362D44B615C9BE0600D43E22 /* Storyboard.storyboard */; };
@@ -89,6 +90,8 @@
 		3612C0CF16BC298C00F4811B /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		3612C0D116BC299700F4811B /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		3612C0D316BC299D00F4811B /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		3612C0D516BC494200F4811B /* BGTFacebookLoginCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTFacebookLoginCommand.h; sourceTree = "<group>"; };
+		3612C0D616BC494200F4811B /* BGTFacebookLoginCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTFacebookLoginCommand.m; sourceTree = "<group>"; };
 		361531CF15A7605200B6FA79 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		362D44AA15C9BBD100D43E22 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		362D44B415C9BC8800D43E22 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -307,6 +310,8 @@
 				36A3084916B47000001044D7 /* BGTQuitCommand.m */,
 				3612C0C316B893B300F4811B /* BGTUpdateRegistrationCommand.h */,
 				3612C0C416B893B300F4811B /* BGTUpdateRegistrationCommand.m */,
+				3612C0D516BC494200F4811B /* BGTFacebookLoginCommand.h */,
+				3612C0D616BC494200F4811B /* BGTFacebookLoginCommand.m */,
 			);
 			name = commands;
 			sourceTree = "<group>";
@@ -490,6 +495,7 @@
 				367BBFF316B720C800B64DCF /* BGTEventTableViewCell.m in Sources */,
 				3612C0C516B893B300F4811B /* BGTUpdateRegistrationCommand.m in Sources */,
 				3612C0CC16BC186C00F4811B /* BGTSettingsViewController.m in Sources */,
+				3612C0D716BC494200F4811B /* BGTFacebookLoginCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

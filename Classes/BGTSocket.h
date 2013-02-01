@@ -12,6 +12,8 @@
 #import <Classes/NSObject+SBJson.h>
 #import "BGTSocketEventListener.h"
 #import "BGTEvent.h"
+#import "BladeGuardTrackerAppDelegate.h"
+#import "BGTFacebookLoginCommand.h"
 
 @interface BGTSocket : NSObject <SRWebSocketDelegate> {
     @private NSMutableArray* stakes;
