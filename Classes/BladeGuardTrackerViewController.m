@@ -32,7 +32,7 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-    events = [[BGTEventList alloc] init];
+    events = [BGTEventList getSharedInstance];
     [events addListener:self];
     [self.tableView setDataSource:events];
     

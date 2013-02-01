@@ -10,6 +10,15 @@
 
 @implementation BGTEventList
 
++ (BGTEventList *) getSharedInstance {
+    static dispatch_once_t pred;
+    static BGTEventList* shared = nil;
+    dispatch_once(&pred, ^{
+        shared = [[BGTEventList alloc] init];
+    });
+    return shared;
+}
+
 - (id) init {
     self = [super init];
     if (self) {

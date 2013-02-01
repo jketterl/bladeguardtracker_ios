@@ -19,6 +19,8 @@
     @private NSMutableArray* listeners;
 }
 
++ (BGTEventList *) getSharedInstance;
+
 - (BGTEvent *) eventAtIndex: (int) index;
 - (BGTEvent *) eventWithId: (int) eventId;
 - (void) load;
