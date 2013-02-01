@@ -23,7 +23,8 @@ extern NSString *const FBSessionStateChangedNotification;
 @property (strong, nonatomic) UIWindow *window;
 //@property (nonatomic, retain) IBOutlet BladeGuardTrackerViewController *viewController;
 
-- (BOOL)openSessionWithAllowLoginUI:(BOOL)allowLoginUI;
+- (BOOL) openSessionWithAllowLoginUI:(BOOL)allowLoginUI;
+- (void) closeSession;
 
 @end
 
