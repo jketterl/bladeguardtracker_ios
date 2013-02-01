@@ -22,5 +22,7 @@
 @property (nonatomic) IBOutlet UILabel* selectLabel;
 @property (nonatomic) IBOutlet UILabel* upcomingLabel;
 
+@property (nonatomic) IBOutlet UIButton* settingsButton;
+
 @end
 

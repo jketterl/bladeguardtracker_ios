@@ -61,12 +61,27 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Please select one of the above events to participate!" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontSizeToFit="NO" id="7wV-RL-wbx">
-                                <rect key="frame" x="20" y="349" width="280" height="47"/>
+                                <rect key="frame" x="20" y="349" width="232" height="47"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HEI-lq-E0F">
+                                <rect key="frame" x="260" y="353" width="46" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Settings">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="pfe-h1-DsL" kind="push" id="39n-Pq-h8g"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -74,6 +89,7 @@
                     <connections>
                         <outlet property="activity" destination="8rh-Z7-kzJ" id="Qwk-Am-LgS"/>
                         <outlet property="selectLabel" destination="7wV-RL-wbx" id="Z4n-KR-DVb"/>
+                        <outlet property="settingsButton" destination="HEI-lq-E0F" id="LLq-5j-ciG"/>
                         <outlet property="tableView" destination="Ksm-Wh-ZGo" id="Qw7-9G-8i8"/>
                         <outlet property="upcomingLabel" destination="2s5-5p-syW" id="RXX-dy-P4F"/>
                         <outlet property="view" destination="cf5-KN-xMO" id="Jgv-8y-lMN"/>
@@ -195,6 +211,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h0Q-GV-jLp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="186" y="2"/>
+        </scene>
+        <!--Settings View Controller - Settings-->
+        <scene sceneID="c9Y-Xk-znD">
+            <objects>
+                <viewController id="pfe-h1-DsL" customClass="BGTSettingsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="x3L-vn-Qwq">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="gza-4R-9ew"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hzB-IB-G5k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="186" y="623"/>
         </scene>
         <!--Map View Controller - Map view-->
         <scene sceneID="5GT-K2-R55">
@@ -375,6 +406,9 @@
         <class className="BGTNavigationBar" superclassName="UINavigationBar">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BGTNavigationBar.h"/>
         </class>
+        <class className="BGTSettingsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BGTSettingsViewController.h"/>
+        </class>
         <class className="BGTStatisticsView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BGTStatisticsView.h"/>
         </class>
@@ -386,6 +420,7 @@
             <relationships>
                 <relationship kind="outlet" name="activity" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="selectLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="settingsButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="upcomingLabel" candidateClass="UILabel"/>
             </relationships>

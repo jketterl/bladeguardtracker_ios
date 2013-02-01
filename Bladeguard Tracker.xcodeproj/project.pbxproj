@@ -15,6 +15,7 @@
 		28D7ACF80DDB3853001CB0EB /* BladeGuardTrackerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* BladeGuardTrackerViewController.m */; };
 		3612C0C016B8602600F4811B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3612C0BF16B8602600F4811B /* Default-568h@2x.png */; };
 		3612C0C516B893B300F4811B /* BGTUpdateRegistrationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 3612C0C416B893B300F4811B /* BGTUpdateRegistrationCommand.m */; };
+		3612C0CC16BC186C00F4811B /* BGTSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3612C0CB16BC186C00F4811B /* BGTSettingsViewController.m */; };
 		361531D015A7605200B6FA79 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 361531CF15A7605200B6FA79 /* CFNetwork.framework */; };
 		362D44A915C9BBD100D43E22 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 362D44AB15C9BBD100D43E22 /* Localizable.strings */; };
 		362D44B515C9BE0600D43E22 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 362D44B615C9BE0600D43E22 /* Storyboard.storyboard */; };
@@ -78,6 +79,8 @@
 		3612C0C316B893B300F4811B /* BGTUpdateRegistrationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTUpdateRegistrationCommand.h; sourceTree = "<group>"; };
 		3612C0C416B893B300F4811B /* BGTUpdateRegistrationCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTUpdateRegistrationCommand.m; sourceTree = "<group>"; };
 		3612C0C616BBBC5000F4811B /* BGTEventListListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BGTEventListListener.h; sourceTree = "<group>"; };
+		3612C0CA16BC186B00F4811B /* BGTSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTSettingsViewController.h; sourceTree = "<group>"; };
+		3612C0CB16BC186C00F4811B /* BGTSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTSettingsViewController.m; sourceTree = "<group>"; };
 		361531CF15A7605200B6FA79 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		362D44AA15C9BBD100D43E22 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		362D44B415C9BC8800D43E22 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -316,6 +319,8 @@
 				28D7ACF70DDB3853001CB0EB /* BladeGuardTrackerViewController.m */,
 				36A3082A16AF2750001044D7 /* BGTEventViewController.h */,
 				36A3082B16AF2750001044D7 /* BGTEventViewController.m */,
+				3612C0CA16BC186B00F4811B /* BGTSettingsViewController.h */,
+				3612C0CB16BC186C00F4811B /* BGTSettingsViewController.m */,
 			);
 			name = "view controllers";
 			sourceTree = "<group>";
@@ -468,6 +473,7 @@
 				36A3085116B5BAB0001044D7 /* BGTWeatherView.m in Sources */,
 				367BBFF316B720C800B64DCF /* BGTEventTableViewCell.m in Sources */,
 				3612C0C516B893B300F4811B /* BGTUpdateRegistrationCommand.m in Sources */,
+				3612C0CC16BC186C00F4811B /* BGTSettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
