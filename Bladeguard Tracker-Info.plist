@@ -45,6 +45,17 @@
 	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Storyboard</string>
+	<key>FacebookAppID</key>
+	<string>514215418600631</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb514215418600631</string>
+			</array>
+		</dict>
+	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

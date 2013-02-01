@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FacebookSDK/FacebookSDK.h>
 #import "BGTSocket.h"
 #import "BGTUpdateRegistrationCommand.h"
 
 @class BladeGuardTrackerViewController;
+
+extern NSString *const FBSessionStateChangedNotification;
 
 @interface BladeGuardTrackerAppDelegate : UIResponder <UIApplicationDelegate> {
     UIWindow *window;
@@ -19,6 +22,8 @@
 
 @property (strong, nonatomic) UIWindow *window;
 //@property (nonatomic, retain) IBOutlet BladeGuardTrackerViewController *viewController;
+
+- (BOOL)openSessionWithAllowLoginUI:(BOOL)allowLoginUI;
 
 @end
 

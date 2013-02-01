@@ -38,4 +38,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction) toggleAnonymous:(id)sender {
+    credentialsView.hidden = anonymousSwitch.on;
+    anonymousInfoText.hidden = !anonymousSwitch.on;
+}
+
+- (IBAction) loginWithFacebook:(id)sender {
+    BladeGuardTrackerAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    // The user has initiated a login, so call the openSession method
+    // and show the login UX if necessary.
+    [appDelegate openSessionWithAllowLoginUI:YES];
+}
+
 @end

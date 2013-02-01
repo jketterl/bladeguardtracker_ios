@@ -16,6 +16,10 @@
 		3612C0C016B8602600F4811B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3612C0BF16B8602600F4811B /* Default-568h@2x.png */; };
 		3612C0C516B893B300F4811B /* BGTUpdateRegistrationCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 3612C0C416B893B300F4811B /* BGTUpdateRegistrationCommand.m */; };
 		3612C0CC16BC186C00F4811B /* BGTSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3612C0CB16BC186C00F4811B /* BGTSettingsViewController.m */; };
+		3612C0CE16BC294F00F4811B /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3612C0CD16BC294F00F4811B /* FacebookSDK.framework */; };
+		3612C0D016BC298C00F4811B /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3612C0CF16BC298C00F4811B /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		3612C0D216BC299700F4811B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3612C0D116BC299700F4811B /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		3612C0D416BC299D00F4811B /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3612C0D316BC299D00F4811B /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		361531D015A7605200B6FA79 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 361531CF15A7605200B6FA79 /* CFNetwork.framework */; };
 		362D44A915C9BBD100D43E22 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 362D44AB15C9BBD100D43E22 /* Localizable.strings */; };
 		362D44B515C9BE0600D43E22 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 362D44B615C9BE0600D43E22 /* Storyboard.storyboard */; };
@@ -81,6 +85,10 @@
 		3612C0C616BBBC5000F4811B /* BGTEventListListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BGTEventListListener.h; sourceTree = "<group>"; };
 		3612C0CA16BC186B00F4811B /* BGTSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTSettingsViewController.h; sourceTree = "<group>"; };
 		3612C0CB16BC186C00F4811B /* BGTSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTSettingsViewController.m; sourceTree = "<group>"; };
+		3612C0CD16BC294F00F4811B /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		3612C0CF16BC298C00F4811B /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		3612C0D116BC299700F4811B /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		3612C0D316BC299D00F4811B /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		361531CF15A7605200B6FA79 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		362D44AA15C9BBD100D43E22 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		362D44B415C9BC8800D43E22 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -160,6 +168,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3612C0D416BC299D00F4811B /* Social.framework in Frameworks */,
+				3612C0D216BC299700F4811B /* AdSupport.framework in Frameworks */,
+				3612C0D016BC298C00F4811B /* Accounts.framework in Frameworks */,
 				3678B2C715D591600017ABA5 /* CoreImage.framework in Frameworks */,
 				36AA640515B310C500128DA0 /* MapKit.framework in Frameworks */,
 				36AB05BB15AA1BAE00560928 /* CoreLocation.framework in Frameworks */,
@@ -171,6 +182,7 @@
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				36AB05B915AA161500560928 /* libSocketRocket.a in Frameworks */,
 				36AB05D415AA31BA00560928 /* libsbjson-ios.a in Frameworks */,
+				3612C0CE16BC294F00F4811B /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,9 +229,11 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				3612C0D316BC299D00F4811B /* Social.framework */,
+				3612C0D116BC299700F4811B /* AdSupport.framework */,
+				3612C0CF16BC298C00F4811B /* Accounts.framework */,
 				3612C0BF16B8602600F4811B /* Default-568h@2x.png */,
 				36A3083B16B1BA30001044D7 /* config.plist */,
-				3678B2C615D591600017ABA5 /* CoreImage.framework */,
 				362D44B615C9BE0600D43E22 /* Storyboard.storyboard */,
 				36AB05D515AB4DD200560928 /* Settings.bundle */,
 				36AB05C115AA255E00560928 /* Sample Track.gpx */,
@@ -264,6 +278,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3612C0CD16BC294F00F4811B /* FacebookSDK.framework */,
+				3678B2C615D591600017ABA5 /* CoreImage.framework */,
 				36AA640415B310C500128DA0 /* MapKit.framework */,
 				36AB05BA15AA1BAE00560928 /* CoreLocation.framework */,
 				36AB05B315A9FE8B00560928 /* libicucore.dylib */,
@@ -498,6 +514,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../FacebookSDK\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -511,6 +531,10 @@
 					"\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/SocketRocket-bbdqfahhynxopienecpqsueqzoht/Build/Products/Debug-iphonesimulator\"",
 					"\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/SBJson-bkrqcbzfsyfflecrivoximytggxj/Build/Products/Debug-iphonesimulator\"",
 				);
+				OTHER_LDFLAGS = (
+					"-lsqlite3",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "Bladeguard Tracker";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -522,6 +546,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../FacebookSDK\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bladeguard Tracker_Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -532,6 +560,10 @@
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/SocketRocket-bbdqfahhynxopienecpqsueqzoht/Build/Products/Debug-iphonesimulator\"",
 					"\"$(SRCROOT)/../../Library/Developer/Xcode/DerivedData/SBJson-bkrqcbzfsyfflecrivoximytggxj/Build/Products/Debug-iphonesimulator\"",
+				);
+				OTHER_LDFLAGS = (
+					"-lsqlite3",
+					"-ObjC",
 				);
 				PRODUCT_NAME = "Bladeguard Tracker";
 				TARGETED_DEVICE_FAMILY = "1,2";
