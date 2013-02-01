@@ -32,10 +32,13 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-    events = [[BGTEventList alloc] initWithTableview:self.tableView];
+    events = [[BGTEventList alloc] init];
+    [events addListener:self];
     [self.tableView setDataSource:events];
     
+    /*
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadEvents) name:UIApplicationDidBecomeActiveNotification object:nil];
+     */
     
     // localization
     self.selectLabel.text = NSLocalizedString(@"select_event", nil);
@@ -48,17 +51,22 @@
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     
-    [activity startAnimating];
-    
-    NSMethodSignature* sig = [self methodSignatureForSelector:@selector(eventListLoaded)];
-    NSInvocation* inv = [NSInvocation invocationWithMethodSignature:sig];
-    [inv setTarget:self];
-    [inv setSelector:@selector(eventListLoaded)];
-    [events load:inv];
+    [events load];
 }
 
-- (void) eventListLoaded {
+- (void) onBeforeLoad {
+    [activity startAnimating];
+}
+
+- (void) onLoad {
+    [self.tableView reloadData];
     [activity stopAnimating];
+}
+
+
+- (void) viewWillAppear:(BOOL)animated {
+    [self reloadEvents];
+    [super viewWillAppear:animated];
 }
 
 // Override to allow orientations other than the default portrait orientation.

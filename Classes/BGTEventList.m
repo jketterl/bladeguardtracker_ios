@@ -10,17 +10,20 @@
 
 @implementation BGTEventList
 
-- (id) initWithTableview:(UITableView *) newTableview {
+- (id) init {
     self = [super init];
     if (self) {
         events = [[NSMutableArray alloc] init];
-        tableview = newTableview;
-    
+        listeners = [NSMutableArray arrayWithCapacity:3];
     }
     return self;
 }
 
-- (void) load: (NSInvocation*) onLoad {
+- (void) load{
+    for (id<BGTEventListListener> listener in listeners) {
+        [listener onBeforeLoad];
+    }
+    
     BGTSocket* socket = [BGTSocket getSharedInstanceWithStake:self];
     BGTSocketCommand* command = [[BGTGetEventsCommand alloc] initWithDefaults];
     
@@ -30,7 +33,6 @@
     [callback setTarget:self];
     [callback setSelector:@selector(onCommandResult:)];
     [command addCallback:callback];
-    [command addCallback:onLoad];
     
     [socket sendCommand:command];
 }
@@ -41,13 +43,17 @@
         NSNumber* eventId = [entry valueForKey:@"id"];
         BGTEvent* event = [self eventWithId:[eventId intValue]];
         if (event == nil) {
-            BGTEvent* event = [[BGTEvent alloc] initWithJSON:entry];
+            event = [[BGTEvent alloc] initWithJSON:entry];
             [events addObject:event];
         } else {
             [event applyJSON:entry];
         }
     }
-    [tableview reloadData];
+    
+    for (id<BGTEventListListener> listener in listeners) {
+        [listener onLoad];
+    }
+    
     BGTSocket* socket = [BGTSocket getSharedInstanceWithStake:self];
     [socket removeStake:self];
 }
@@ -103,6 +109,14 @@
         if ([event getId] == eventId) return event;
     }
     return nil;
+}
+
+- (void) addListener:(id<BGTEventListListener>) listener {
+    [listeners addObject:listener];
+}
+
+- (void) removeListener:(id<BGTEventListListener>) listener; {
+    [listeners removeObject:listener];
 }
 
 @end

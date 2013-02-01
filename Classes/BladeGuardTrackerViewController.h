@@ -10,8 +10,9 @@
 #import "GPSDelegate.h"
 #import "BGTEventList.h"
 #import "BGTEventViewController.h"
+#import "BGTEventListListener.h"
 
-@interface BladeGuardTrackerViewController : UIViewController {
+@interface BladeGuardTrackerViewController : UIViewController <BGTEventListListener> {
     IBOutlet UIActivityIndicatorView* activity;
     @private BGTEventList* events;
 }

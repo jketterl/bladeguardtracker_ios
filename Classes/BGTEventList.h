@@ -12,15 +12,17 @@
 #import "BGTGetEventsCommand.h"
 #import "BGTEvent.h"
 #import "BGTEventTableViewCell.h"
+#import "BGTEventListListener.h"
 
 @interface BGTEventList : NSObject <UITableViewDataSource> {
     @private NSMutableArray* events;
-    @private UITableView* tableview;
+    @private NSMutableArray* listeners;
 }
 
-- (id) initWithTableview:(UITableView *) tableview;
 - (BGTEvent *) eventAtIndex: (int) index;
 - (BGTEvent *) eventWithId: (int) eventId;
-- (void) load: (NSInvocation*) onLoad;
+- (void) load;
+- (void) addListener:(id<BGTEventListListener>) listener;
+- (void) removeListener:(id<BGTEventListListener>) listener;
 
 @end

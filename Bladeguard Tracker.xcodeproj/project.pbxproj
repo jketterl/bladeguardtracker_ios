@@ -77,6 +77,7 @@
 		3612C0BF16B8602600F4811B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		3612C0C316B893B300F4811B /* BGTUpdateRegistrationCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTUpdateRegistrationCommand.h; sourceTree = "<group>"; };
 		3612C0C416B893B300F4811B /* BGTUpdateRegistrationCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTUpdateRegistrationCommand.m; sourceTree = "<group>"; };
+		3612C0C616BBBC5000F4811B /* BGTEventListListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BGTEventListListener.h; sourceTree = "<group>"; };
 		361531CF15A7605200B6FA79 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		362D44AA15C9BBD100D43E22 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		362D44B415C9BC8800D43E22 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -299,6 +300,7 @@
 				36A3082616AF1D2F001044D7 /* BGTEventList.h */,
 				36A3082716AF1D2F001044D7 /* BGTEventList.m */,
 				36A3083116B08272001044D7 /* BGTEventSubscriber.h */,
+				3612C0C616BBBC5000F4811B /* BGTEventListListener.h */,
 			);
 			name = event;
 			sourceTree = "<group>";
