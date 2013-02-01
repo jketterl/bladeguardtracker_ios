@@ -51,8 +51,13 @@
 }
 
 - (IBAction) toggleAnonymous:(id)sender {
-    credentialsView.hidden = anonymousSwitch.on;
-    anonymousInfoText.hidden = !anonymousSwitch.on;
+    Boolean on = anonymousSwitch.on;
+    credentialsView.hidden = on;
+    anonymousInfoText.hidden = !on;
+    if (!on && FBSession.activeSession.isOpen) {
+        BladeGuardTrackerAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        [appDelegate closeSession];
+    }
 }
 
 - (IBAction) loginWithFacebook:(id)sender {
@@ -73,8 +78,24 @@
 - (void)sessionStateChanged:(NSNotification*)notification {
     if (FBSession.activeSession.isOpen) {
         [facebookButton setTitle:@"Disconnect from Facebook" forState:UIControlStateNormal];
+        userField.enabled = false;
+        passwordField.enabled = false;
+        registerButton.enabled = false;
+        loginButton.enabled = false;
+        regularLoginView.alpha = .2;
+        anonymousSwitch.on = false;
+        credentialsView.hidden = false;
+        anonymousInfoText.hidden = true;
     } else {
         [facebookButton setTitle:@"Login with Facebook" forState:UIControlStateNormal];
+        userField.enabled = true;
+        passwordField.enabled = true;
+        registerButton.enabled = true;
+        loginButton.enabled = true;
+        regularLoginView.alpha = 1;
+        anonymousSwitch.on = true;
+        credentialsView.hidden = true;
+        anonymousInfoText.hidden = false;
     }
 }
 
