@@ -150,9 +150,19 @@
     from = [[between objectAtIndex:0] intValue];
     to = [[between objectAtIndex:1] intValue];
     
-    if (from == 0 && to == 0) return;
+    track = [self generateTrack];
+    if (track != nil) [self.mapView addOverlay:track];
+    
+    // this is a little trick to keep the route overlay *above* the track overlay.
+    // this app is supposed to have a consistent look across platforms, and this is part of it.
     if (route == nil) return;
-    if (to >= route.pointCount) return;
+    [self.mapView addOverlay:route];
+}
+
+- (MKPolyline*) generateTrack {
+    if (from == 0 && to == 0) return nil;
+    if (route == nil) return nil;
+    if (to >= route.pointCount) return nil;
     
     MKMapPoint coordinates[route.pointCount];
     int i = from, k = 0;
@@ -161,14 +171,7 @@
         i++;
         if (i >= route.pointCount) i = 0;
     }
-    
-    track = [MKPolyline polylineWithPoints:coordinates count:k];
-    [self.mapView addOverlay:track];
-    
-    // this is a little trick to keep the route overlay *above* the track overlay.
-    // this app is supposed to have a consistent look across platforms, and this is part of it.
-    [self.mapView removeOverlay:route];
-    [self.mapView addOverlay:route];
+    return [MKPolyline polylineWithPoints:coordinates count:k];
 }
 
 - (void) processQuit: (NSDictionary*) quit {
@@ -217,6 +220,10 @@
         track = nil;
     }
     route = [MKPolyline polylineWithCoordinates:coordinates count:count];
+    track = [self generateTrack];
+    if (track != nil) {
+        [self.mapView addOverlay:track];
+    }
     [self.mapView addOverlay:route];
     [self.mapView setVisibleMapRect:route.boundingMapRect];
 }
