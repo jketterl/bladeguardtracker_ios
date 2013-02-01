@@ -93,5 +93,8 @@
     NSLog(@"%@", error);
 }
 
+- (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [[BGTEventList getSharedInstance] load];
+}
 
 @end
