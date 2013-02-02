@@ -43,7 +43,6 @@
     // localization
     self.selectLabel.text = NSLocalizedString(@"select_event", nil);
     self.upcomingLabel.text = NSLocalizedString(@"Upcoming bladenight events", nil);
-    [self.settingsButton setTitle: NSLocalizedString(@"Settings", nil) forState:UIControlStateNormal];
     
     [super viewDidLoad];
 }
