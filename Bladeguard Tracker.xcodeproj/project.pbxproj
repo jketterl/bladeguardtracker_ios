@@ -23,7 +23,6 @@
 		3612C0D716BC494200F4811B /* BGTFacebookLoginCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 3612C0D616BC494200F4811B /* BGTFacebookLoginCommand.m */; };
 		3612C0DA16BD404300F4811B /* BGTAuthCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 3612C0D916BD404300F4811B /* BGTAuthCommand.m */; };
 		361531D015A7605200B6FA79 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 361531CF15A7605200B6FA79 /* CFNetwork.framework */; };
-		3626921D16BDAA7F00A9B9E0 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 3626921C16BDAA7F00A9B9E0 /* settings.png */; };
 		3626922016BDAE2400A9B9E0 /* BGTRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3626921F16BDAE2400A9B9E0 /* BGTRegisterViewController.m */; };
 		362D44A915C9BBD100D43E22 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 362D44AB15C9BBD100D43E22 /* Localizable.strings */; };
 		362D44B515C9BE0600D43E22 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 362D44B615C9BE0600D43E22 /* Storyboard.storyboard */; };
@@ -70,6 +69,8 @@
 		36AB05F415ACA7AE00560928 /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 36AB05F315ACA7AE00560928 /* icon-72.png */; };
 		36AB05F615ACA7B100560928 /* icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 36AB05F515ACA7B100560928 /* icon-144.png */; };
 		36EBD88A16BDBA37001EB2F7 /* BGTSignupCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EBD88916BDBA37001EB2F7 /* BGTSignupCommand.m */; };
+		36EBD88D16BDC35B001EB2F7 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 36EBD88B16BDC35B001EB2F7 /* settings.png */; };
+		36EBD88E16BDC35B001EB2F7 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36EBD88C16BDC35B001EB2F7 /* settings@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,7 +99,6 @@
 		3612C0D816BD404300F4811B /* BGTAuthCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTAuthCommand.h; sourceTree = "<group>"; };
 		3612C0D916BD404300F4811B /* BGTAuthCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTAuthCommand.m; sourceTree = "<group>"; };
 		361531CF15A7605200B6FA79 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		3626921C16BDAA7F00A9B9E0 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		3626921E16BDAE2400A9B9E0 /* BGTRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTRegisterViewController.h; sourceTree = "<group>"; };
 		3626921F16BDAE2400A9B9E0 /* BGTRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTRegisterViewController.m; sourceTree = "<group>"; };
 		362D44AA15C9BBD100D43E22 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -172,6 +172,8 @@
 		36AB05F515ACA7B100560928 /* icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-144.png"; sourceTree = "<group>"; };
 		36EBD88816BDBA37001EB2F7 /* BGTSignupCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTSignupCommand.h; sourceTree = "<group>"; };
 		36EBD88916BDBA37001EB2F7 /* BGTSignupCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTSignupCommand.m; sourceTree = "<group>"; };
+		36EBD88B16BDC35B001EB2F7 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		36EBD88C16BDC35B001EB2F7 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Bladeguard Tracker-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Bladeguard Tracker-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -270,7 +272,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				3626921C16BDAA7F00A9B9E0 /* settings.png */,
+				36EBD88B16BDC35B001EB2F7 /* settings.png */,
+				36EBD88C16BDC35B001EB2F7 /* settings@2x.png */,
 				367BBFE816B5C73F00B64DCF /* ampel_gruen.png */,
 				367BBFE916B5C73F00B64DCF /* ampel_rot.png */,
 				36A3084316B3331E001044D7 /* icon.png */,
@@ -473,7 +476,8 @@
 				367BBFEA16B5C73F00B64DCF /* ampel_gruen.png in Resources */,
 				367BBFEB16B5C73F00B64DCF /* ampel_rot.png in Resources */,
 				3612C0C016B8602600F4811B /* Default-568h@2x.png in Resources */,
-				3626921D16BDAA7F00A9B9E0 /* settings.png in Resources */,
+				36EBD88D16BDC35B001EB2F7 /* settings.png in Resources */,
+				36EBD88E16BDC35B001EB2F7 /* settings@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
