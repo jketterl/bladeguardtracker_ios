@@ -34,13 +34,18 @@
      name:FBSessionStateChangedNotification
      object:nil];
     
+    // Localization
+    self.title = NSLocalizedString(@"Settings", nil);
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     // Check the session for a cached token to show the proper authenticated
     // UI. However, since this is not user intitiated, do not show the login UX.
     BladeGuardTrackerAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     [appDelegate openSessionWithAllowLoginUI:NO];
     
-    // Localization
-    self.title = NSLocalizedString(@"Settings", nil);
+    [self sessionStateChanged:nil];
 }
 
 - (void)didReceiveMemoryWarning
