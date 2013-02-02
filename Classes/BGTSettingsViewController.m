@@ -34,6 +34,11 @@
      name:FBSessionStateChangedNotification
      object:nil];
     
+    // Check the session for a cached token to show the proper authenticated
+    // UI. However, since this is not user intitiated, do not show the login UX.
+    BladeGuardTrackerAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    [appDelegate openSessionWithAllowLoginUI:NO];
+
     // Localization
     self.title = NSLocalizedString(@"Settings", nil);
     anonymousLabel.text = NSLocalizedString(@"Anonymous Tracking", nil);
@@ -47,18 +52,7 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    // Check the session for a cached token to show the proper authenticated
-    // UI. However, since this is not user intitiated, do not show the login UX.
-    BladeGuardTrackerAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    [appDelegate openSessionWithAllowLoginUI:NO];
-    
-    [self sessionStateChanged:nil];
-
-    NSUserDefaults* settings = [NSUserDefaults standardUserDefaults];
-    userField.text = [settings valueForKey:@"user"];
-    passwordField.text = [settings valueForKey:@"pass"];
-    anonymousSwitch.on = [settings boolForKey:@"anonymous"];
-    [self toggleAnonymous:anonymousSwitch];
+    [self updateUI];
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,13 +63,21 @@
 }
 
 - (IBAction) toggleAnonymous:(id)sender {
-    Boolean on = anonymousSwitch.on;
-    credentialsView.hidden = on;
-    anonymousInfoText.hidden = !on;
-    if (!on && FBSession.activeSession.isOpen) {
-        BladeGuardTrackerAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-        [appDelegate closeSession];
+    NSUserDefaults* settings = [NSUserDefaults standardUserDefaults];
+    if (anonymousSwitch.on) {
+        if (FBSession.activeSession.isOpen) {
+            NSLog(@"closing session");
+            BladeGuardTrackerAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+            [appDelegate closeSession];
+        }
+        [settings setBool:true forKey:@"anonymous"];
+        [settings setValue:@"" forKey:@"user"];
+        [settings setValue:@"" forKey:@"pass"];
+        [settings synchronize];
+    } else {
+        [settings setBool:false forKey:@"anonymous"];
     }
+    [self updateUI];
 }
 
 - (IBAction) loginWithFacebook:(id)sender {
@@ -92,29 +94,36 @@
     }
 }
 
-
-- (void)sessionStateChanged:(NSNotification*)notification {
+- (void) updateUI {
+    NSUserDefaults* settings = [NSUserDefaults standardUserDefaults];
     if (FBSession.activeSession.isOpen) {
         [facebookButton setTitle:NSLocalizedString(@"Disconnect from Facebook", nil) forState:UIControlStateNormal];
+        anonymousSwitch.on = false;
+        credentialsView.hidden = false;
+        anonymousInfoText.hidden = true;
         userField.enabled = false;
         passwordField.enabled = false;
         registerButton.enabled = false;
         loginButton.enabled = false;
         regularLoginView.alpha = .2;
-        anonymousSwitch.on = false;
-        credentialsView.hidden = false;
-        anonymousInfoText.hidden = true;
     } else {
         [facebookButton setTitle:NSLocalizedString(@"Login with Facebook", nil) forState:UIControlStateNormal];
+        Boolean anonymous = [settings boolForKey:@"anonymous"];
+        anonymousSwitch.on = anonymous;
+        credentialsView.hidden = anonymous;
+        anonymousInfoText.hidden = !anonymous;
         userField.enabled = true;
         passwordField.enabled = true;
         registerButton.enabled = true;
         loginButton.enabled = true;
         regularLoginView.alpha = 1;
-        anonymousSwitch.on = true;
-        credentialsView.hidden = true;
-        anonymousInfoText.hidden = false;
     }
+    userField.text = [settings valueForKey:@"user"];
+    passwordField.text = [settings valueForKey:@"pass"];
+}
+
+- (void)sessionStateChanged:(NSNotification*)notification {
+    [self updateUI];
 }
 
 - (void) login:(id)sender {

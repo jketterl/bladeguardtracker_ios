@@ -67,6 +67,8 @@
     webSocket = newWebSocket;
     
     [self sendHandshake];
+    
+    [self authenticate];
 
     [self processQueue];
     [self setStatus:BGTSocketConnected];
@@ -111,6 +113,7 @@
            NSError *error) {
              if (!error) {
                  [command setUser:[user valueForKey:@"username"]];
+                 NSLog(@"sending facebook login");
                  [self sendCommand:command];
              } else {
                  NSLog(@"%@", error);
