@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BGTSocket.h"
+#import "BGTSignupCommand.h"
 
-@interface BGTRegisterViewController : UIViewController {
+@interface BGTRegisterViewController : UIViewController <UIAlertViewDelegate> {
     IBOutlet UILabel* userLabel;
     IBOutlet UILabel* passLabel;
     IBOutlet UILabel* confirmLabel;

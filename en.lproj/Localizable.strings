@@ -39,3 +39,5 @@
 "Passwords do not match" = "Passwords do not match";
 "Username cannot be empty" = "Username cannot be empty";
 "Password cannot be empty" = "Password cannot be empty";
+"Success" = "Success";
+"User created successfully" = "User created successfully";

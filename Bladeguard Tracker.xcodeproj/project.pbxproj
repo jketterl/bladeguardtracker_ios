@@ -69,6 +69,7 @@
 		36AB05F215ACA7A200560928 /* icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = 36AB05F115ACA7A200560928 /* icon-114.png */; };
 		36AB05F415ACA7AE00560928 /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 36AB05F315ACA7AE00560928 /* icon-72.png */; };
 		36AB05F615ACA7B100560928 /* icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 36AB05F515ACA7B100560928 /* icon-144.png */; };
+		36EBD88A16BDBA37001EB2F7 /* BGTSignupCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EBD88916BDBA37001EB2F7 /* BGTSignupCommand.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -169,6 +170,8 @@
 		36AB05F115ACA7A200560928 /* icon-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-114.png"; sourceTree = "<group>"; };
 		36AB05F315ACA7AE00560928 /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
 		36AB05F515ACA7B100560928 /* icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-144.png"; sourceTree = "<group>"; };
+		36EBD88816BDBA37001EB2F7 /* BGTSignupCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTSignupCommand.h; sourceTree = "<group>"; };
+		36EBD88916BDBA37001EB2F7 /* BGTSignupCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTSignupCommand.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Bladeguard Tracker-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Bladeguard Tracker-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -320,6 +323,8 @@
 				3612C0D616BC494200F4811B /* BGTFacebookLoginCommand.m */,
 				3612C0D816BD404300F4811B /* BGTAuthCommand.h */,
 				3612C0D916BD404300F4811B /* BGTAuthCommand.m */,
+				36EBD88816BDBA37001EB2F7 /* BGTSignupCommand.h */,
+				36EBD88916BDBA37001EB2F7 /* BGTSignupCommand.m */,
 			);
 			name = commands;
 			sourceTree = "<group>";
@@ -508,6 +513,7 @@
 				3612C0D716BC494200F4811B /* BGTFacebookLoginCommand.m in Sources */,
 				3612C0DA16BD404300F4811B /* BGTAuthCommand.m in Sources */,
 				3626922016BDAE2400A9B9E0 /* BGTRegisterViewController.m in Sources */,
+				36EBD88A16BDBA37001EB2F7 /* BGTSignupCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

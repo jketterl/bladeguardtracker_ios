@@ -39,3 +39,5 @@
 "Passwords do not match" = "Passwörter stimmen nicht überein";
 "Username cannot be empty" = "Der Benutzername darf nicht leer sein";
 "Password cannot be empty" = "Das Passwort darf nicht leer sein";
+"Success" = "Erfolg";
+"User created successfully" = "Benutzer erfolgreich angelegt";
