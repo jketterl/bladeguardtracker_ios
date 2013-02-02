@@ -35,3 +35,7 @@
 "Login" = "Anmelden";
 "or" = "oder";
 "anonymous_summary" = "Deine Statistiken können anonym gesammelt werden, wenn Du Dich nicht anmelden willst. Lasse diesen Schalter eingeschaltet, um anonym zu bleiben.";
+"Error" = "Fehler";
+"Passwords do not match" = "Passwörter stimmen nicht überein";
+"Username cannot be empty" = "Der Benutzername darf nicht leer sein";
+"Password cannot be empty" = "Das Passwort darf nicht leer sein";

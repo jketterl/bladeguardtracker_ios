@@ -46,9 +46,26 @@
     NSString* user = userField.text;
     NSString* pass = passField.text;
     NSString* confirm = confirmField.text;
+    
+    if ([user isEqualToString:@""]) {
+        NSLog(@"user empty");
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:NSLocalizedString(@"Username cannot be empty", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
 
     if (![pass isEqualToString:confirm]) {
-        NSLog(@"strings to not match");
+        NSLog(@"password mismatch");
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:NSLocalizedString(@"Passwords do not match", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+        return;
+    }
+    
+    if ([pass isEqualToString:@""]) {
+        NSLog(@"password empty");
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:NSLocalizedString(@"Password cannot be empty", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+        return;
     }
 }
 
