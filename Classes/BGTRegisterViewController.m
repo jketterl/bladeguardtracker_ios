@@ -26,6 +26,13 @@
 - (void)viewDidLoad
 {
     self.title = NSLocalizedString(@"Register", nil);
+    
+    // Localization
+    userLabel.text = NSLocalizedString(@"Username", nil);
+    passLabel.text = NSLocalizedString(@"Password", nil);
+    confirmLabel.text = NSLocalizedString(@"Confirm", nil);
+    [registerButton setTitle:NSLocalizedString(@"Register", nil) forState:UIControlStateNormal];
+    
     [super viewDidLoad];
 }
 
@@ -33,6 +40,16 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)register:(id)sender {
+    NSString* user = userField.text;
+    NSString* pass = passField.text;
+    NSString* confirm = confirmField.text;
+
+    if (![pass isEqualToString:confirm]) {
+        NSLog(@"strings to not match");
+    }
 }
 
 @end

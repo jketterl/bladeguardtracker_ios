@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BGTRegisterViewController : UIViewController
+@interface BGTRegisterViewController : UIViewController {
+    IBOutlet UILabel* userLabel;
+    IBOutlet UILabel* passLabel;
+    IBOutlet UILabel* confirmLabel;
+    
+    IBOutlet UITextField* userField;
+    IBOutlet UITextField* passField;
+    IBOutlet UITextField* confirmField;
+    
+    IBOutlet UIButton* registerButton;
+}
+
+- (IBAction)register:(id)sender;
 
 @end
