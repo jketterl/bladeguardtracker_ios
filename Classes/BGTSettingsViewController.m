@@ -111,4 +111,23 @@
     }
 }
 
+- (void) login:(id)sender {
+    NSString* user = userField.text;
+    NSString* pass = passwordField.text;
+    
+    BGTAuthCommand* auth = [[BGTSocket getSharedInstance] authenticateWithUser:user andPass:pass];
+    
+    NSMethodSignature* sig = [self methodSignatureForSelector:@selector(processAuthentication:)];
+    NSInvocation* callback = [NSInvocation invocationWithMethodSignature:sig];
+    [callback setTarget:self];
+    [callback setSelector:@selector(processAuthentication:)];
+    [callback setArgument:&auth atIndex:2];
+    
+    [auth addCallback:callback];
+}
+
+- (void) processAuthentication: (BGTAuthCommand*) command {
+    NSLog(@"%d", [command wasSuccessful]);
+}
+
 @end

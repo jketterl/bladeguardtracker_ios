@@ -14,6 +14,7 @@
 #import "BGTEvent.h"
 #import "BladeGuardTrackerAppDelegate.h"
 #import "BGTFacebookLoginCommand.h"
+#import "BGTAuthCommand.h"
 
 @interface BGTSocket : NSObject <SRWebSocketDelegate> {
     @private NSMutableArray* stakes;
@@ -26,6 +27,7 @@
     @private NSMutableArray* listeners;
     @private int requestCount;
     @private NSMutableDictionary* requests;
+    @private Boolean queueing;
 }
 + (BGTSocket *) getSharedInstance;
 + (BGTSocket *) getSharedInstanceWithStake: (id) stake;
@@ -38,6 +40,8 @@
 - (void) removeStake: (id) stake;
 - (void) addListener: (id<BGTSocketEventListener>) listener;
 - (void) removeListener: (id<BGTSocketEventListener>) listener;
+
+- (BGTAuthCommand*) authenticateWithUser:(NSString*) user andPass:(NSString*) pass;
 
 @property (nonatomic) int status;
 

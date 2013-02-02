@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BladeGuardTrackerAppDelegate.h"
+#import "BGTAuthCommand.h"
 
 @interface BGTSettingsViewController : UIViewController {
     @private
@@ -31,5 +32,6 @@
 
 - (IBAction) toggleAnonymous:(id)sender;
 - (IBAction) loginWithFacebook:(id)sender;
+- (IBAction) login:(id)sender;
 
 @end

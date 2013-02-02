@@ -25,4 +25,8 @@
 - (void) updateResultWithBool:(BOOL) success;
 - (void) addCallback:(NSInvocation*) callback;
 - (NSDictionary *) getResult;
+- (Boolean) wasSuccessful;
+
+- (void) setData:(NSObject*) data;
+- (Boolean) isAuthCommand;
 @end

@@ -68,30 +68,33 @@
     
     [self sendHandshake];
 
-    NSMethodSignature* sig = [self methodSignatureForSelector:@selector(onAuthentication)];
-    NSInvocation* callback = [NSInvocation invocationWithMethodSignature:sig];
-    [callback setTarget:self];
-    [callback setSelector:@selector(onAuthentication)];
-    BGTSocketCommand* command = [self authenticate];
-    if (command != NULL) {
-        [command addCallback:callback];
-    } else {
-        [callback invoke];
-    }
-    
+    [self processQueue];
     [self setStatus:BGTSocketConnected];
 }
-- (void) onAuthentication {
-    if (backlog != nil) {
-        NSArray* blCopy = backlog;
-        backlog = nil;
-        
-        for (BGTSocketCommand* command in blCopy) {
+- (void) processQueue {
+    queueing = false;
+    if (backlog == nil) return;
+    
+    for (BGTSocketCommand* command in backlog) {
+        if ([command isAuthCommand]) {
+            NSMethodSignature* sig = [self methodSignatureForSelector:@selector(processQueue)];
+            NSInvocation* callback = [NSInvocation invocationWithMethodSignature:sig];
+            [callback setTarget:self];
+            [callback setSelector:@selector(processQueue)];
+            [command addCallback:callback];
             [self sendCommand:command];
+            
+            [backlog removeObject:command];
+            return;
         }
     }
-    // re-subscribe to any events that have been previously subscribed, if any
-    //[self subscribeCategoryArray:subscriptions];    
+    
+    NSArray* blCopy = backlog;
+    backlog = nil;
+    
+    for (BGTSocketCommand* command in blCopy) {
+        [self sendCommand:command];
+    }
 }
 
 - (BGTSocketCommand*) authenticate {
@@ -100,31 +103,39 @@
     BladeGuardTrackerAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     [appDelegate openSessionWithAllowLoginUI:false];
     if (FBSession.activeSession.isOpen) {
+        BGTFacebookLoginCommand *command = [[BGTFacebookLoginCommand alloc] initEmpty];
+        
         [[FBRequest requestForMe] startWithCompletionHandler:
          ^(FBRequestConnection *connection,
            NSDictionary<FBGraphUser> *user,
            NSError *error) {
              if (!error) {
-                 BGTFacebookLoginCommand* command = [[BGTFacebookLoginCommand alloc] initWithUserId:[user valueForKey:@"username"]];
-                 [self sendCommand:command doQueue:NO bypass:YES];
+                 [command setUser:[user valueForKey:@"username"]];
+                 [self sendCommand:command];
              } else {
                  NSLog(@"%@", error);
              }
          }];
         
-        return NULL;
+        return command;
     }
     
     NSUserDefaults* settings = [NSUserDefaults standardUserDefaults];
     if ([settings boolForKey:@"anonymous"]) return NULL;
     
-    NSMutableDictionary* data = [NSMutableDictionary dictionaryWithCapacity:2];
-    [data setValue:[settings stringForKey:@"user"] forKey:@"user"];
-    [data setValue:[settings stringForKey:@"pass"] forKey:@"pass"];
-    BGTSocketCommand* command = [[BGTSocketCommand alloc] initWithCommand:@"auth" andData:data];
-    [self sendCommand:command doQueue:NO bypass:YES];
+    NSString* user = [settings stringForKey:@"user"];
+    NSString* pass = [settings stringForKey:@"pass"];
+    
+    if (user == nil || pass == nil) return NULL;
+    return [self authenticateWithUser:user andPass:pass];
+}
+
+- (BGTAuthCommand*) authenticateWithUser:(NSString *)user andPass:(NSString *)pass {
+    BGTAuthCommand* command = [[BGTAuthCommand alloc] initWithUser:user andPassword:pass];
+    [self sendCommand:command];
     return command;
 }
+
 - (void)webSocket:(SRWebSocket *)closingWebSocket didFailWithError:(NSError *)error {
     if (closingWebSocket != webSocket) return;
     NSLog(@"socket did close with error: %@", error);
@@ -155,10 +166,8 @@
     return [self sendCommand:command doQueue:YES];
 }
 - (BGTSocketCommand*) sendCommand:(BGTSocketCommand*) command doQueue:(bool) queue {
-    return [self sendCommand:command doQueue:queue bypass:NO];
-}
-- (BGTSocketCommand*) sendCommand:(BGTSocketCommand*) command doQueue:(bool) queue bypass:(bool) bypass {
-    if (backlog != nil && !bypass) {
+    if (!shouldBeOnline) [self connect];
+    if (backlog != nil && (queueing || ![command isAuthCommand])) {
         if (shouldBeOnline && queue) [backlog addObject:command];
         return command;
     }
@@ -185,6 +194,7 @@
     
     shouldBeOnline = YES;
     backlog = [NSMutableArray arrayWithCapacity:10];
+    queueing = true;
     
     NSString* path = [[NSBundle mainBundle] pathForResource:@"config" ofType:@"plist"];
     NSDictionary* config = [[NSDictionary alloc] initWithContentsOfFile:path];

@@ -27,9 +27,14 @@
 }
 - (id) initWithCommand:(NSString *)newCommand andData:(NSObject *) newData {
     self = [self initWithCommand:newCommand];
-    if (self) data = newData;
+    if (self) [self setData:newData];
     return self;
 }
+
+- (void) setData:(NSObject *)newData {
+    data = newData;
+}
+
 - (NSString*) getJson {
     NSMutableDictionary* json = [NSMutableDictionary dictionaryWithCapacity:2];
     [json setValue:command forKey:@"command"];
@@ -60,5 +65,11 @@
 }
 - (NSDictionary *) getResult {
     return responseData;
+}
+- (Boolean) wasSuccessful {
+    return success;
+}
+- (Boolean) isAuthCommand {
+    return false;
 }
 @end
