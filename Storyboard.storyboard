@@ -339,7 +339,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Settings" id="gza-4R-9ew"/>
+                    <navigationItem key="navigationItem" title="Settings" id="7kV-p2-H5l"/>
                     <connections>
                         <outlet property="anonymousInfoText" destination="nb9-zg-FNa" id="c4g-XW-ALN"/>
                         <outlet property="anonymousLabel" destination="Ctu-ZN-tiF" id="IzE-ya-PDW"/>

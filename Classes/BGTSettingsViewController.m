@@ -28,6 +28,9 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    UIBarButtonItem* back = [[UIBarButtonItem alloc] initWithTitle:@"Bladeguard Tracker" style:UIBarButtonItemStyleBordered target:self action:@selector(back:)];
+    self.navigationItem.leftBarButtonItem = back;
+    
     [[NSNotificationCenter defaultCenter]
      addObserver:self
      selector:@selector(sessionStateChanged:)
@@ -38,7 +41,7 @@
     // UI. However, since this is not user intitiated, do not show the login UX.
     BladeGuardTrackerAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     [appDelegate openSessionWithAllowLoginUI:NO];
-
+    
     // Localization
     self.title = NSLocalizedString(@"Settings", nil);
     anonymousLabel.text = NSLocalizedString(@"Anonymous Tracking", nil);
@@ -151,7 +154,6 @@
     [loginActivity stopAnimating];
     if (![command wasSuccessful]) {
         NSDictionary* result = [command getResult];
-        NSLog(@"%@", result);
         NSString* message = [result valueForKey:@"message"];
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
@@ -164,6 +166,14 @@
     [settings synchronize];
     
     [[self navigationController] popViewControllerAnimated:YES];
+}
+
+- (void) back: (id) sender {
+    if (anonymousSwitch.on || FBSession.activeSession.isOpen) {
+        [self.navigationController popViewControllerAnimated:YES];
+        return;
+    }
+    [self login:sender];
 }
 
 @end
