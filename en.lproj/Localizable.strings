@@ -25,3 +25,12 @@
 "yes_rolling" = "%@: Yes, we're rolling!";
 "no_cancelled" = "%@: Event cancelled";
 "Settings" = "Settings";
+"Anonymous Tracking" = "Anonymous Tracking";
+"Login with Facebook" = "Login with Facebook";
+"Disconnect from Facebook" = "Disconnect from Facebook";
+"Username" = "Username:";
+"Password" = "Password:";
+"Register" = "Register";
+"Login" = "Anmelden";
+"or" = "or";
+"anonymous_summary" = "Your stats can be collected anonymously if you do not want to sign up to this app. Leave this switch enabled to remain anonymous.";

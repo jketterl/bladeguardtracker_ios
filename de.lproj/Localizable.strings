@@ -25,3 +25,12 @@
 "yes_rolling" = "%@: Ja, wir fahren!";
 "no_cancelled" = "%@: Fällt leider aus";
 "Settings" = "Einstellungen";
+"Anonymous Tracking" = "Anonymes Tracking";
+"Login with Facebook" = "Mit Facebook anmelden";
+"Disconnect from Facebook" = "Bei Facebook abmelden";
+"Username" = "Benutzer:";
+"Password" = "Passwort:";
+"Register" = "Registrieren";
+"Login" = "Anmelden";
+"or" = "oder";
+"anonymous_summary" = "Deine Statistiken können anonym gesammelt werden, wenn Du Dich nicht anmelden willst. Lasse diesen Schalter eingeschaltet, um anonym zu bleiben.";

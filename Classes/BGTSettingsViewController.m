@@ -36,6 +36,13 @@
     
     // Localization
     self.title = NSLocalizedString(@"Settings", nil);
+    anonymousLabel.text = NSLocalizedString(@"Anonymous Tracking", nil);
+    usernameLabel.text = NSLocalizedString(@"Username", nil);
+    passwordLabel.text = NSLocalizedString(@"Password", nil);
+    orLabel.text = NSLocalizedString(@"or", nil);
+    anonymousInfoText.text = NSLocalizedString(@"anonymous_summary", nil);
+    [registerButton setTitle:NSLocalizedString(@"Register", nil) forState:UIControlStateNormal];
+    [loginButton setTitle:NSLocalizedString(@"Login", nil) forState:UIControlStateNormal];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -82,7 +89,7 @@
 
 - (void)sessionStateChanged:(NSNotification*)notification {
     if (FBSession.activeSession.isOpen) {
-        [facebookButton setTitle:@"Disconnect from Facebook" forState:UIControlStateNormal];
+        [facebookButton setTitle:NSLocalizedString(@"Disconnect from Facebook", nil) forState:UIControlStateNormal];
         userField.enabled = false;
         passwordField.enabled = false;
         registerButton.enabled = false;
@@ -92,7 +99,7 @@
         credentialsView.hidden = false;
         anonymousInfoText.hidden = true;
     } else {
-        [facebookButton setTitle:@"Login with Facebook" forState:UIControlStateNormal];
+        [facebookButton setTitle:NSLocalizedString(@"Login with Facebook", nil) forState:UIControlStateNormal];
         userField.enabled = true;
         passwordField.enabled = true;
         registerButton.enabled = true;

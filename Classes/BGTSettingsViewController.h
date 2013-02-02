@@ -22,6 +22,11 @@
     
     IBOutlet UIButton* registerButton;
     IBOutlet UIButton* loginButton;
+    
+    IBOutlet UILabel* anonymousLabel;
+    IBOutlet UILabel* usernameLabel;
+    IBOutlet UILabel* passwordLabel;
+    IBOutlet UILabel* orLabel;
 }
 
 - (IBAction) toggleAnonymous:(id)sender;

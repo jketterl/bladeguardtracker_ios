@@ -320,8 +320,8 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                     </button>
-                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="or" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TVH-xD-nii">
-                                                        <rect key="frame" x="132" y="178" width="16" height="21"/>
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TVH-xD-nii">
+                                                        <rect key="frame" x="0.0" y="178" width="280" height="21"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -342,14 +342,18 @@
                     <navigationItem key="navigationItem" title="Settings" id="gza-4R-9ew"/>
                     <connections>
                         <outlet property="anonymousInfoText" destination="nb9-zg-FNa" id="c4g-XW-ALN"/>
+                        <outlet property="anonymousLabel" destination="Ctu-ZN-tiF" id="IzE-ya-PDW"/>
                         <outlet property="anonymousSwitch" destination="Erg-Yi-N91" id="4YU-4n-RhD"/>
                         <outlet property="credentialsView" destination="EH2-k3-4h2" id="h5b-ip-mqQ"/>
                         <outlet property="facebookButton" destination="C6i-Bx-iHX" id="Rx6-LQ-On0"/>
                         <outlet property="loginButton" destination="wfv-Uv-Jbg" id="fim-Bk-2Z3"/>
+                        <outlet property="orLabel" destination="TVH-xD-nii" id="jxr-mH-sBf"/>
                         <outlet property="passwordField" destination="DZu-8p-PoF" id="yqj-5c-G2B"/>
+                        <outlet property="passwordLabel" destination="WfW-f3-CBG" id="CjT-pe-4YB"/>
                         <outlet property="registerButton" destination="oWA-Da-oc6" id="Yzi-yB-sdf"/>
                         <outlet property="regularLoginView" destination="KSE-dT-jIQ" id="2Dr-88-qiU"/>
                         <outlet property="userField" destination="7F5-rY-bc7" id="pbr-eM-ZQV"/>
+                        <outlet property="usernameLabel" destination="5ka-4o-dAB" id="tNl-ok-dRM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hzB-IB-G5k" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -541,14 +545,18 @@
                 <relationship kind="action" name="loginWithFacebook:"/>
                 <relationship kind="action" name="toggleAnonymous:"/>
                 <relationship kind="outlet" name="anonymousInfoText" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="anonymousLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="anonymousSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="credentialsView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="facebookButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="orLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="registerButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="regularLoginView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="userField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="usernameLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="BGTStatisticsView" superclassName="UIView">
