@@ -62,7 +62,6 @@
 		36AB05BB15AA1BAE00560928 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AB05BA15AA1BAE00560928 /* CoreLocation.framework */; };
 		36AB05BF15AA1FCB00560928 /* GPSDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AB05BE15AA1FCB00560928 /* GPSDelegate.m */; };
 		36AB05D415AA31BA00560928 /* libsbjson-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36AB05D315AA31BA00560928 /* libsbjson-ios.a */; };
-		36AB05D615AB4DD200560928 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 36AB05D515AB4DD200560928 /* Settings.bundle */; };
 		36AB05D915AB69C100560928 /* BGTSocketCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AB05D815AB69C000560928 /* BGTSocketCommand.m */; };
 		36AB05F015ACA79300560928 /* icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 36AB05EF15ACA79300560928 /* icon-57.png */; };
 		36AB05F215ACA7A200560928 /* icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = 36AB05F115ACA7A200560928 /* icon-114.png */; };
@@ -159,7 +158,6 @@
 		36AB05BE15AA1FCB00560928 /* GPSDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPSDelegate.m; path = ../GPSDelegate.m; sourceTree = "<group>"; };
 		36AB05C115AA255E00560928 /* Sample Track.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Sample Track.gpx"; sourceTree = "<group>"; };
 		36AB05D315AA31BA00560928 /* libsbjson-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libsbjson-ios.a"; path = "../../Library/Developer/Xcode/DerivedData/SBJson-bkrqcbzfsyfflecrivoximytggxj/Build/Products/Debug-iphonesimulator/libsbjson-ios.a"; sourceTree = "<group>"; };
-		36AB05D515AB4DD200560928 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		36AB05D715AB69C000560928 /* BGTSocketCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTSocketCommand.h; sourceTree = "<group>"; };
 		36AB05D815AB69C000560928 /* BGTSocketCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTSocketCommand.m; sourceTree = "<group>"; };
 		36AB05EF15ACA79300560928 /* icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-57.png"; sourceTree = "<group>"; };
@@ -241,7 +239,6 @@
 				3612C0BF16B8602600F4811B /* Default-568h@2x.png */,
 				36A3083B16B1BA30001044D7 /* config.plist */,
 				362D44B615C9BE0600D43E22 /* Storyboard.storyboard */,
-				36AB05D515AB4DD200560928 /* Settings.bundle */,
 				36AB05C115AA255E00560928 /* Sample Track.gpx */,
 				36AB05BC15AA1BC200560928 /* Libraries */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -446,7 +443,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36AB05D615AB4DD200560928 /* Settings.bundle in Resources */,
 				36AB05F015ACA79300560928 /* icon-57.png in Resources */,
 				36AB05F215ACA7A200560928 /* icon-114.png in Resources */,
 				36AB05F415ACA7AE00560928 /* icon-72.png in Resources */,

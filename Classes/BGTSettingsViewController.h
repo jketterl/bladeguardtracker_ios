@@ -28,6 +28,8 @@
     IBOutlet UILabel* usernameLabel;
     IBOutlet UILabel* passwordLabel;
     IBOutlet UILabel* orLabel;
+    
+    IBOutlet UIActivityIndicatorView* loginActivity;
 }
 
 - (IBAction) toggleAnonymous:(id)sender;

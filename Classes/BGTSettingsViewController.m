@@ -53,6 +53,12 @@
     [appDelegate openSessionWithAllowLoginUI:NO];
     
     [self sessionStateChanged:nil];
+
+    NSUserDefaults* settings = [NSUserDefaults standardUserDefaults];
+    userField.text = [settings valueForKey:@"user"];
+    passwordField.text = [settings valueForKey:@"pass"];
+    anonymousSwitch.on = [settings boolForKey:@"anonymous"];
+    [self toggleAnonymous:anonymousSwitch];
 }
 
 - (void)didReceiveMemoryWarning
@@ -115,6 +121,12 @@
     NSString* user = userField.text;
     NSString* pass = passwordField.text;
     
+    
+    if (user == nil) user = @"";
+    if (pass == nil) pass = @"";
+    
+    [loginActivity startAnimating];
+    
     BGTAuthCommand* auth = [[BGTSocket getSharedInstance] authenticateWithUser:user andPass:pass];
     
     NSMethodSignature* sig = [self methodSignatureForSelector:@selector(processAuthentication:)];
@@ -127,7 +139,17 @@
 }
 
 - (void) processAuthentication: (BGTAuthCommand*) command {
-    NSLog(@"%d", [command wasSuccessful]);
+    [loginActivity stopAnimating];
+    if (![command wasSuccessful]) {
+        return;
+    }
+    NSUserDefaults* settings = [NSUserDefaults standardUserDefaults];
+    [settings setValue:userField.text forKey:@"user"];
+    [settings setValue:passwordField.text forKey:@"pass"];
+    [settings setBool:false forKey:@"anonymous"];
+    [settings synchronize];
+    
+    [[self navigationController] popViewControllerAnimated:YES];
 }
 
 @end
