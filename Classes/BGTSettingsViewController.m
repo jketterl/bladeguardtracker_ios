@@ -150,6 +150,11 @@
 - (void) processAuthentication: (BGTAuthCommand*) command {
     [loginActivity stopAnimating];
     if (![command wasSuccessful]) {
+        NSDictionary* result = [command getResult];
+        NSLog(@"%@", result);
+        NSString* message = [result valueForKey:@"message"];
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil) message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
         return;
     }
     NSUserDefaults* settings = [NSUserDefaults standardUserDefaults];
