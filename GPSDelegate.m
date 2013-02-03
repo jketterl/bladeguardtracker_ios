@@ -16,6 +16,8 @@
     self = [super init];
     if (self) {
         events = [NSMutableArray arrayWithCapacity:5];
+        updatesBlocked = false;
+        gpsUp = false;
     }
     return self;
 }
@@ -30,12 +32,63 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    if (newLocation.horizontalAccuracy > 50) return;
+    [self sendLocation:newLocation];
+}
+
+- (void) sendLocation: (CLLocation*) location {
+    if (location.horizontalAccuracy > 50) {
+        //NSLog(@"accurracy is to low");
+        [self sendGPSUnavailable];
+        return;
+    }
+    
+    if (lastLocation != nil && [location distanceFromLocation:lastLocation] == 0) return;
+    
+    if (updatesBlocked) {
+        queuedLocation = location;
+        return;
+    }
+    
+    //NSLog(@"sending log command");
     for (BGTEvent* event in events) {
-        BGTLogCommand* command = [[BGTLogCommand alloc] initWithLocation:newLocation andEvent:event];
+        BGTLogCommand* command = [[BGTLogCommand alloc] initWithLocation:location andEvent:event];
         [socket sendCommand:command];
     }
+    
+    gpsUp = true;
+    updatesBlocked = true;
+    [self resetFrequencyLimiter];
+    [self resetLocationTimeout];
+    lastLocation = location;
 }
+
+- (void) sendGPSUnavailable {
+    if (!gpsUp) return;
+    //NSLog(@"sending gpsunavailable command");
+    for (BGTEvent* event in events) {
+        BGTGPSUnavailableCommand* command = [[BGTGPSUnavailableCommand alloc] initWithEvent:event];
+        [socket sendCommand:command];
+    }
+    gpsUp = false;
+}
+
+- (void) resetFrequencyLimiter {
+    if (updateFrequencyLimiter != nil) [updateFrequencyLimiter invalidate];
+    updateFrequencyLimiter = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(unblockUpdates) userInfo:nil repeats:NO];
+}
+
+- (void) resetLocationTimeout {
+    if (locationTimer != nil) [locationTimer invalidate];
+    locationTimer = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(sendGPSUnavailable) userInfo:nil repeats:NO];
+}
+
+- (void) unblockUpdates {
+    updatesBlocked = false;
+    if (queuedLocation == nil) return;
+    [self sendLocation:queuedLocation];
+    queuedLocation = nil;
+}
+
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     NSLog(@"failure: %@", error);
 }
@@ -73,6 +126,7 @@
     [locationManager stopUpdatingLocation];
     locationManager.delegate = nil;
     socket = nil;
+    lastLocation = nil;
 }
 
 @end

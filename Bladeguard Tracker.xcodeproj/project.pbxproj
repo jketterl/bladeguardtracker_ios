@@ -71,6 +71,7 @@
 		36EBD88A16BDBA37001EB2F7 /* BGTSignupCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EBD88916BDBA37001EB2F7 /* BGTSignupCommand.m */; };
 		36EBD88D16BDC35B001EB2F7 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 36EBD88B16BDC35B001EB2F7 /* settings.png */; };
 		36EBD88E16BDC35B001EB2F7 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36EBD88C16BDC35B001EB2F7 /* settings@2x.png */; };
+		36EBD89416BEAB20001EB2F7 /* BGTGPSUnavailableCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EBD89316BEAB1F001EB2F7 /* BGTGPSUnavailableCommand.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -174,6 +175,8 @@
 		36EBD88916BDBA37001EB2F7 /* BGTSignupCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTSignupCommand.m; sourceTree = "<group>"; };
 		36EBD88B16BDC35B001EB2F7 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		36EBD88C16BDC35B001EB2F7 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
+		36EBD89216BEAB1F001EB2F7 /* BGTGPSUnavailableCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGTGPSUnavailableCommand.h; sourceTree = "<group>"; };
+		36EBD89316BEAB1F001EB2F7 /* BGTGPSUnavailableCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGTGPSUnavailableCommand.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Bladeguard Tracker-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Bladeguard Tracker-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -328,6 +331,8 @@
 				3612C0D916BD404300F4811B /* BGTAuthCommand.m */,
 				36EBD88816BDBA37001EB2F7 /* BGTSignupCommand.h */,
 				36EBD88916BDBA37001EB2F7 /* BGTSignupCommand.m */,
+				36EBD89216BEAB1F001EB2F7 /* BGTGPSUnavailableCommand.h */,
+				36EBD89316BEAB1F001EB2F7 /* BGTGPSUnavailableCommand.m */,
 			);
 			name = commands;
 			sourceTree = "<group>";
@@ -518,6 +523,7 @@
 				3612C0DA16BD404300F4811B /* BGTAuthCommand.m in Sources */,
 				3626922016BDAE2400A9B9E0 /* BGTRegisterViewController.m in Sources */,
 				36EBD88A16BDBA37001EB2F7 /* BGTSignupCommand.m in Sources */,
+				36EBD89416BEAB20001EB2F7 /* BGTGPSUnavailableCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

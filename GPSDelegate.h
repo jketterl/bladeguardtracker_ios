@@ -12,11 +12,18 @@
 #import "BGTLogCommand.h"
 #import "BGTQuitCommand.h"
 #import "BGTEvent.h"
+#import "BGTGPSUnavailableCommand.h"
 
 @interface GPSDelegate : NSObject <CLLocationManagerDelegate>{
   @private
     NSMutableArray* events;
     bool running;
+    CLLocation* lastLocation;
+    CLLocation* queuedLocation;
+    NSTimer* locationTimer;
+    NSTimer* updateFrequencyLimiter;
+    BOOL updatesBlocked;
+    BOOL gpsUp;
 }
 @property (nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) BGTSocket* socket;
