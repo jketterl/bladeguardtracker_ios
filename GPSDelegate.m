@@ -116,6 +116,7 @@
     running = true;
     socket = [BGTSocket getSharedInstanceWithStake:self];
     locationManager = [[CLLocationManager alloc] init];
+    locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
     locationManager.delegate = self;
     [locationManager startUpdatingLocation];
 }
