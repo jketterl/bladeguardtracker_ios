@@ -105,20 +105,8 @@
     BladeGuardTrackerAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     [appDelegate openSessionWithAllowLoginUI:false];
     if (FBSession.activeSession.isOpen) {
-        BGTFacebookLoginCommand *command = [[BGTFacebookLoginCommand alloc] initEmpty];
-        
-        [[FBRequest requestForMe] startWithCompletionHandler:
-         ^(FBRequestConnection *connection,
-           NSDictionary<FBGraphUser> *user,
-           NSError *error) {
-             if (!error) {
-                 [command setUser:[user valueForKey:@"username"]];
-                 NSLog(@"sending facebook login");
-                 [self sendCommand:command];
-             } else {
-                 NSLog(@"%@", error);
-             }
-         }];
+        BGTFacebookLoginCommand* command = [[BGTFacebookLoginCommand alloc] initWithAccessToken:FBSession.activeSession.accessToken];
+        [self sendCommand:command];
         
         return command;
     }

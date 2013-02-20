@@ -10,19 +10,9 @@
 
 @implementation BGTFacebookLoginCommand
 
-- (id) initWithUserId:(NSString *)userId {
-    self = [self initEmpty];
-    if (self) [self setUser:userId];
+- (id) initWithAccessToken:(NSString *)accessToken {
+    self = [super initWithCommand:@"facebookLogin" andData:@{@"accessToken": accessToken}];
     return self;
-}
-
-- (id) initEmpty {
-    self = [super initWithCommand:@"facebookLogin"];
-    return self;
-}
-
-- (void) setUser:(NSString*) userId {
-    [self setData:@{@"userId": userId}];
 }
 
 - (Boolean) isAuthCommand {

@@ -10,8 +10,6 @@
 
 @interface BGTFacebookLoginCommand : BGTSocketCommand
 
-- (id) initWithUserId:(NSString*) userId;
-- (id) initEmpty;
-- (void) setUser:(NSString*) userId;
+- (id) initWithAccessToken:(NSString*) accessToken;
 
 @end
