@@ -15,6 +15,7 @@
 #import "BGTUserMarker.h"
 #import "BGTEvent.h"
 #import "BGTEventSubscriber.h"
+#import "GPSDelegate.h"
 
 @interface BGTMapViewController : UIViewController <BGTSocketEventListener, MKMapViewDelegate, BGTEventSubscriber> {
     IBOutlet UIActivityIndicatorView* activity;

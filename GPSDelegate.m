@@ -130,4 +130,8 @@
     lastLocation = nil;
 }
 
+- (BOOL) isActive {
+    return running;
+}
+
 @end

@@ -49,6 +49,8 @@
     MKCoordinateSpan span = {.latitudeDelta = .02, .longitudeDelta = .02};
     MKCoordinateRegion region = {coord, span};
     [mapView setRegion:region];
+    
+    mapView.showsUserLocation = [[GPSDelegate getSharedInstance] isActive];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {

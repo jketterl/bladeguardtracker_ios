@@ -35,4 +35,5 @@
 - (void) addEvent: (BGTEvent*) event;
 - (void) removeEvent: (BGTEvent*) event;
 - (bool) hasEvent: (BGTEvent*) event;
+- (BOOL) isActive;
 @end
