@@ -20,12 +20,22 @@
 }
 
 - (void) setFrame:(CGRect)frame{
-    double offset = 0;
-    double width = frame.size.width / [self.subviews count];
-    for (UIView* view in self.subviews) {
-        CGRect subFrame = CGRectMake(round(offset), 0, round(width), frame.size.height);
-        [view setFrame:subFrame];
-        offset += width;
+    int lines;
+    if (frame.size.width / frame.size.height < 5) {
+        lines = 2;
+    } else {
+        lines = 1;
+    }
+    double itemsPerLine = ([self.subviews count] / lines);
+    double width = frame.size.width / itemsPerLine;
+    double height = frame.size.height / lines;
+        
+    for (int i = 0; i < lines; i++) {
+        int start = i * itemsPerLine;
+        for (int k = 0; k < itemsPerLine; k++) {
+            UIView* view = [self.subviews objectAtIndex: start + k];
+            [view setFrame:CGRectMake(frame.origin.x + k * width, frame.origin.y + i * height,width, height)];
+        }
     }
     [super setFrame:frame];
 }
