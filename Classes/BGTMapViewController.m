@@ -14,7 +14,7 @@
 
 @implementation BGTMapViewController
 
-@synthesize mapView, socket, speedView, trackLengthView, cycleTimeView, trackLengthLabel, cycleTimeLabel, speedLabel;
+@synthesize mapView, socket, speedView, trackLengthView, cycleTimeView, trackLengthLabel, cycleTimeLabel, speedLabel, timeToEndView, timeToEndLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,6 +39,7 @@
     self.trackLengthLabel.text = NSLocalizedString(@"Track length", nil);
     self.speedLabel.text = NSLocalizedString(@"Speed", nil);
     self.cycleTimeLabel.text = NSLocalizedString(@"Cycle time", nil);
+    self.timeToEndLabel.text = NSLocalizedString(@"Time to end", nil);
 }
 
 - (void) viewWillAppear:(BOOL)animated {

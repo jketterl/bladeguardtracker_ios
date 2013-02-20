@@ -29,9 +29,11 @@
 @property (nonatomic) IBOutlet UILabel* trackLengthView;
 @property (nonatomic) IBOutlet UILabel* speedView;
 @property (nonatomic) IBOutlet UILabel* cycleTimeView;
+@property (nonatomic) IBOutlet UILabel* timeToEndView;
 @property (nonatomic) IBOutlet UILabel* trackLengthLabel;
 @property (nonatomic) IBOutlet UILabel* speedLabel;
 @property (nonatomic) IBOutlet UILabel* cycleTimeLabel;
+@property (nonatomic) IBOutlet UILabel* timeToEndLabel;
 
 - (void) setEvent: (BGTEvent*) event;
 
