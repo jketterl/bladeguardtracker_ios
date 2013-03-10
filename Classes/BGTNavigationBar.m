@@ -13,9 +13,9 @@
 - (id) initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        UIImage* image = [UIImage imageNamed:@"icon.png"];
+        /*UIImage* image = [UIImage imageNamed:@"icon.png"];
         icon = [[UIImageView alloc] initWithImage:image];
-        [super addSubview:icon];
+        [super addSubview:icon];*/
         NSDictionary* attributes = [NSDictionary dictionaryWithObjectsAndKeys:
                                     [UIColor blackColor], UITextAttributeTextColor,
                                     [NSValue valueWithUIOffset:UIOffsetMake(0, 0)], UITextAttributeTextShadowOffset,
