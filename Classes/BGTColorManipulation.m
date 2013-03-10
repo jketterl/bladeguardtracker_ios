@@ -61,7 +61,7 @@
     CIContext *context = [CIContext contextWithOptions:nil];
     CGImageRef cgimg = [context createCGImage:outputImage fromRect:[outputImage extent]];
     
-    return [UIImage imageWithCGImage:cgimg];
+    return [UIImage imageWithCGImage:cgimg scale:input.scale orientation:UIImageOrientationUp];
 }
 
 @end
