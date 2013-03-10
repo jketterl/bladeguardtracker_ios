@@ -24,6 +24,9 @@
     @private MKPolyline* track;
     @private int from, to;
     @private BGTEvent* event;
+    
+    @private NSNumber* speed;
+    @private NSNumber* distanceToEnd;
 }
 @property (nonatomic) IBOutlet MKMapView* mapView;
 @property (nonatomic) BGTSocket* socket;

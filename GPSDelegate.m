@@ -52,6 +52,16 @@
     //NSLog(@"sending log command");
     for (BGTEvent* event in events) {
         BGTLogCommand* command = [[BGTLogCommand alloc] initWithLocation:location andEvent:event];
+        
+        NSMethodSignature* sig = [self methodSignatureForSelector:@selector(onLogResult:forEvent:)];
+        NSInvocation* callback = [NSInvocation invocationWithMethodSignature:sig];
+        [callback setTarget:self];
+        [callback setSelector:@selector(onLogResult:forEvent:)];
+        [callback setArgument:&command atIndex:2];
+        BGTEvent* foo = event;
+        [callback setArgument:&foo atIndex:3];
+        
+        [command addCallback:callback];
         [socket sendCommand:command];
     }
     
@@ -62,12 +72,22 @@
     lastLocation = location;
 }
 
+- (void) onLogResult: (BGTLogCommand*) command forEvent:(BGTEvent*) event {
+    NSDictionary* result = [command getResult];
+    if ([[result valueForKey:@"locked"] intValue] == 1 && [result valueForKey:@"distanceToEnd"] != NULL) {
+        [event setDistanceToEnd:[[result valueForKey:@"distanceToEnd"] floatValue]];
+    } else {
+        [event setDistanceToEnd:-1];
+    }
+}
+
 - (void) sendGPSUnavailable {
     if (!gpsUp) return;
     //NSLog(@"sending gpsunavailable command");
     for (BGTEvent* event in events) {
         BGTGPSUnavailableCommand* command = [[BGTGPSUnavailableCommand alloc] initWithEvent:event];
         [socket sendCommand:command];
+        [event setDistanceToEnd:-1];
     }
     gpsUp = false;
 }

@@ -33,7 +33,7 @@
     socket = [BGTSocket getSharedInstanceWithStake:self];
     if (socket.status != BGTSocketConnected) [activity startAnimating];
     [socket addListener:self];
-    [event addSubscriber:self forCategories:[NSArray arrayWithObjects:@"map", @"movements", @"quit", @"stats", nil]];
+    [event addSubscriber:self forCategories:[NSArray arrayWithObjects:@"map", @"movements", @"quit", @"stats", @"distanceToEnd", nil]];
     // Localization
     self.title = [event getMapName];
     self.trackLengthLabel.text = NSLocalizedString(@"Track length", nil);
@@ -118,7 +118,7 @@
         [self.trackLengthView setText:@"n/a"];
     }
     
-    NSNumber* speed = [stats valueForKey:@"bladeNightSpeed"];
+    speed = [stats valueForKey:@"bladeNightSpeed"];
     if (speed != NULL) {
         NSNumberFormatter* format = [[NSNumberFormatter alloc] init];
         [format setFormatterBehavior:NSNumberFormatterBehavior10_4];
@@ -139,6 +139,7 @@
     } else {
         [self.cycleTimeView setText:@"n/a"];
     }
+    [self updateTimeToEnd];
 
     if (track != nil) {
         [self.mapView removeOverlay:track];
@@ -229,6 +230,25 @@
     }
     [self.mapView addOverlay:route];
     [self.mapView setVisibleMapRect:route.boundingMapRect];
+}
+
+- (void) processDistancetoend: (NSDictionary*) data {
+    distanceToEnd = [data valueForKey:@"distanceToEnd"];
+    [self updateTimeToEnd];
+}
+
+- (void) updateTimeToEnd {
+    float distance = [distanceToEnd floatValue];
+    if (speed != NULL && distance >= 0) {
+        float cycleTime = (distance * 1000 / [speed floatValue]) / 60;
+        NSNumberFormatter* format = [[NSNumberFormatter alloc] init];
+        [format setFormatterBehavior:NSNumberFormatterBehavior10_4];
+        format.numberStyle = NSNumberFormatterDecimalStyle;
+        [format setMaximumFractionDigits:0];
+        timeToEndView.text = [[format stringFromNumber:[NSNumber numberWithFloat:cycleTime]] stringByAppendingString:@" min"];
+    } else {
+        timeToEndView.text = @"n/a";
+    }
 }
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {

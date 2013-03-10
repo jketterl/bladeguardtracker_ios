@@ -122,4 +122,11 @@
     [[BGTSocket getSharedInstance] sendCommand:command];
 }
 
+- (void) setDistanceToEnd:(float)distance {
+    NSArray* subscribers = [subscriptions objectForKey:@"distanceToEnd"];
+    for (id<BGTEventSubscriber> sub in subscribers) {
+        [sub receiveMessage:@"distanceToEnd" withData:@{@"distanceToEnd":[NSNumber numberWithFloat: distance]} fromEvent:self];
+    }
+}
+
 @end

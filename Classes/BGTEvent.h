@@ -38,4 +38,6 @@
 - (void) addSubscriber: (id<BGTEventSubscriber>) subscriber forCategories:(NSArray *) categories;
 - (void) removeSubscriber: (id<BGTEventSubscriber>) subscriber;
 
+- (void) setDistanceToEnd: (float) distance;
+
 @end
