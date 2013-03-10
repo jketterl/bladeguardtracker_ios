@@ -239,7 +239,7 @@
 
 - (void) updateTimeToEnd {
     float distance = [distanceToEnd floatValue];
-    if (speed != NULL && distance >= 0) {
+    if (speed != NULL && distanceToEnd != NULL && distance >= 0) {
         float cycleTime = (distance * 1000 / [speed floatValue]) / 60;
         NSNumberFormatter* format = [[NSNumberFormatter alloc] init];
         [format setFormatterBehavior:NSNumberFormatterBehavior10_4];
