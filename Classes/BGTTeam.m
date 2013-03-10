@@ -8,10 +8,7 @@
 
 #import "BGTTeam.h"
 
-@implementation BGTTeam {
-    @private int teamId;
-    @private UIImage* image;
-}
+@implementation BGTTeam
 static NSMutableArray* teams;
 static BGTTeam* anonymousTeam;
 static NSArray* teamColors;
@@ -23,7 +20,9 @@ static NSArray* teamColors;
     if ([matches count] > 0) {
         NSTextCheckingResult* match = [matches objectAtIndex:0];
         int teamId = [[name substringWithRange:[match range]] intValue];
-        return [self teamForId:teamId];
+        BGTTeam* team = [self teamForId:teamId];
+        [team setName:name];
+        return team;
     }
     return [self anonymousTeam];
 }
@@ -40,9 +39,20 @@ static NSArray* teamColors;
 + (BGTTeam*) anonymousTeam {
     if (anonymousTeam == nil) {
         anonymousTeam = [[BGTTeam alloc] init];
+        [anonymousTeam setName:@"Bladeguard"];
     }
     return anonymousTeam;
 }
+
+- (id) initWithId:(int)id
+{
+    self = [super init];
+    if (self) {
+        teamId = id;
+    }
+    return self;
+}
+
 - (UIImage*) getImage {
     if (teamColors == nil) {
         teamColors = [NSArray arrayWithObjects:
@@ -71,6 +81,14 @@ static NSArray* teamColors;
         }
     }
     return image;
+}
+
+- (void) setName:(NSString *)newName {
+    name = newName;
+}
+
+- (NSString*) getName {
+    return name;
 }
 
 @end

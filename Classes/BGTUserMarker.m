@@ -11,10 +11,14 @@
 @implementation BGTUserMarker {
     @private BGTUser* user;
 }
-+ (BGTUserMarker*) markerWithUser: (BGTUser*) newUser {
-    BGTUserMarker* marker = [[BGTUserMarker alloc] init];
-    marker->user = newUser;
-    return marker;
+- (id) initWithUser: (BGTUser*) newUser {
+    self = [super init];
+    if (self) {
+        user = newUser;
+        self.title = [newUser getName];
+        self.subtitle = [[newUser getTeam] getName];
+    }
+    return self;
 }
 
 - (BGTUser*) getUser {

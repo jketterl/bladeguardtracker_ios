@@ -10,6 +10,6 @@
 #import "BGTUser.h"
 
 @interface BGTUserMarker : MKPointAnnotation
-+ (BGTUserMarker*) markerWithUser: (BGTUser*) user;
+- (id) initWithUser: (BGTUser*) user;
 - (BGTUser*) getUser;
 @end

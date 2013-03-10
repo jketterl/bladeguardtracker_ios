@@ -191,14 +191,14 @@
     NSDictionary* user = [movement objectForKey:@"user"];
     NSNumber* userId = [user objectForKey:@"id"];
     BGTUser* userObj = [BGTUser userWithId:[userId intValue]];
-    NSString* teamName = [user objectForKey:@"team"];
-    BGTTeam* teamObj = [BGTTeam teamForName:teamName];
-    [userObj setTeam:teamObj];
+    if (userObj == NULL) {
+        userObj = [[BGTUser alloc] initWithData:user];
+    }
     
     NSDictionary* location = [movement objectForKey:@"location"];
     BGTUserMarker* marker = [userMarkers objectForKey:userId];
     if (marker == nil) {
-        marker = [BGTUserMarker markerWithUser:userObj];
+        marker = [[BGTUserMarker alloc] initWithUser:userObj];
         [self.mapView addAnnotation:marker];
         [userMarkers setObject:marker forKey:userId];
     }
@@ -277,6 +277,7 @@
     BGTUserMarker* marker = (BGTUserMarker*) annotation;
     
     MKAnnotationView *annView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"currentloc"];
+    annView.canShowCallout = YES;
 
     annView.image = [[[marker getUser] getTeam] getImage];
     return annView;

@@ -8,22 +8,37 @@
 
 #import "BGTUser.h"
 
-@implementation BGTUser {
-    @private BGTTeam* team;
-    @private int userId;
-}
+@implementation BGTUser
+
+NSMutableDictionary* users;
+
 + (BGTUser*) userWithId:(int)id {
-    BGTUser* user = [[BGTUser alloc] init];
-    user->userId = id;
-    return user;
+    return [users objectForKey:[NSNumber numberWithInt:id]];
 }
-/*
-- (BGTUser*) initWithTeam:(BGTTeam *)newTeam {
+
++ (void) addUser: (BGTUser*) user {
+    if (users == nil) {
+        users = [NSMutableDictionary dictionaryWithCapacity:10];
+    }
+    [users setObject:user forKey:[NSNumber numberWithInt:[user getId]]];
+}
+
+- (id) initWithData:(NSDictionary*) data {
     self = [super init];
-    if (self) team = newTeam;
+    NSLog(@"%@", data);
+    if (self) {
+        userId = [[data valueForKey:@"id"] intValue];
+        
+        NSString* teamName = [data objectForKey:@"team"];
+        BGTTeam* teamObj = [BGTTeam teamForName:teamName];
+        [self setTeam:teamObj];
+        
+        name = [data valueForKey:@"name"];
+        
+        [BGTUser addUser:self];
+    }
     return self;
 }
-*/
 
 - (void) setTeam: (BGTTeam*) newTeam {
     team = newTeam;
@@ -31,5 +46,13 @@
 
 - (BGTTeam*) getTeam {
     return team;
+}
+
+- (int) getId {
+    return userId;
+}
+
+- (NSString*) getName {
+    return name;
 }
 @end

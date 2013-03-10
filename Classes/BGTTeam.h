@@ -9,9 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "BGTColorManipulation.h"
 
-@interface BGTTeam : NSObject
+@interface BGTTeam : NSObject {
+  @private
+    NSString* name;
+    int teamId;
+    UIImage* image;
+}
 + (BGTTeam*) teamForName: (NSString*) name;
 + (BGTTeam*) teamForId: (int) id;
 + (BGTTeam*) anonymousTeam;
+- (id) initWithId:(int) id;
 - (UIImage*) getImage;
+- (void) setName: (NSString*) name;
+- (NSString*) getName;
 @end

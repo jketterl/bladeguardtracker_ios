@@ -9,9 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "BGTTeam.h"
 
-@interface BGTUser : NSObject
-+ (BGTUser*) userWithId: (int) id;
-- (void) setTeam: (BGTTeam*) team;
+@interface BGTUser : NSObject {
+  @private
+    BGTTeam* team;
+    int userId;
+    NSString* name;
+}
++ (BGTUser*) userWithId:(int) id;
+- (id) initWithData:(NSDictionary*) data;
 - (BGTTeam*) getTeam;
+- (int) getId;
+- (NSString*) getName;
 
 @end
