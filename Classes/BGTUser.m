@@ -25,7 +25,6 @@ NSMutableDictionary* users;
 
 - (id) initWithData:(NSDictionary*) data {
     self = [super init];
-    NSLog(@"%@", data);
     if (self) {
         userId = [[data valueForKey:@"id"] intValue];
         
