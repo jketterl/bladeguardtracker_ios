@@ -21,7 +21,7 @@
 
 - (void) setFrame:(CGRect)frame{
     int lines;
-    if (frame.size.width / frame.size.height < 5) {
+    if (frame.size.width / frame.size.height < 7) {
         lines = 2;
     } else {
         lines = 1;
